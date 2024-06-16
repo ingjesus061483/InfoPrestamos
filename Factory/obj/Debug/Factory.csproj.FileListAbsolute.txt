@@ -1,0 +1,12 @@
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\Factory.dll.config
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\Factory.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\Factory.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\EntityFramework.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\EntityFramework.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.csprojAssemblyReference.cache
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.csproj.CoreCompileInputs.cache
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.csproj.CopyComplete
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.pdb

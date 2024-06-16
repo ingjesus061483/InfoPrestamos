@@ -1,0 +1,105 @@
+E:\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.exe.config
+E:\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.exe
+E:\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.pdb
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csprojAssemblyReference.cache
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Properties.Resources.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.GenerateResource.cache
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.CoreCompileInputs.cache
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.exe
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.pdb
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Clientes.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.MainForm.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Prestamos.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmBusqueda.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmEnvioCorreo.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmLogin.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Usuarios.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Fiadores.resources
+E:\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Cobros.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.exe.config
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.exe
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.pdb
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csprojAssemblyReference.cache
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Clientes.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Cobros.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Fiadores.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmBusqueda.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmEnvioCorreo.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmLogin.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.MainForm.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Prestamos.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Properties.Resources.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Usuarios.resources
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.GenerateResource.cache
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.CoreCompileInputs.cache
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.exe
+D:\files\mis doc\Documents\programas\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.exe.config
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.exe
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\InfoPrestamos.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Datos.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\EntityFramework.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Factory.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Helper.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.Helpers.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.Mvc.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.Razor.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.WebPages.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Datos.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Datos.dll.config
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Factory.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Factory.dll.config
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Helper.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Helper.dll.config
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\EntityFramework.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.Helpers.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.Mvc.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.Razor.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.WebPages.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\es\System.Web.Helpers.resources.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\es\System.Web.Mvc.resources.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\es\System.Web.Razor.resources.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\es\System.Web.WebPages.resources.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csprojAssemblyReference.cache
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Clientes.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Cobros.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Fiadores.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmBusqueda.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.frmCuotas.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmEnvioCorreo.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmLogin.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.MainForm.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmPagoCuotas.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.FrmPagos.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.HistorialPago.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Prestamos.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Properties.Resources.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.Empleados.resources
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.GenerateResource.cache
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.CoreCompileInputs.cache
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.csproj.CopyComplete
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.exe
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Transporte.dll
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Transporte.pdb
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\bin\Debug\Transporte.dll.config
+D:\Documents\herramientas de desarrollo\InfoPrestamos\InfoPrestamos\obj\Debug\InfoPrestamos.frmTelefono.resources
