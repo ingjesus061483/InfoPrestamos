@@ -11,11 +11,13 @@ namespace Datos
 {
     public class PrestamoDbContext:DbContext
     {
-        public PrestamoDbContext() : base(ConfigurationManager.ConnectionStrings["Prestamo-app"].ConnectionString)
+        public PrestamoDbContext() : base(ConfigurationManager.ConnectionStrings["EasyCredit-app"].ConnectionString)
         {
 
         }
+        public DbSet<Referencia> Referencias { get; set; }
         public DbSet<TipoIdentificacion> TipoIdentificacions { get; set; }
+        public DbSet<Area> Areas { get; set; }  
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Fiador> Fiadors { get; set; }
@@ -25,13 +27,12 @@ namespace Datos
         public DbSet<Role> Roles { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Garantia > Garantias { get; set; }
+        public DbSet<Estado > Estados { get; set; }
         public DbSet <PrestamoGarantia> PrestamoGarantias { get; set; }
         public DbSet<TipoPago >TipoPagos { get; set; }
         public DbSet <FormaPago >FormaPagos { get; set; }
         public DbSet <Pago> Pagos { get; set; }
-        public DbSet <PagoCuota >PagoCuotas { get; set; }
         public DbSet<Telefono> Telefonos { get; set; }
-        public DbSet<TipoTelefono> TipoTelefonos { get; set; }
-
+        public DbSet<TipoTelefono> TipoTelefonos { get; set; }        
     }
 }

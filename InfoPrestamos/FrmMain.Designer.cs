@@ -42,7 +42,7 @@ namespace InfoPrestamos
             this.btnCerrar = new System.Windows.Forms.ToolStripButton();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnHistorial = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.pnlToolBar.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@ namespace InfoPrestamos
             this.btnCursos,
             this.btnCuentasCobrar,
             this.btnUsuarios,
-            this.btnHistorial,
+            this.toolStripButton2,
             this.btnCerrar});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.ToolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -192,18 +192,19 @@ namespace InfoPrestamos
             this.panel2.Size = new System.Drawing.Size(230, 590);
             this.panel2.TabIndex = 2;
             // 
-            // btnHistorial
+            // toolStripButton2
             // 
-            this.btnHistorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHistorial.Image = ((System.Drawing.Image)(resources.GetObject("btnHistorial.Image")));
-            this.btnHistorial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnHistorial.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnHistorial.Name = "btnHistorial";
-            this.btnHistorial.Size = new System.Drawing.Size(229, 97);
-            this.btnHistorial.Text = "Historial";
-            this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHistorial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
+            this.toolStripButton2.BackColor = System.Drawing.Color.White;
+            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(260, 97);
+            this.toolStripButton2.Text = "Historial de pago";
+            this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // MainForm
             // 
@@ -258,7 +259,7 @@ namespace InfoPrestamos
         TelefonoHelp telefonoHelp;
         TipoTelefonoHelp tipoTelefonoHelp;
         TelefonoTransporte TelefonoTransporte;
-        private System.Windows.Forms.ToolStripButton btnHistorial;
+        internal System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 

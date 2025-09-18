@@ -31,7 +31,7 @@ namespace InfoPrestamos
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             string pwd = Utilities.Encriptar(txtPassword.Text);
-            var usuario= UsuarioHelp.Usuarios.Where(x => x.Nombre == txtUsuario.Text && x.Password == pwd). AsEnumerable(). Select ( x=> new Usuario
+            var usuario= UsuarioHelp.TEntity.Where(x => x.Nombre == txtUsuario.Text && x.Password == pwd). AsEnumerable(). Select ( x=> new Usuario
             {
                 Id = x.Id,
                 Nombre = x.Nombre,
@@ -48,7 +48,7 @@ namespace InfoPrestamos
                 return;
             }
             UsuarioHelp.ActivarSesion(usuario.Id, true);
-            Usuario  = UsuarioHelp.Usuarios.Where(x => x.Id ==usuario.Id ).AsEnumerable().Select(x => new Usuario
+            Usuario  = UsuarioHelp.TEntity.Where(x => x.Id ==usuario.Id ).AsEnumerable().Select(x => new Usuario
             {
                 Id = x.Id,
                 Nombre = x.Nombre,

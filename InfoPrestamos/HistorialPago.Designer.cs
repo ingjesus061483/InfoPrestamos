@@ -98,7 +98,7 @@ namespace InfoPrestamos
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.txtCliente);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(9, 103);
+            this.panel1.Location = new System.Drawing.Point(9, 99);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(668, 82);
@@ -147,14 +147,14 @@ namespace InfoPrestamos
             this.ColPagoCompleto,
             this.ColPrestamoId,
             this.ColPrestamo});
-            this.dgCuotas.Location = new System.Drawing.Point(6, 511);
+            this.dgCuotas.Location = new System.Drawing.Point(6, 502);
             this.dgCuotas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgCuotas.Name = "dgCuotas";
             this.dgCuotas.ReadOnly = true;
             this.dgCuotas.RowHeadersVisible = false;
             this.dgCuotas.RowHeadersWidth = 62;
             this.dgCuotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCuotas.Size = new System.Drawing.Size(671, 330);
+            this.dgCuotas.Size = new System.Drawing.Size(671, 336);
             this.dgCuotas.TabIndex = 1127;
             // 
             // ColAgregar
@@ -293,7 +293,7 @@ namespace InfoPrestamos
             this.ColEmpleadoId,
             this.ColObservacion,
             this.ColEsCancelado});
-            this.dgPrestamo.Location = new System.Drawing.Point(8, 197);
+            this.dgPrestamo.Location = new System.Drawing.Point(8, 187);
             this.dgPrestamo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgPrestamo.Name = "dgPrestamo";
             this.dgPrestamo.ReadOnly = true;

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
+    [Table("Prestamos")]
     public class Prestamo
     {
         public int Id { get; set; }
@@ -29,11 +30,9 @@ namespace Factory
         [Required]
         public DateTime Fecha { get; set; }
 
+        [MaxLength(255)]
         public string Observacion { get; set; }
         
-
-        public bool EsCancelado { get; set; }
-
         [Required]
         public  int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
@@ -49,6 +48,9 @@ namespace Factory
         public int EmpleadoId { get; set; }
         public Empleado Empleado { get; set; }
 
+        [Required]
+        public int EstadoId { get; set; }
+        public Estado Estado { get; set; }
         public List<PrestamoGarantia>  PrestamoGarantias  { get; set; }
         public List<Cuota> Cuotas { get; set; }
 

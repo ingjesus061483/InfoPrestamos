@@ -21,7 +21,7 @@ namespace DTO
         public DateTime Fecha { get; set; }
 
         [Required]
-        public decimal Couta { get; set; }
+        public decimal Valor { get; set; }
 
         [Required]
         public decimal Interes { get; set; }
@@ -42,6 +42,6 @@ namespace DTO
         public int PrestamoId { get; set; }
         public Prestamo Prestamo { get; set; }
 
-        public List<PagoCuota> PagoCuotas { get; set; }
+        public List<Pago> Pagos { get; set; }
     }
 }

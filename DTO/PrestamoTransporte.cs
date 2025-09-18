@@ -22,7 +22,7 @@ namespace Transporte
         {
             get
             {
-                return prestamoHelp.Prestamos.AsEnumerable().Select(x => new View.PrestamoView
+                return prestamoHelp.TEntity.AsEnumerable().Select(x => new View.PrestamoView
                 {
                     Id= x.Id,
                     Codigo = x.Codigo,
@@ -53,7 +53,7 @@ namespace Transporte
 
         public override List<View.PrestamoView> GetList(int idcliente)
         {
-            return prestamoHelp.Prestamos.Where(x => x.ClienteId == idcliente).AsEnumerable().Select(x => new View.PrestamoView
+            return prestamoHelp.TEntity.Where(x => x.ClienteId == idcliente).AsEnumerable().Select(x => new View.PrestamoView
             {
                 Id = x.Id,
                 Codigo = x.Codigo,

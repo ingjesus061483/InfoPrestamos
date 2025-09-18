@@ -9,42 +9,22 @@ using System.Web.Mvc;
 
 namespace Helper
 {
-    public class TipoTelefonoHelp : Help
+    public class TipoTelefonoHelp : Help<TipoTelefono>
     {
         public  TipoTelefonoHelp(PrestamoDbContext _context)
         {
             context = _context;
         }
-        public IQueryable<TipoTelefono> TipoTelefonos
-        {
-            get
-            {
-                return context.TipoTelefonos.AsQueryable();
-            }
-        }
-
-
-        public override void Actualizar(int id, Dictionary<string, object> collection)
+        public override IQueryable<TipoTelefono> TEntity =>  context.TipoTelefonos.AsQueryable();
+        public override void Actualizar(int id, TipoTelefono Entity)
         {
             throw new NotImplementedException();
         }
-
-        public override void Actualizar(int id, FormCollection collection)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Eliminar(int id)
         {
             throw new NotImplementedException();
-        }
-
-        public override void Guardar(Dictionary<string, object> collection)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Guardar(FormCollection collection)
+        }        
+        public override void Guardar(TipoTelefono Entity)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,6 @@
 ﻿using Factory;
 using Helper;
+using Helper.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace InfoPrestamos
         public  List<TelefonoView> Telefonos { get; set; }
         public PersonaView  Cliente { get; set; }
         int id;
-        Dictionary<string, object> colection;
+        TelefonoDTO telefonoDTO;
        
         TelefonoHelp TelefonoHelp;
         TelefonoTransporte TelefonoTransporte;
@@ -57,22 +58,22 @@ namespace InfoPrestamos
                 Utilities.GetMessage("", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            colection = new Dictionary<string, object>()
-                    {
-                        { "ClienteId" , Cliente != null ? Cliente.Id : 0 },
-                        {"NumeroTelefonico" , txtNumeroTelefonico.Text },
-                        {"TipoTelefonoId", int.Parse(cmbTipoTelefono.SelectedValue.ToString()) }
-                    };
+            telefonoDTO = new TelefonoDTO
+            {
+                ClienteId = Cliente != null ? Cliente.Id : 0,
+                NumeroTelefonico = txtNumeroTelefonico.Text,
+                TipoTelefonoId = int.Parse(cmbTipoTelefono.SelectedValue.ToString())
+            };
             if (Cliente != null)
             {
                 if (id == 0)
                 {
 
-                    TelefonoHelp.Guardar(colection);
+                    TelefonoHelp.Guardar(telefonoDTO);
                 }
                 else
                 {
-                    TelefonoHelp.Actualizar(id, colection);
+                    TelefonoHelp.Actualizar(id, telefonoDTO );
                 }
                 Telefonos = TelefonoTransporte.GetList(Cliente.Id);
                 Nuevo();
@@ -133,7 +134,7 @@ namespace InfoPrestamos
                 Telefonos = TelefonoTransporte.GetList(Cliente .Id  );
             }
             Nuevo();
-            Utilities.Cmb(cmbTipoTelefono, tipoTelefonoHelp.TipoTelefonos.ToList());
+            Utilities.Cmb(cmbTipoTelefono, tipoTelefonoHelp.TEntity.ToList());
 
         }
 

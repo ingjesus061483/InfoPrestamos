@@ -11,6 +11,7 @@ using Factory;
 using Helper;
 using System.Data.Entity.Validation;
 using Transporte;
+using DTO;
 namespace InfoPrestamos
 {
     public partial class Empleados : UserControl
@@ -18,7 +19,7 @@ namespace InfoPrestamos
         int id;
         int usuarioId;
         UsuarioHelp usuarioHelp;
-        Dictionary<string, object> collection;
+        EmpleadoDTO EmpleadoDTO;
         EmpleadoHelp EmpleadoHelp;
         EmpleadoTransporte EmpleadoTranporte;
         TipoIdentificacionHelp TipoIdentificacionHelp;
@@ -38,9 +39,9 @@ namespace InfoPrestamos
         }
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TipoIdentificacions.ToList();
+            List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TEntity.ToList();
             Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
-            Utilities.Cmb(cmbRole,RoleHelp .Roles .ToList () );
+            Utilities.Cmb(cmbRole,RoleHelp .TEntity.ToList () );
             Nuevo();
         }
         void Nuevo()
@@ -70,7 +71,7 @@ namespace InfoPrestamos
             if (e.RowIndex >= 0)
             {
                 id = int.Parse(dataGrid.Rows[e.RowIndex].Cells["ColId"].Value.ToString());
-                var cliente = EmpleadoHelp.Empleados .Where(x => x.Id == id).FirstOrDefault();
+                var cliente = EmpleadoHelp.TEntity.Where(x => x.Id == id).FirstOrDefault();
                 txtIdentificacion.Text = cliente.Identificacion;
                 cmbTipoIdentificacion.SelectedValue = cliente.TipoIdentificacionId;
                 txtNombre.Text = cliente.Nombre;
@@ -94,39 +95,42 @@ namespace InfoPrestamos
         {
             try
             {
-                collection = new Dictionary<string, object>{
-                            {"Identificacion", txtIdentificacion.Text },
-                            {"Nombre", txtNombre.Text },
-                            { "Apellido", txtApellido.Text },
-                            { "FechaNacimiento",dtpFechaNacimiento .Value },
-                            { "Direccion", txtDireccion.Text },
-                            {"Telefono", txtTelefono.Text },
-                            {"Email", txtEmail.Text },
-                            {"TipoIdentificacionId", cmbTipoIdentificacion.SelectedValue != null
-                                           ? int.Parse(cmbTipoIdentificacion.SelectedValue.ToString())
-                                           : -1 },
-                    {"usuario",null }
-                };
-                Dictionary<string, object> usuarioCol = new Dictionary<string, object>
+                EmpleadoDTO = new EmpleadoDTO
                 {
-                    {"Nombre", txtUsuario.Text },
-                    {"password",txtPwd  .Text },
-                    { "Role",cmbRole.SelectedValue != null
-                                                            ? int.Parse(cmbRole.SelectedValue.ToString())
-                                                            : -1 },
+                    Identificacion = txtIdentificacion.Text,
+                    Nombre = txtNombre.Text,
+                    Apellido = txtApellido.Text,
+                    FechaNacimiento = dtpFechaNacimiento.Value,
+                    Direccion = txtDireccion.Text,
+                    Telefono = txtTelefono.Text,
+                    Email = txtEmail.Text,
+                    TipoIdentificacionId = cmbTipoIdentificacion.SelectedValue != null
+                                           ? int.Parse(cmbTipoIdentificacion.SelectedValue.ToString())
+                                           : -1,
+                
+                };
+                
+              UsuarioDTO usuarioDTO = new UsuarioDTO
+                {
+                    Nombre = txtUsuario.Text,
+                    Password = Utilities.Encriptar(txtPwd.Text),
+                    RoleId = cmbRole.SelectedValue != null
+                                            ? int.Parse(cmbRole.SelectedValue.ToString())
+                                            : -1,
+                    Sesion = false
                 };
                 if (id == 0)
                 {
-                    usuarioHelp.Guardar(usuarioCol);
-                    var usuario = usuarioHelp.Usuarios.Where(x => x.Nombre == txtUsuario.Text).FirstOrDefault();
-                    collection["usuario"] = usuario.Id;
-                    EmpleadoHelp.Guardar(collection);
+                    usuarioHelp.Guardar(usuarioDTO);
+                    var usuario = usuarioHelp.TEntity.Where(x => x.Nombre == txtUsuario.Text).FirstOrDefault();
+                    EmpleadoDTO.UsuarioId  = usuario.Id;
+                    EmpleadoHelp.Guardar(EmpleadoDTO );
                 }
                 else
                 {
-                    var usuario = usuarioHelp.Usuarios.Where(x => x.Id  == usuarioId).FirstOrDefault();
-                    usuarioHelp.Actualizar(usuario.Id, usuarioCol);
-                    EmpleadoHelp.Actualizar(id, collection);
+                    var usuario = usuarioHelp.TEntity.Where(x => x.Id  == usuarioId).FirstOrDefault();
+                    usuarioHelp.Actualizar(usuario.Id, usuarioDTO);
+                    EmpleadoHelp.Actualizar(id, EmpleadoDTO);
                 }
                 Nuevo();
             }
@@ -143,7 +147,7 @@ namespace InfoPrestamos
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            var user= usuarioHelp.Usuarios.Where(x => x.Id == usuarioId).FirstOrDefault();
+            var user= usuarioHelp.TEntity.Where(x => x.Id == usuarioId).FirstOrDefault();
             if (user.Sesion)
             {
                 Utilities.GetMessage("La sesion de este usuario esta activa", MessageBoxButtons.OK, MessageBoxIcon.Warning);

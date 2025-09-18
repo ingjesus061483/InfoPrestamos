@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Factory
-{    
+{
+    [Table("Empleados")]
     public class Empleado : Persona
     {
         public override int Id { get; set ; }
@@ -18,15 +19,18 @@ namespace Factory
 
         [Required]
         [MaxLength(50)]
+        [Phone]
         public string Telefono { get; set ; }        
         public override DateTime FechaNacimiento { get; set; }
         public override string Email { get ; set ; }
-       
-        public int UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }        
 
-        public override int TipoIdentificacionId { get ; set ; }
-        public override TipoIdentificacion TipoIdentificacion { get ; set ; }
+        public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
+        public int? AreaId { get; set; }
+        public Area Area { get; set; }
+        [Display(Name = "Tipo identificacion")]
+        public int? TipoIdentificacionId { get; set; }
+        public  TipoIdentificacion TipoIdentificacion { get; set; }
         public override List<Prestamo> Prestamos { get ; set ; }
         public List<Pago> Pagos { get; set; }
     }

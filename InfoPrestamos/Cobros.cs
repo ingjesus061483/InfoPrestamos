@@ -40,7 +40,7 @@ namespace InfoPrestamos
             };
             frmBusqueda.ShowDialog();
             int idCliente = frmBusqueda.Id;
-            var cliente = ClienteHelp.Clientes.Where(x => x.Id == idCliente).FirstOrDefault();
+            var cliente = ClienteHelp.TEntity.Where(x => x.Id == idCliente).FirstOrDefault();
             if (cliente == null)
             {
                 return;
@@ -75,7 +75,7 @@ namespace InfoPrestamos
             if (col == 0)
             {
                 int id = int.Parse(dataGridView.Rows[e.RowIndex].Cells["ColIdCuota"].Value.ToString());
-                cuota = CuotaHelp.Cuotas.Where (x=>x.Id ==id).ToList ().Select(x => new Cuota
+                cuota = CuotaHelp.TEntity.Where (x=>x.Id ==id).ToList ().Select(x => new Cuota
                 {
                     Id = x.Id,
                     Codigo = x.Codigo,

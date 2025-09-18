@@ -44,10 +44,10 @@ namespace InfoPrestamos
         {
             txtReferencia.Text = DateTime.Now.ToOADate().ToString();
             List <Transporte.View .CuotaView > cuotaViews =(List < Transporte.View.CuotaView >) cuotaTransporte.GetList(Cuotas);
-            Utilities.Cmb(cmbFormaPago, formaPagoHelp.FormaPagos.ToList());
+            Utilities.Cmb(cmbFormaPago, formaPagoHelp.TEntity.ToList());
             foreach(Transporte.View .CuotaView cuotaView in cuotaViews)
             {
-                var cuota = cuotaHelp.Cuotas.Where(x => x.Id == cuotaView.Id).FirstOrDefault();
+                var cuota = cuotaHelp.TEntity.Where(x => x.Id == cuotaView.Id).FirstOrDefault();
                 sumCuotas += cuota.Couta;
                 sumCapital += cuota.Capital;
                 sumInteres += cuota.Interes;
@@ -65,7 +65,7 @@ namespace InfoPrestamos
                 int id = int.Parse(dataGridView.Rows[e.RowIndex].Cells["ColIdCuota"].Value.ToString());
                 var cuotaview =bingCuotas .Where(x => x.Id == id).FirstOrDefault();
                 bingCuotas.Remove(cuotaview );
-                var cuota = cuotaHelp.Cuotas.Where(x => x.Id == id).FirstOrDefault();
+                var cuota = cuotaHelp.TEntity.Where(x => x.Id == id).FirstOrDefault();
                 sumCuotas -= cuota.Couta;
                 sumCapital -= cuota.Capital;
                 sumInteres -= cuota.Interes;
@@ -105,7 +105,7 @@ namespace InfoPrestamos
                 {"EmpleadoId",Usuario .Empleados [0].Id},
                 {"cuotas" ,Cuotas  }
             };
-            PagoHelp.Guardar(collection);
+        //    PagoHelp.Guardar(collection);
         }
     }
 }

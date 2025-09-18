@@ -10,6 +10,9 @@ namespace DTO
 {
     public class EmpleadoDTO
     {
+        public int? AreaId { get; set; }
+        public Area Area { get; set; }
+
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
@@ -29,6 +32,7 @@ namespace DTO
 
         [Required]
         [MaxLength(50)]
+        [Phone]
         public string Telefono { get; set; }
 
         [Required]
@@ -44,7 +48,7 @@ namespace DTO
         public Usuario Usuario { get; set; }
 
         [Required]
-        public int TipoIdentificacionId { get; set; }
+        public int? TipoIdentificacionId { get; set; }
         public TipoIdentificacion TipoIdentificacion { get; set; }
 
         public List<Prestamo> Prestamos { get; set; }

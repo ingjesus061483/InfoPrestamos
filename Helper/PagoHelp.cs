@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,17 @@ using System.Web.Mvc;
 
 namespace Helper
 {
-    public class PagoHelp : Help
+    public class PagoHelp : Help<Pago>
     {  
         public PagoHelp(PrestamoDbContext dbContext)
         {
             context = dbContext;
         }
 
-        public override void Actualizar(int id, Dictionary<string, object> collection)
-        {
-            throw new NotImplementedException();
-        }
+        public override IQueryable<Pago> TEntity => throw new NotImplementedException();
 
-        public override void Actualizar(int id, FormCollection collection)
+     
+        public override void Actualizar(int id, Pago Entity)
         {
             throw new NotImplementedException();
         }
@@ -30,12 +29,8 @@ namespace Helper
             throw new NotImplementedException();
         }
 
-        public override void Guardar(Dictionary<string, object> collection)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Guardar(FormCollection collection)
+       
+        public override void Guardar(Pago Entity)
         {
             throw new NotImplementedException();
         }

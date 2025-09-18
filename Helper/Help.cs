@@ -1,20 +1,13 @@
 ﻿using Datos;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 namespace Helper
 {
-    public abstract  class Help
+    public abstract  class Help<T>
     {
-        protected PrestamoDbContext context;       
-
-        public abstract void Guardar(Dictionary<string, object> collection);
-        public abstract void Guardar(FormCollection collection);
-        public abstract void Actualizar(int id, Dictionary<string, object> collection);
-        public abstract void Actualizar(int id, FormCollection collection);
+        protected PrestamoDbContext context;
+        public abstract IQueryable<T> TEntity { get; }
+        public abstract void Guardar(T Entity);
+        public abstract void Actualizar(int id, T Entity);
         public abstract void Eliminar(int id);
     }
 }

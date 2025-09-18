@@ -43,7 +43,7 @@ namespace Transporte
         }
         public override List<View.CuotaView> GetList(int idprestamo)
         {
-            return cuotaHelp.GetCuotasByPrestamos(idprestamo).AsEnumerable().Select(x => new View.CuotaView
+            return cuotaHelp.TEntity.Where(x=>x.PrestamoId== idprestamo).AsEnumerable().Select(x => new View.CuotaView
             {
                 Id = x.Id,
                 Codigo = x.Codigo,

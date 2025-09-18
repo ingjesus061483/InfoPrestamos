@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Factory
 {
+    [Table("Fiadores")]
+
     public class Fiador : Persona
     {
         public override int Id { get ; set ; }
@@ -17,16 +20,19 @@ namespace Factory
 
         [Required]
         [MaxLength(50)]
+        [Phone]
         public string Telefono { get ; set; }
 
         public override string Email { get ; set ; }
         public override DateTime FechaNacimiento { get ; set ; }
         
         [Required]
+        [MaxLength(50)]
+        [Display(Name ="Empresa donde labora")]
         public string EmperesaDondeLabora { get; set; }
         
-        public override int TipoIdentificacionId { get ; set ; }
-        public override TipoIdentificacion TipoIdentificacion { get ; set ; }
+        public int TipoIdentificacionId { get ; set ; }
+        public TipoIdentificacion TipoIdentificacion { get ; set ; }
         public override List<Prestamo> Prestamos { get ; set ; }
     }
 }

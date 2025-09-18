@@ -7,12 +7,13 @@ using Factory;
 using Helper;
 using System.Data.Entity.Validation;
 using Transporte;
+using DTO;
 namespace InfoPrestamos
 {
     public partial class Fiadores : UserControl
     {
         int id;
-        Dictionary<string, object> collection;
+       FiadorDTO fiadorDTO;
         FiadorTransporte FiadorTransporte;
         TipoIdentificacionHelp TipoIdentificacionHelp;
         FiadorHelp FiadorHelp;
@@ -25,7 +26,7 @@ namespace InfoPrestamos
         }
         private void Fiadores_Load(object sender, EventArgs e)
         {
-            List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TipoIdentificacions.ToList();
+            List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TEntity.ToList();
             Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
             Nuevo();
         }
@@ -54,26 +55,28 @@ namespace InfoPrestamos
         {
             try
             {
-                collection = new Dictionary<string, object>{
-                            {"Identificacion", txtIdentificacion.Text },
-                            {"Nombre", txtNombre.Text },
-                            { "Apellido", txtApellido.Text },
-                            { "FechaNacimiento",dtpFechaNacimiento .Value },
-                            { "Direccion", txtDireccion.Text },
-                            {"Telefono", txtTelefono.Text },
-                            {"Email", txtEmail.Text },
-                            {"EmperesaDondeLabora",txtEmperesaDondeLabora .Text },
-                            {"TipoIdentificacionId", cmbTipoIdentificacion.SelectedValue != null
+                fiadorDTO= new FiadorDTO
+                {
+                    Identificacion = txtIdentificacion.Text,
+                    Nombre = txtNombre.Text,
+                    Apellido = txtApellido.Text,
+                    FechaNacimiento = dtpFechaNacimiento.Value,
+                    Direccion = txtDireccion.Text,
+                    Telefono = txtTelefono.Text,
+                    Email = txtEmail.Text,
+                    EmperesaDondeLabora = txtEmperesaDondeLabora.Text,
+                    TipoIdentificacionId = cmbTipoIdentificacion.SelectedValue != null
                                            ? int.Parse(cmbTipoIdentificacion.SelectedValue.ToString())
-                                           : -1 },
+                                           : -1,
                 };
+
                 if (id == 0)
                 {
-                    FiadorHelp.Guardar(collection);
+                    FiadorHelp.Guardar(fiadorDTO );
                 }
                 else
                 {
-                    FiadorHelp.Actualizar(id, collection);
+                    FiadorHelp.Actualizar(id,fiadorDTO );
                 }
                 Nuevo();
             }
@@ -98,7 +101,7 @@ namespace InfoPrestamos
             if (e.RowIndex >= 0)
             {
                 id = int.Parse(dataGrid.Rows[e.RowIndex].Cells["ColId"].Value.ToString());
-                var Fiador = FiadorHelp.Fiadors.Where(x => x.Id == id).FirstOrDefault();
+                var Fiador = FiadorHelp.TEntity.Where(x => x.Id == id).FirstOrDefault();
                 txtIdentificacion.Text = Fiador.Identificacion;
                 cmbTipoIdentificacion.SelectedValue = Fiador.TipoIdentificacionId;
                 txtNombre.Text = Fiador.Nombre;

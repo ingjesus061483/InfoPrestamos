@@ -1,0 +1,327 @@
+﻿@model DTO.ClienteDTO
+
+@{
+    var telefonos = Model.Telefonos;
+    List<Factory.TipoTelefono> tipoTelefonos = (List<Factory.TipoTelefono>)ViewBag.tipoTelefonos;
+    List<Factory.TipoIdentificacion> tipoIdentificaciones = (List<Factory.TipoIdentificacion>)ViewBag.tipoIdentificaciones;
+    ViewBag.Title = "Details";
+}
+<h4>Detalles de cliente</h4>
+<hr />
+<div style="padding:10px;">
+    <div class="row">
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Area.Nombre) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Area.Nombre)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoIdentificacion.Nombre) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoIdentificacion.Nombre)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Codigo) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Codigo)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Identificacion) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Identificacion)
+            </dd>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.NombreCompleto) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NombreCompleto)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.FechaNacimiento) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FechaNacimiento)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.FechaExpedicion) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FechaExpedicion)
+            </dd>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </div>
+        <div class="col-3">
+            <dt>
+                @Html.DisplayNameFor(model => model.EmperesaDondeLabora) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmperesaDondeLabora)
+            </dd>
+        </div>
+        <div class="col-6">
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <dt>
+                @Html.DisplayNameFor(model => model.Observacion) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Observacion)
+            </dd>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div>
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" for="codigo">
+                    <strong>Listado Telefonico</strong>
+                </label>
+            </div>
+            <table id="datatablesSimple" class="table ui-widget ui-widget-content">
+                <thead>
+                    <tr class="ui-widget-header">
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            TipoTelefono
+                        </th>
+                        <th>
+                            Numero
+                        </th>
+                        <th></th>
+                        <th></th>
+                    <tr />
+                </thead>
+                <tbody>
+                    @foreach (var telefono in telefonos)
+                    {
+                        <tr>
+                            <td>
+                                @telefono.Id
+                            </td>
+                            <td>
+                                @telefono.TipoTelefono.Nombre
+                            </td>
+                            <td>
+                                @telefono.NumeroTelefonico
+                            </td>
+                            <td>
+                                <button title="Editar telefono" class="btn btn-warning" onclick="editarPhone(@telefono.Id);">
+                                    <i class="fa-solid fa-file-pen"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <form action="@Url.Action("delete","phones")" onsubmit="return validar('Desea eliminar el cliente?')" method="post">
+                                    <input type="hidden" value="@telefono.Id" name="id" />
+                                    <input type="hidden" value="@telefono.ClienteId" name="ClienteId" />
+                                    <button title="Eliminar" type="submit" class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" for="codigo">
+                    <strong>Referencias</strong>
+                </label>
+            </div>
+            <table id="datatablesSimple2" class="table ui-widget ui-widget-content">
+                <thead>
+                    <tr class="ui-widget-header">
+                        <th> Id</th>
+                        <th>Tipo Identificacion</th>
+                        <th>Identificacion</th>
+                        <th>Nombre completo</th>
+                        <th>Direccion</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reference in Model.Referencias)
+                    {
+                        <tr>
+                            <td>@reference.Id</td>
+                            <td>@reference.TipoIdentificacion.Nombre</td>
+                            <td>@reference.Identificacion</td>
+                            <td>@reference.NombreCompleto</td>
+                            <td>@reference.Direccion</td>
+                            <td>@reference.Email</td>
+                            <td>@reference.Telefono</td>
+                            <td>
+                                <button title="Editar referencia" class="btn btn-warning" onclick="editarReference(@reference.Id);">
+                                    <i class="fa-solid fa-file-pen"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <form action="@Url.Action("delete","References")" onsubmit="return validar('Desea eliminar el cliente?')" method="post">
+                                    <input type="hidden" value="@reference.Id" name="id" />
+                                    <input type="hidden" value="@reference.ClienteId" name="ClienteId" />
+                                    <button title="Eliminar" type="submit" class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<p>
+    <a title="Regresar" href="@Url.Action("index","client")" class="btn btn-primary">
+        <i class="fa-solid fa-house"></i>
+    </a>
+    <button title="Agregar telefono" onclick="addPhone();" class="btn btn-secondary">
+        <i class="fa-solid fa-phone"></i>
+    </button>
+    <button title="Agregar referencia" onclick="addReference();" class="btn btn-secondary">
+        <i class="fa-solid fa-address-book"></i>
+    </button>
+</p>
+<div id="references" title="Agregar o Editar referencias">
+    <form id="referenceAdd" method="post" autocomplete="off" action="@Url.Action("create","references")">
+        <input type="hidden" name="Id" value="0" id="Id" />
+        <input type="hidden" name="ClienteId" value="@Model.Id" id="ClienteId" />
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Idemtificacion
+            </label>
+            <input type="text" class="form-control" name="Identificacion" id="Identificacion" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Nombre
+            </label>
+            <input type="text" class="form-control" name="Nombre" id="Nombre" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Apellido
+            </label>
+            <input type="text" class="form-control" name="Apellido" id="Apellido" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Direccion
+            </label>
+            <input type="text" class="form-control" name="Direccion" id="Direccion" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">
+                Email
+            </label>
+            <input type="email" class="form-control" name="Email" id="Email" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" accesskey="" for="codigo">
+                Tipo de identificacion
+            </label>
+            <select name="TipoIdentificacionId" class="form-select" id="TipoIdentificacion">
+                <option value="">Seleccione un tipo de identificacion</option>
+                @foreach (var item in tipoIdentificaciones)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" accesskey="" for="codigo">
+                Telefono
+            </label>
+            <input type="text" class="form-control" name="Telefono" id="Telefono" />
+        </div>
+    </form>
+</div>
+
+<div id="phones" title="Agregar o Editar telefonos">
+    <form id="PhoneAdd" method="post" autocomplete="off" action="@Url.Action("create","phones")">
+        <input type="hidden" name="Id" value="0" id="Id" />
+        <input type="hidden" name="ClienteId" value="@Model.Id" id="ClienteId" />
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Tipo de telefono
+            </label>
+            <select name="TipoTelefonoId" class="form-select" id="TipoTelefono">
+                <option value="">Seleccione un tipo de telefono</option>
+                @foreach (var item in tipoTelefonos)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Numero telefonico
+            </label>
+            <input type="text" name="NumeroTelefonico" value="" class="form-control" id="NumeroTelefonico">
+        </div>
+    </form>
+</div>
+

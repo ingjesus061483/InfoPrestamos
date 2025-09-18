@@ -8,12 +8,13 @@ using Factory;
 using System.Data.Entity.Validation;
 using Transporte;
 using Transporte.View;
+using DTO;
 
 namespace InfoPrestamos
 {
     public partial class Clientes : UserControl
     {
-        Dictionary<string, object> collection;
+        ClienteDTO clienteDTO;
         ClienteHelp clienteHelp ;
         ClienteTransporte clienteTransporte;        
         TipoIdentificacionHelp TipoIdentificacionHelp;
@@ -41,7 +42,7 @@ namespace InfoPrestamos
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TipoIdentificacions.ToList();
+            List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TEntity .ToList();
             Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
             Nuevo();
         }
@@ -51,24 +52,24 @@ namespace InfoPrestamos
         {
             try
             {
-                collection = new Dictionary<string, object>{
-                            {"Identificacion", txtIdentificacion.Text },
-                            {"Nombre", txtNombre.Text },
-                            { "Apellido", txtApellido.Text },
-                            { "FechaNacimiento",dtpFechaNacimiento .Value },
-                            { "Direccion", txtDireccion.Text },                           
-                            {"Email", txtEmail.Text },
-                            {"TipoIdentificacionId", cmbTipoIdentificacion.SelectedValue != null
-                                           ? int.Parse(cmbTipoIdentificacion.SelectedValue.ToString())
-                                           : -1 },
+                clienteDTO = new ClienteDTO { 
+                    Identificacion= txtIdentificacion.Text ,
+                    Nombre= txtNombre.Text ,
+                    Apellido= txtApellido.Text ,
+                    FechaNacimiento=dtpFechaNacimiento .Value ,
+                    Direccion= txtDireccion.Text ,                           
+                    Email= txtEmail.Text ,
+                    TipoIdentificacionId= cmbTipoIdentificacion.SelectedValue != null? 
+                                          int.Parse(cmbTipoIdentificacion.SelectedValue.ToString())
+                                          : -1 ,
                 };
                 if (id==0)
                 {
-                    clienteHelp.Guardar(collection);
+                    clienteHelp.Guardar(clienteDTO);
                 }
                 else
                 {
-                    clienteHelp.Actualizar(id, collection);
+                    clienteHelp.Actualizar(id,clienteDTO);
                 }
                 Nuevo();
             }
@@ -110,7 +111,7 @@ namespace InfoPrestamos
             if (e.RowIndex >= 0)
             {
                 id = int.Parse(dataGrid.Rows[e.RowIndex].Cells["ColId"].Value.ToString());
-                var cliente = clienteHelp.Clientes.Where(x => x.Id == id).FirstOrDefault();
+                var cliente = clienteHelp.TEntity.Where(x => x.Id == id).FirstOrDefault();
                 txtIdentificacion.Text = cliente.Identificacion;
                 cmbTipoIdentificacion.SelectedValue = cliente.TipoIdentificacionId;
                 txtNombre.Text = cliente.Nombre;

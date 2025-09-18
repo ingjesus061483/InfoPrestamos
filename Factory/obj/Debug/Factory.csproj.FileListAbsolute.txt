@@ -10,3 +10,15 @@ D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.csproj.CopyComplete
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.dll
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Factory\obj\Debug\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.pdb

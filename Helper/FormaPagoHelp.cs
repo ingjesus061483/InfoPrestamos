@@ -9,40 +9,22 @@ using System.Web.Mvc;
 
 namespace Helper
 {
-    public class FormaPagoHelp : Help
+    public class FormaPagoHelp : Help<FormaPago>
     {
         public FormaPagoHelp(PrestamoDbContext dbContext)
         {
             context = dbContext;
         }
-        public  IQueryable<FormaPago> FormaPagos
-        {
-            get
-            {
-                return context.FormaPagos.AsQueryable();
-            }
-        }
-        public override void Actualizar(int id, Dictionary<string, object> collection)
+        public override IQueryable<FormaPago> TEntity => context.FormaPagos.AsQueryable();               
+        public override void Actualizar(int id, FormaPago Entity)
         {
             throw new NotImplementedException();
         }
-
-        public override void Actualizar(int id, FormCollection collection)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Eliminar(int id)
         {
             throw new NotImplementedException();
-        }
-
-        public override void Guardar(Dictionary<string, object> collection)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Guardar(FormCollection collection)
+        }        
+        public override void Guardar(FormaPago Entity)
         {
             throw new NotImplementedException();
         }

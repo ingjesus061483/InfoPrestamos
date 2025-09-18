@@ -35,3 +35,40 @@ D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\bin\Debug\es\System.We
 D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\Transporte.csproj.CopyComplete
 D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\Transporte.dll
 D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\Transporte.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Transporte.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Transporte.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Transporte.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Helper.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Datos.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.Mvc.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.WebPages.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.Razor.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Helper.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Helper.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Datos.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Datos.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.Mvc.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.WebPages.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.Razor.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\es\System.Web.Mvc.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\es\System.Web.WebPages.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\es\System.Web.Razor.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.pdb

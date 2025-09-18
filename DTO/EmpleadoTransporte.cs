@@ -21,7 +21,7 @@ namespace Transporte
         {
             get
             {
-                return empleadoHelp .Empleados .AsEnumerable().Select(x => new View.PersonaView
+                return empleadoHelp .TEntity  .AsEnumerable().Select(x => new View.PersonaView
                 {
                     Id = x.Id,
                     Identificacion = x.Identificacion,

@@ -20,7 +20,7 @@ namespace Transporte
             get
             {
             
-                return fiadorHelp.Fiadors.AsEnumerable().Select(x => new View.PersonaView
+                return fiadorHelp.TEntity.AsEnumerable().Select(x => new View.PersonaView
                 {
                     Id = x.Id,
                     Identificacion = x.Identificacion,

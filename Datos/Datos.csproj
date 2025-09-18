@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -52,41 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202401131628167_initial.cs" />
-    <Compile Include="Migrations\202401131628167_initial.designer.cs">
-      <DependentUpon>202401131628167_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202509142046214_initial.cs" />
+    <Compile Include="Migrations\202509142046214_initial.Designer.cs">
+      <DependentUpon>202509142046214_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202401151625256_cuota.cs" />
-    <Compile Include="Migrations\202401151625256_cuota.designer.cs">
-      <DependentUpon>202401151625256_cuota.cs</DependentUpon>
+    <Compile Include="Migrations\202509151900074_EstadoPrestamos.cs" />
+    <Compile Include="Migrations\202509151900074_EstadoPrestamos.Designer.cs">
+      <DependentUpon>202509151900074_EstadoPrestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202401152213208_Fiadores.cs" />
-    <Compile Include="Migrations\202401152213208_Fiadores.designer.cs">
-      <DependentUpon>202401152213208_Fiadores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401201536334_Pagos.cs" />
-    <Compile Include="Migrations\202401201536334_Pagos.designer.cs">
-      <DependentUpon>202401201536334_Pagos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401221238372_addColumnUsuario.cs" />
-    <Compile Include="Migrations\202401221238372_addColumnUsuario.designer.cs">
-      <DependentUpon>202401221238372_addColumnUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405052245086_telefono.cs" />
-    <Compile Include="Migrations\202405052245086_telefono.designer.cs">
-      <DependentUpon>202405052245086_telefono.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405061843091_cliente.cs" />
-    <Compile Include="Migrations\202405061843091_cliente.designer.cs">
-      <DependentUpon>202405061843091_cliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405062127036_cliente1.cs" />
-    <Compile Include="Migrations\202405062127036_cliente1.designer.cs">
-      <DependentUpon>202405062127036_cliente1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405062309337_telefonoModifyColumn.cs" />
-    <Compile Include="Migrations\202405062309337_telefonoModifyColumn.designer.cs">
-      <DependentUpon>202405062309337_telefonoModifyColumn.cs</DependentUpon>
+    <Compile Include="Migrations\202509181308486_feeTable.cs" />
+    <Compile Include="Migrations\202509181308486_feeTable.Designer.cs">
+      <DependentUpon>202509181308486_feeTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrestamoDbContext.cs" />
@@ -103,32 +79,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401131628167_initial.resx">
-      <DependentUpon>202401131628167_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202509142046214_initial.resx">
+      <DependentUpon>202509142046214_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401151625256_cuota.resx">
-      <DependentUpon>202401151625256_cuota.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202509151900074_EstadoPrestamos.resx">
+      <DependentUpon>202509151900074_EstadoPrestamos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401152213208_Fiadores.resx">
-      <DependentUpon>202401152213208_Fiadores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401201536334_Pagos.resx">
-      <DependentUpon>202401201536334_Pagos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401221238372_addColumnUsuario.resx">
-      <DependentUpon>202401221238372_addColumnUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405052245086_telefono.resx">
-      <DependentUpon>202405052245086_telefono.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405061843091_cliente.resx">
-      <DependentUpon>202405061843091_cliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405062127036_cliente1.resx">
-      <DependentUpon>202405062127036_cliente1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405062309337_telefonoModifyColumn.resx">
-      <DependentUpon>202405062309337_telefonoModifyColumn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202509181308486_feeTable.resx">
+      <DependentUpon>202509181308486_feeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -136,8 +94,8 @@
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

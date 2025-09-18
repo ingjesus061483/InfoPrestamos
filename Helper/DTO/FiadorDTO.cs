@@ -30,6 +30,9 @@ namespace DTO
         public string Direccion { get; set; }
 
         [Required]
+        [Phone]
+        [MaxLength(50)]
+
         public string Telefono { get; set; }
 
         [Required]

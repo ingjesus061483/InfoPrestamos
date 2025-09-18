@@ -21,7 +21,7 @@ namespace Transporte
         {
             get
             {
-                return telefonoHelp.Telefonos.AsEnumerable().Select(x => new View.TelefonoView
+                return telefonoHelp.TEntity.AsEnumerable().Select(x => new View.TelefonoView
                 {
                     Id = x.Id,
                     NumeroTelefonico = x.NumeroTelefonico,
@@ -35,7 +35,7 @@ namespace Transporte
         }
         public override List<TelefonoView> GetList(int id)
         {
-            return telefonoHelp.Telefonos.Where (x=>x.ClienteId==id). AsEnumerable().Select(x => new View.TelefonoView
+            return telefonoHelp.TEntity.Where (x=>x.ClienteId==id). AsEnumerable().Select(x => new View.TelefonoView
             {
                 Id = x.Id,
                 NumeroTelefonico = x.NumeroTelefonico,

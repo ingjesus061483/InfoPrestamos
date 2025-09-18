@@ -35,3 +35,40 @@ D:\Documents\herramientas de desarrollo\InfoPrestamos\Helper\obj\Debug\Helper.cs
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Helper\obj\Debug\Helper.csproj.CopyComplete
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Helper\obj\Debug\Helper.dll
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Helper\obj\Debug\Helper.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Helper.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Helper.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Helper.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Datos.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.Helpers.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.Mvc.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.Razor.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.WebPages.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Datos.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Datos.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.Helpers.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.Mvc.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.Razor.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.WebPages.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\es\System.Web.Helpers.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\es\System.Web.Mvc.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\es\System.Web.Razor.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\es\System.Web.WebPages.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\obj\Debug\Helper.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\obj\Debug\Helper.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\obj\Debug\Helper.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\obj\Debug\Helper.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Helper\obj\Debug\Helper.pdb

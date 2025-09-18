@@ -1,0 +1,17 @@
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\Datos.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\Datos.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\Datos.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.Migrations.initial.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.csproj.GenerateResource.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.pdb

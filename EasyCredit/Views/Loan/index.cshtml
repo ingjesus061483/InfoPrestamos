@@ -1,0 +1,228 @@
+﻿@model IEnumerable<DTO.PrestamoDTO>
+
+@{
+
+    ViewBag.Title = "index";
+    DTO.ClienteDTO clienteDTO = (DTO.ClienteDTO)ViewBag.Cliente;
+    int empleadoId = (int)ViewBag.EmpleadoId;
+    List<Factory.TipoCobro> tipoCobros = ViewBag.Tipocobro;
+    int clienteId = 0;
+    string codigo = DateTime.Now .ToOADate().ToString();
+    if (clienteDTO != null)
+    {
+        clienteId = clienteDTO.Id;
+        codigo = codigo + clienteDTO.Identificacion;
+
+    }
+}
+
+<h2>Listado de prestamos</h2>
+
+@if (clienteDTO != null)
+{
+    @Html.Partial("_SearchCliente", clienteDTO)
+
+
+}
+else
+{
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fa-solid fa-user"></i>
+            Busqueda de Cliente
+        </div>
+        <div class="card-body">
+            <form autocomplete="off" action="@Url.Action("index","Loan")" method="get">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="form-label" for="identificacion">Identificación del Cliente</label>
+                            <input type="text" class="form-control" id="identificacion" name="identificacion" />
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+}
+
+
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiador.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCobro.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tiempo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiador.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoCobro.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tiempo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Interes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado.Nombre)
+                </td>
+                <td>
+                    <a title="Ver detalles" class="btn btn-info" href="@Url.Action("Details", "loan", new { id = item.Id })">
+                        <i class="fa-solid fa-comment-dollar"></i>
+                    </a>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<p>
+    <button class="btn btn-primary" title="Crear prestamo" onclick="CrearPrestamo(); "><i class="fa-solid fa-user-plus"></i></button>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="loans">
+    <!--  <form id="loanAdd" action="@Url.Action("create", "loan")" method="post" autocomplete="off">-->
+    <input type="hidden" name="codigo" id="codigo" value="@codigo" />
+    <input type="hidden" name="clienteId" id="clienteId" value="@clienteId" />
+    <input type="hidden" name="empleadoId" id="empleadoId" value="@empleadoId" />
+    <div class="mb-3">
+        <label class="form-label" for="monto">
+            Fiador
+        </label>
+        <input type="text" class=" form-control" name="fiador" value="" id="fiador" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="monto">
+            fecha
+        </label>
+        <input type="date" class=" form-control" name="fecha" value="" id="fecha" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="monto">
+            Monto
+        </label>
+        <input type="number" class=" form-control" name="monto" value="" id="monto" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="monto">
+            Porcentaje
+        </label>
+        <input type="number" class=" form-control" name="porcentaje" value="" id="porcentaje" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="monto">
+            Tiempo
+        </label>
+        <input type="number" class=" form-control" name="tiempo" value="" id="tiempo" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="monto">
+            Tipo cobro
+        </label>
+        <select class="form-select" id="tipocobro" name="tipocobro">
+            <option value=""> seleccione una opcion</option>
+            @foreach (var item in tipoCobros)
+            {
+                <option value="@item.Id">@item.Nombre  </option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-success" id="cuotas">Generar cuotas</button>
+    <div class="mb-5" style="height:100px; overflow-y:scroll">
+        <table class="table" id="tblcuotas">
+            <thead>
+                <tr>
+                    <td>
+                        Codigo
+                    </td>
+                    <td>
+                        Fecha
+                    </td>
+                    <td>
+                        Cuota
+                    </td>
+                    <td>
+                        Capital
+                    </td>
+
+                    <td>
+                        Interes
+                    </td>
+                    <td>
+                        Saldo
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <!--  </form>-->
+</div>

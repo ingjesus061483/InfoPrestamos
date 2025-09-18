@@ -1,0 +1,146 @@
+﻿@model DTO.PrestamoDTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PrestamoDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiador.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiador.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoCobro.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoCobro.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiempo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tiempo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+    </dl>
+</div>
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th >Codigo</th>
+            <th>Fecha</th>
+            <th>Cuota</th>
+            <th>Interes</th>
+            <th> Capital</th>
+            <th>Saldo</th>
+            <th>Observaciones</th>
+            <th>PagoCompleto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Cuotas )
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Codigo</td>
+                    <td>@item.Fecha</td>
+                    <td>@item.Valor</td>
+                    <td>@item.Interes</td>
+                    <td>@item.Capital</td>
+                    <td>@item.Saldo</td>
+                    <td>@item.Observaciones</td>
+                    <td>
+                        @if (!item.PagoCompleto)
+                        {
+                            <button class="btn btn-primary" >
+                                Pagar
+                            </button>
+                        }
+                    </td>
+                </tr>
+            }
+
+    </tbody>
+
+</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

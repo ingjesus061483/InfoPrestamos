@@ -47,7 +47,7 @@
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.cmbProperty);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(20, 15);
+            this.panel1.Location = new System.Drawing.Point(10, 8);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(894, 59);
@@ -92,7 +92,7 @@
             this.dgBusqueda.AllowUserToDeleteRows = false;
             this.dgBusqueda.BackgroundColor = System.Drawing.Color.White;
             this.dgBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBusqueda.Location = new System.Drawing.Point(20, 81);
+            this.dgBusqueda.Location = new System.Drawing.Point(10, 74);
             this.dgBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgBusqueda.Name = "dgBusqueda";
             this.dgBusqueda.ReadOnly = true;
@@ -107,7 +107,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnsalir);
-            this.panel2.Location = new System.Drawing.Point(23, 515);
+            this.panel2.Location = new System.Drawing.Point(13, 508);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(893, 63);
@@ -133,7 +133,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(932, 586);
+            this.ClientSize = new System.Drawing.Size(913, 579);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgBusqueda);
             this.Controls.Add(this.panel1);

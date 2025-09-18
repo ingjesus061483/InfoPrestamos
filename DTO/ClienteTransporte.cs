@@ -21,7 +21,7 @@ namespace Transporte
             get
             {
             
-                    return ClienteHelp.Clientes.AsEnumerable().Select(x => new View.PersonaView
+                    return ClienteHelp.TEntity.AsEnumerable().Select(x => new View.PersonaView
                     {
                         Id = x.Id,
                         Identificacion = x.Identificacion,
@@ -33,7 +33,7 @@ namespace Transporte
                         FechaExpedicion=x.FechaExpedicion.ToString("dd/MM/yyyy"),
                         Email = x.Email,
                         TipoIdentificacion = x.TipoIdentificacion.Nombre,
-                        TipoIdentificacionId = x.TipoIdentificacionId
+                        TipoIdentificacionId =int.Parse( x.TipoIdentificacionId.ToString()),
                     }).ToList();
             }
         }

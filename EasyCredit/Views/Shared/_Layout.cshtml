@@ -1,0 +1,501 @@
+﻿@{
+    List<EasyCredit.Models.Message> errors = (List<EasyCredit.Models.Message>)TempData["Error"];
+   var app= System.Configuration.ConfigurationManager.AppSettings["NombreAplicacion"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        @Html.ActionLink(app, "Index", "Home", new { area = "" }, new { @class = "navbar-brand ps-3" })
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Layouts
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="@Url.Action("index","client")">Clientes</a>
+                                <a class="nav-link" href="@Url.Action("index","loan")">Prestamos</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Pages
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    Authentication
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="login.html">Login</a>
+                                        <a class="nav-link" href="register.html">Register</a>
+                                        <a class="nav-link" href="password.html">Forgot Password</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                    Error
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
+                        <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Start Bootstrap
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    @if (errors != null && errors.Any(z => z.IsSuccess == false))
+                    {
+                        <div id="errors" class="alert alert-danger">
+                            <ul>
+                                @foreach (var error in errors)
+                                {
+                                    <li>@error.Text</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        var cuotas = [];
+        function validar(mensaje)
+        {
+            if (confirm(mensaje)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function addReference()
+        {
+            dialogreference.dialog("open")
+        }
+        function editarReference(id)
+        {
+            $.ajax({
+                url: "@Url.Action("SearchReference", "References")/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var referencia = result.data;
+                    console.log(referencia);
+                    document.getElementById('Id').value = referencia.Id;
+                    document.getElementById('Nombre').value = referencia.Nombre;
+                    document.getElementById('Telefono').value = referencia.Telefono;
+                    document.getElementById('Parentesco').value = referencia.ParentescoId;
+                    dialogreference.dialog("open")
+                }
+            });
+        }
+        function CrearPrestamo()
+        {
+            dialogloan.dialog("open");
+        }
+        function GuardarPrestamo()
+        {
+            var codigo = document.getElementById('codigo').value;
+            var clienteid = document.getElementById('clienteId').value;
+            var empleadoid = document.getElementById('empleadoId').value
+            var fiadorid = document.getElementById('fiador').value;
+            var monto = document.getElementById('monto').value;
+            var fecha = document.getElementById('fecha').value;
+            var tipocobro = document.getElementById('tipocobro').value;
+            var porcentaje = document.getElementById('porcentaje').value;
+            var tiempo = document.getElementById('tiempo').value;
+            if (monto == "")
+            {
+                alert()
+                return;
+            }
+            else if (fecha == "")
+            {
+                alert()
+                return;
+            }
+            else if (tipocobro == "")
+            {
+                alert()
+                return;
+            }
+            else if (porcentaje == "")
+            {
+                alert()
+                return;
+            }
+            else if (tiempo == "")
+            {
+                alert()
+                return;
+            }
+            else if (cuotas.length == 0)
+            {
+                alert()
+                return;
+            }
+            datos =
+            {
+                Codigo: codigo,
+                Fecha: fecha,
+                TipoCobroId: tipocobro,
+                Monto: monto,
+                Interes: porcentaje,
+                Tiempo: tiempo,
+                EmpleadoId: empleadoid,
+                ClienteId: clienteid,
+                FiadorId: fiadorid,
+                Cuotas: cuotas,
+                EstadoId: 2
+            }
+            console.log(JSON.stringify(datos));
+            var url = "@Url.Action("Create","loan")";
+            $.ajax({
+                url: url,
+                data: JSON.stringify(datos),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result)
+                {
+                    alert(result.data)
+                    var url = "@Url.Action("index","loan")";
+                    location.href = url;
+                },
+                error: function (ajaxContext)
+                {
+                    alert(ajaxContext.responseText);
+                    var url = "@Url.Action("index","loan")";
+                    location.href = url;
+                }
+            });
+        }
+        function addPhone()
+        {
+            dialogphone.dialog("open")
+        }
+        function editarPhone(id)
+        {
+            $.ajax({
+                url: "@Url.Action("SearchPhone", "Phones")/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var telefono = result.data;
+                    console.log(telefono);
+                    document.getElementById('Id').value = telefono.Id;
+                    document.getElementById('TipoTelefono').value = telefono.TipoTelefonoId;
+                    document.getElementById('NumeroTelefonico').value = telefono.NumeroTelefonico;
+                    dialogphone.dialog("open")
+                }
+            });
+        }
+        $("#createClient").click(function () {
+            dialog.dialog("open")
+        });
+        function editarCliente(id)
+    {
+            //alert(id);
+            $.ajax({
+                url: "@Url.Action("Search","client")/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var cliente = result.data;
+                    console.log(cliente);
+                    document.getElementById("EmperesaDondeLabora").value = cliente.EmperesaDondeLabora;
+                    document.getElementById("Apellido").value = cliente.Apellido;
+                    document.getElementById("Codigo").value = cliente.Codigo;
+                    document.getElementById("Direccion").value = cliente.Direccion;
+                    document.getElementById("Email").value = cliente.Email;
+                    document.getElementById("FechaExpedicion").value = cliente.FechaExpedicion;
+                    document.getElementById("FechaNacimiento").value = cliente.FechaNacimiento;
+                    document.getElementById("Identificacion").value = cliente.Identificacion;
+                    document.getElementById("Nombre").value = cliente.Nombre;
+                    document.getElementById("Observacion").value = cliente.Observacion;
+                    document.getElementById("TipoIdentificacion").value = cliente.TipoIdentificacionId;
+                    document.getElementById("Area").value = cliente.AreaId;
+                    document.getElementById("Id").value = cliente.Id;
+                    dialog.dialog("open")
+                    //window.location.href="{{url('/')}}//"+result.materiaprima.id;
+                }
+            });
+        }
+        $(function () {
+
+            const myTimeout = setTimeout(myGreeting, 5000);
+            $("#cuotas").click(function () {
+                var monto = document.getElementById('monto').value;
+                var fecha = document.getElementById('fecha').value;
+                var tipocobro = document.getElementById('tipocobro').value;
+                var porcentaje = document.getElementById('porcentaje').value;
+                var tiempo = document.getElementById('tiempo').value;
+                if (monto == "") {
+                    alert()
+                    return;
+                }
+                else if (fecha == "") {
+                    alert()
+                    return;
+                }
+                else if (tipocobro == "") {
+                    alert()
+                    return;
+                }
+                else if (porcentaje == "") {
+                    alert()
+                    return;
+                }
+                else if (tiempo == "") {
+                    alert()
+                    return;
+                }
+                var url="@Url.Action("Getfee","fee")";
+                $.ajax({
+                    url: url,
+                    data: "fechaIni=" + fecha
+                        + "&tipocobro=" + tipocobro
+                        + "&monto=" + monto
+                        + "&porcentajeInteres=" + porcentaje
+                        +"&tiempo=" + tiempo,
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        cuotas = result.data;
+                        console.log(cuotas);
+                        $("#tblcuotas tbody").empty()
+                        $.each(cuotas, function (key, item) {
+                            var html = '';
+                            html += '<tr>';
+                            html += '<td>' + item.Codigo + '</td>';
+                            html += '<td>' + item.Fecha + '</td>';
+                            html += '<td>' + item.Valor + '</td>';
+                            html += '<td>' + item.Capital + '</td>';
+                            html += '<td>' + item.Interes + '</td>';
+                            html += '<td>' + item.Saldo + '</td>';
+                           /* html += '<td>' + dateTimeFormat(item.LastModified) + '</td>';
+                            html += '<td><a href="#" onclick="return getbyID(' + item.ArtID + ')">Edit</a> | <a href="#" onclick="Delele(' + item.ArtID + ')">Delete</a></td>';*/
+                            html += '</tr>';
+                            $("#tblcuotas tbody").append(html);
+                        });
+                    },
+                    error: function (ajaxContext) {
+                        alert(ajaxContext.responseText)
+                    }
+                });
+            });
+
+            dialogloan = $("#loans").dialog({
+                autoOpen: false,
+                height: 500,
+                width: 400,
+                modal: true,
+                buttons: [
+                    {
+                        text: 'Guardar',
+                        "class": 'btn btn-success',
+                        click: function () {
+                            GuardarPrestamo();
+                        }
+                    },
+                    {
+                        text: "Salir",
+                        "class": 'btn btn-danger',
+                        click: function () {
+                            dialogloan.dialog("close");
+                        }
+                    }
+                ],
+                close: function () {
+                   document.getElementById('monto').value="";
+                    document.getElementById('fecha').value="";
+                    document.getElementById('tipocobro').value="";
+                    document.getElementById('porcentaje').value="";
+                    document.getElementById('tiempo').value = "";
+                    $("#tblcuotas tbody").empty()
+
+                    //form[0].reset();
+                    //allFields.removeClass("ui-state-error");
+                }
+            });
+            dialogreference = $("#references").dialog({
+                autoOpen: false,
+                height: 500,
+                width: 400,
+                modal: true,
+                buttons: [
+                    {
+                       text:'Guardar',
+                        "class": 'btn btn-success',
+                        click: function () {
+                            $("#referenceAdd").submit();
+                        }
+                    },
+                    {
+                        text: "Salir",
+                        "class": 'btn btn-danger',
+                        click: function () {
+                            dialogreference.dialog("close");
+                        }
+                    }
+                ],
+                close: function () {
+                    $("#referenceAdd")[0].reset();
+                    //form[0].reset();
+                    //allFields.removeClass("ui-state-error");
+                }
+            });
+            dialogphone = $("#phones").dialog({
+                autoOpen: false,
+                height: 350,
+                width: 400,
+                modal: true,
+                buttons: [
+                    {
+                        text: "Guardar",
+                        "class": 'btn btn-success',
+                        click: function () {
+                            $("#PhoneAdd").submit();
+                        }
+                    },
+                    {
+                        text: "Salir",
+                        "class": 'btn btn-danger',
+                        click: function () {
+                            dialogphone.dialog("close");
+                        }
+                    }
+                ],
+                close: function () {
+                    $("#PhoneAdd")[0].reset();
+                    //form[0].reset();
+                    //allFields.removeClass("ui-state-error");
+                }
+            });
+            dialog = $("#clientes").dialog({
+                autoOpen: false,
+                height: 500,
+                width: 400,
+                modal: true,
+                buttons: [
+                    {
+                        text: "Guardar",
+                        "class": 'btn btn-success',
+                        click: function () {
+                            $("#clientAdd").submit();
+
+
+                        }
+                    },
+                    {
+                        text: "Salir",
+                        "class": 'btn btn-danger',
+                        click: function () {
+                            dialog.dialog("close");
+                        }
+                    }
+                ],
+                close: function () {
+                    $("#clientAdd")[0].reset();
+                    //form[0].reset();
+                    //allFields.removeClass("ui-state-error");
+                }
+            });
+            function myGreeting() {
+                $("#errors").fadeOut();
+            }
+            //$("#dialog").dialog();
+        });
+</script>
+</body>
+</html>

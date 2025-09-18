@@ -11,6 +11,30 @@ namespace InfoPrestamosWeb.Controllers
     {
         ClienteHelp clienteHelp;
         TipoIdentificacionHelp TipoIdentificacionHelp;
+
+        public List<SelectListItem> GetSelectList()
+        {
+            List<TipoIdentificacion> tipoIdentificacions =TipoIdentificacionHelp .TEntity .ToList();
+            List<SelectListItem> result = new List<SelectListItem>();
+            try
+            {
+                foreach (TipoIdentificacion tipoIdentificacion in tipoIdentificacions)
+                {
+                    SelectListItem item = new SelectListItem
+                    {
+                        Text = tipoIdentificacion.Nombre,
+                        Value = tipoIdentificacion.Id.ToString(),
+                    };
+                    result.Add(item);
+                }
+            }
+            catch
+            {
+                result = new List<SelectListItem>();
+            }
+
+            return result;
+        }
         public  ClienteController (ClienteHelp _clienteHelp,TipoIdentificacionHelp _tipoIdentificacionHelp  )
         {
             TipoIdentificacionHelp = _tipoIdentificacionHelp;
@@ -20,7 +44,7 @@ namespace InfoPrestamosWeb.Controllers
         // GET: Cliente
         public ActionResult Index()
         {            
-            var cliente = clienteHelp.Clientes.ToList().Select(x => new Cliente
+            var cliente = clienteHelp.TEntity.ToList().Select(x => new Cliente
             {
                 Id = x.Id,
                 Identificacion = x.Identificacion,
@@ -29,7 +53,7 @@ namespace InfoPrestamosWeb.Controllers
                 FechaNacimiento = x.FechaNacimiento,
                 Direccion = x.Direccion,
                 Email = x.Email,
-                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacionId = int.Parse(x.TipoIdentificacionId.ToString()),
                 TipoIdentificacion = x.TipoIdentificacion
             }).ToList ();
             return View(cliente);
@@ -44,7 +68,7 @@ namespace InfoPrestamosWeb.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {            
-            ViewBag.tipoidentificacion =TipoIdentificacionHelp .  GetSelectList();
+            ViewBag.tipoidentificacion =GetSelectList();
             return View();
         }
 
@@ -55,7 +79,7 @@ namespace InfoPrestamosWeb.Controllers
             try
             {
                 // TODO: Add insert logic here
-                clienteHelp.Guardar(collection);
+            //    clienteHelp.Guardar(collection);
                 return RedirectToAction("Index");
 
             }
@@ -68,7 +92,7 @@ namespace InfoPrestamosWeb.Controllers
         // GET: Cliente/Edit/5
         public ActionResult Edit(int id)
         {
-            var cliente = clienteHelp.Clientes.Where(x => x.Id == id).ToList().Select(x => new Cliente {
+            var cliente = clienteHelp.TEntity.Where(x => x.Id == id).ToList().Select(x => new Cliente {
                 Id = x.Id,
                 Identificacion = x.Identificacion,
                 Nombre = x.Nombre,
@@ -76,10 +100,10 @@ namespace InfoPrestamosWeb.Controllers
                 FechaNacimiento = x.FechaNacimiento,
                 Direccion = x.Direccion,
                 Email = x.Email,
-                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacionId =int.Parse( x.TipoIdentificacionId.ToString()),
                 TipoIdentificacion =x.TipoIdentificacion 
             }).FirstOrDefault();
-            ViewBag.tipoidentificacion =TipoIdentificacionHelp . GetSelectList();
+            ViewBag.tipoidentificacion =GetSelectList();
             return View(cliente );
         }
 
@@ -90,7 +114,7 @@ namespace InfoPrestamosWeb.Controllers
             try
             {
                 // TODO: Add update logic here
-                clienteHelp.Actualizar(id, collection);
+             //   clienteHelp.Actualizar(id, collection);
                 return RedirectToAction("Index");
             }
             catch

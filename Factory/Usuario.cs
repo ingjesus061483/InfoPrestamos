@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-   public class Usuario
+    [Table("Usuarios")]
+    public class Usuario
     {
         public Usuario()
         {

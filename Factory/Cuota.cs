@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
+    [Table("Cuotas")]
     public class Cuota
     {
         public int  Id { get; set; }
@@ -21,7 +22,7 @@ namespace Factory
         public DateTime Fecha{ get; set; }
 
         [Required]
-        public decimal Couta { get; set; }
+        public decimal Valor { get; set; }
 
         [Required]
         public decimal Interes { get; set; }
@@ -32,6 +33,7 @@ namespace Factory
         [Required]
         public decimal Saldo { get; set; }
 
+        [MaxLength(255)]
         public string Observaciones { get; set; }
 
         [Required]       
@@ -42,6 +44,6 @@ namespace Factory
         public int PrestamoId { get; set; }
         public Prestamo Prestamo { get; set; }
 
-        public List<PagoCuota> PagoCuotas { get; set; }
+        public List<Pago> Pagos { get; set; }
     }
 }

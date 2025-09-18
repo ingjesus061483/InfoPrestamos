@@ -23,3 +23,22 @@ D:\Documents\herramientas de desarrollo\InfoPrestamos\Datos\obj\Debug\Datos.Migr
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Datos\obj\Debug\Datos.Migrations.cliente.resources
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Datos\obj\Debug\Datos.Migrations.cliente1.resources
 D:\Documents\herramientas de desarrollo\InfoPrestamos\Datos\obj\Debug\Datos.Migrations.telefonoModifyColumn.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\Datos.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\Datos.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\Datos.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.Migrations.initial.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.csproj.GenerateResource.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.Migrations.EstadoPrestamos.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Debug\Datos.Migrations.feeTable.resources

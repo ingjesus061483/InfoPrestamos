@@ -12,7 +12,6 @@ namespace Factory
     {
         public abstract  int Id { get; set; }
 
-
         [Required]
         [MaxLength(50)]
         [Index(IsUnique = true)]
@@ -37,11 +36,7 @@ namespace Factory
 
         [Display(Name = "Fecha de nacimiento")]
         [Required]
-        public abstract  DateTime FechaNacimiento{ get; set; }      
-
-        [Display(Name ="Tipo identificacion")]
-        public abstract  int TipoIdentificacionId { get; set; }
-        public abstract TipoIdentificacion TipoIdentificacion { get; set; }
+        public abstract  DateTime FechaNacimiento{ get; set; }            
 
         public abstract List<Prestamo> Prestamos { get; set; }
 

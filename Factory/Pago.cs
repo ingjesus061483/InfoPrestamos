@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
+    [Table("Pagos")]
     public class Pago
     {
         public int Id { get; set; }
@@ -36,11 +37,12 @@ namespace Factory
         public int TipoPagoId { get; set; }
         public TipoPago TipoPago { get; set; }
 
-        [Required]
-        public int EmpleadoId { get; set; }
+        public int? EmpleadoId { get; set; }
         public Empleado Empleado { get; set; }
 
-        public List <PagoCuota > PagoCuotas { get; set; }
+        [Required]
+        public int CuotaId {  get; set; }
+        public Cuota Cuota{ get; set; }
 
     }
 }

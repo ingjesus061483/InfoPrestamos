@@ -1,0 +1,12 @@
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Release\Factory.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Release\Factory.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Release\Factory.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Release\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Release\Factory.pdb

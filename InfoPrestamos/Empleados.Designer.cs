@@ -74,6 +74,8 @@
             this.ColUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRoleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbArea = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.Panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -87,7 +89,7 @@
             this.Panel3.Controls.Add(this.btnCancelar);
             this.Panel3.Controls.Add(this.btnNuevo);
             this.Panel3.Controls.Add(this.btnGuardar);
-            this.Panel3.Location = new System.Drawing.Point(15, 561);
+            this.Panel3.Location = new System.Drawing.Point(15, 601);
             this.Panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Panel3.Name = "Panel3";
             this.Panel3.Size = new System.Drawing.Size(666, 62);
@@ -164,6 +166,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cmbArea);
+            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.cmbRole);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label7);
@@ -190,7 +194,7 @@
             this.panel1.Location = new System.Drawing.Point(13, 103);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 450);
+            this.panel1.Size = new System.Drawing.Size(666, 491);
             this.panel1.TabIndex = 1120;
             // 
             // cmbRole
@@ -451,13 +455,13 @@
             this.ColRoleId,
             this.ColRole});
             this.dgEmpleado.GridColor = System.Drawing.Color.White;
-            this.dgEmpleado.Location = new System.Drawing.Point(12, 633);
+            this.dgEmpleado.Location = new System.Drawing.Point(12, 670);
             this.dgEmpleado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgEmpleado.Name = "dgEmpleado";
             this.dgEmpleado.RowHeadersVisible = false;
             this.dgEmpleado.RowHeadersWidth = 62;
             this.dgEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEmpleado.Size = new System.Drawing.Size(666, 207);
+            this.dgEmpleado.Size = new System.Drawing.Size(666, 169);
             this.dgEmpleado.TabIndex = 1121;
             this.dgEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmpleado_CellContentClick);
             // 
@@ -577,6 +581,28 @@
             this.ColRole.Name = "ColRole";
             this.ColRole.Width = 150;
             // 
+            // cmbArea
+            // 
+            this.cmbArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbArea.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbArea.FormattingEnabled = true;
+            this.cmbArea.Location = new System.Drawing.Point(250, 434);
+            this.cmbArea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbArea.Name = "cmbArea";
+            this.cmbArea.Size = new System.Drawing.Size(378, 31);
+            this.cmbArea.TabIndex = 30;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(185, 438);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 24);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Area";
+            // 
             // Empleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -646,5 +672,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColRoleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColRole;
+        private System.Windows.Forms.ComboBox cmbArea;
+        private System.Windows.Forms.Label label13;
     }
 }
