@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DTO.CategoriaDTO>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<h2>Listado de categorias</h2>
+
+<p>
+    <button title="Agregar categoria" id="btn-categoria" class="btn btn-primary">
+        <i class="fa-solid fa-list"></i>
+    </button>
+</p>
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    <button class="btn btn-warning" id="btn-Editar" onclick="editarCategoria(@item.Id)">
+                        <i class="fa-solid fa-pencil"></i>
+                    </button>                   
+                </td>
+                <td>
+                    <form onsubmit="return validar('Desea eliminar la categoria');" action="@Url.Action("Delete","Category")" method="post">
+                        <input id="Id" name="Id" value="@item.Id" type="hidden" />
+                        <button class="btn btn-danger" id="btn-Delete" >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="DialogCategoria">
+    <form id="frmCategoria" method="post" action="@Url.Action("Create","category")" autocomplete="off">
+        <input type="hidden" name="Id" value="0" id="idcat" />
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Nombre
+            </label>
+            <input type="text" name="Nombre" value="" class="form-control" id="Nombre">
+        </div>        
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Descripcion
+            </label>
+            <textarea  name="Descripcion"  class="form-control" id="Descripcion"></textarea>
+        </div>
+    </form>
+</div>

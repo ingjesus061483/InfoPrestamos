@@ -1,0 +1,236 @@
+﻿@model DTO.ProductoDTO
+@{
+    List<DTO.ExistenciaDTO> entradas = Model.Entradas;
+    List<DTO.ExistenciaDTO> salidas = Model.Salidas;
+    ViewBag.Title = "StocksMovementsReport";
+    Layout = "~/Views/Shared/_layoutPdf.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div class="card">
+    <div class="card-header">Producto</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Categoria.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Categoria.Nombre)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UnidadMedida.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UnidadMedida.Nombre)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Codigo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Codigo)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Referencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Referencia)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Costo)
+                    </dt>
+
+                    <dd>
+                        @Model.Costo.ToString("C0")
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Precio)
+                    </dt>
+
+                    <dd>
+                        @Model.Precio.ToString("C0")
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Descripcion)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.RutaImagen))
+        {
+            <div class="row">
+                <div class="col-12">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.RutaImagen)
+                        </dt>
+                    </dl>
+                    <img src="@Model.RutaImagen" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="card" style="margin-top :10px">
+    <div class="card-header">Movimientos de inventario </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Entradas
+                    </dt>
+                </dl>
+                <table id="datatablesSimple" class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Fecha
+                            </th>
+                            <th>
+                                Concepto
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in entradas)
+                        {
+                            <tr>
+                                <td>@item.Fecha.ToString("yyy-MM-dd")</td>
+                                <td>@item.Concepto</td>
+                                <td>@item.Cantidad.ToString("N0")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Salidas
+                    </dt>
+                </dl>
+                <table id="datatablesSimple2" class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Fecha
+                            </th>
+                            <th>
+                                Concepto
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in salidas)
+                        {
+                            <tr>
+                                <td>@item.Fecha.ToString("yyy-MM-dd")</td>
+                                <td>@item.Concepto</td>
+                                <td>@item.Cantidad.ToString("N0")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TotalEntrada)
+                    </dt>
+
+                    <dd>
+                        @Model.TotalEntrada.ToString("N0")
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TotalSalida)
+                    </dt>
+
+                    <dd>
+                        @Model.TotalSalida.ToString("N0")
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-4">
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TotalExistencia)
+                    </dt>
+
+                    <dd>
+                        @Model.TotalExistencia.ToString("N0")
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Transporte;
 
 namespace InfoPrestamos
 {
@@ -31,7 +30,7 @@ namespace InfoPrestamos
             services.AddScoped<MainForm>();
             services.AddScoped<PrestamoDbContext>();
             services.AddScoped<ClienteHelp >();
-            services.AddScoped<CuotaHelp>();
+            services.AddScoped<AmortizacionHelp>();
             services.AddScoped<EmpleadoHelp>();
             services.AddScoped<FiadorHelp>();
             services.AddScoped<FormaPagoHelp>();
@@ -42,13 +41,7 @@ namespace InfoPrestamos
             services.AddScoped<TipoIdentificacionHelp>();
             services.AddScoped<UsuarioHelp>();
             services.AddScoped<TelefonoHelp>();
-            services.AddScoped<PrestamoTransporte>();
-            services.AddScoped<CuotaTransporte>();
-            services.AddScoped<ClienteTransporte>();
-            services.AddScoped<EmpleadoTransporte>();
-            services.AddScoped<FiadorTransporte>();
             services.AddScoped<TipoTelefonoHelp>();
-            services.AddScoped<TelefonoTransporte>();
 
         }
     }

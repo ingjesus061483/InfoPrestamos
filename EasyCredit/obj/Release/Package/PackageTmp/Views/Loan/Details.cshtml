@@ -1,0 +1,205 @@
+﻿@model DTO.PrestamoDTO
+
+@{
+    ViewBag.Title = "Details";
+    int empleadoId = 1;
+    List<Factory.FormaPago> formaPagos = (List<Factory.FormaPago>)ViewBag.FormasPagos;
+    List<Factory.TipoPago> tipoPagos = (List<Factory.TipoPago>)ViewBag.TipoPagos;
+    string refe= DateTime.Now.ToOADate().ToString();
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PrestamoDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiador.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiador.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoCobro.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoCobro.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiempo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tiempo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+    </dl>
+</div>
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Codigo</th>
+            <th>Fecha</th>
+            <th>Cuota</th>
+            <th>Interes</th>
+            <th> Capital</th>
+            <th>Saldo</th>
+            <th>Abonos</th>
+            <th>Observaciones</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cuotas)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Codigo</td>
+                <td>@item.Fecha.ToString("yyyy/MM/dd")</td>
+                <td>@String.Format("{0:C}", item.Valor)</td>
+                <td>@String.Format("{0:C}", item.Interes)</td>
+                <td>@String.Format("{0:C}", item.Capital)</td>
+                <td>@String.Format("{0:C}", item.Valor - item.Abono)</td>
+                <td>@String.Format("{0:C}", item.Abono) </td>
+                <td>@item.Observaciones</td>
+                <td>
+                    @if (!item.PagoCompleto)
+                    {
+                        <button title="pagar cuotas" onclick="Pagar(@item.Id)" class="btn btn-primary">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </button>
+                    }
+                </td>
+                <td>
+
+                    <a title="Detalles de pagos" href="@Url.Action("index", "pay", new { CuotaId = item.Id })" class="btn btn-info">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div id="Pays">
+    <form action="@Url.Action("create","pay")" id="payAdd" autocomplete="off" method="post">
+        <input type="hidden" id="CuotaId" name="CuotaId" />
+        <input type="hidden" id="EmpleadoId" name="EmpleadoId" value="@empleadoId" />
+        <div class="form-group">
+            <label for="Referencia">Referencia</label>
+            <input type="text" id="Referencia" name="Referencia" value="@refe" readonly class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Fecha">Fecha</label>
+            <input type="date" id="Fecha" name="Fecha" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Referencia">Pago minimo</label>
+            <input type="text" id="pagominimo" disabled name="pagominimo" class="form-control" />
+        </div>
+
+
+        <div class="form-group">
+            <label for="ValorPagar">Valor a Pagar</label>
+            <input type="number" step="0.01" id="ValorPagar" name="ValorPagar" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Observaciones">Observaciones</label>
+            <textarea id="Observaciones" name="Observaciones" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="FormaPagoId">Forma de Pago</label>
+            <select id="FormaPagoId" name="FormaPagoId" class="form-select">
+                <option value="">-- Seleccione una forma de pago --</option>
+                @foreach (var formaPago in formaPagos)
+                {
+                    <option value="@formaPago.Id">@formaPago.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="TipoPagoId">Tipo de Pago</label>
+            <select id="TipoPagoId" name="TipoPagoId" class="form-select">
+                <option value="">-- Seleccione un tipo de pago --</option>
+                @foreach (var tipoPago in tipoPagos)
+                {
+                    <option value="@tipoPago.Id">@tipoPago.Nombre</option>
+                }
+            </select>
+        </div>
+    </form>
+
+</div>

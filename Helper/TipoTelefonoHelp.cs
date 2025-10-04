@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Factory;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace Helper
             context = _context;
         }
         public override IQueryable<TipoTelefono> TEntity =>  context.TipoTelefonos.AsQueryable();
+
+        protected override HtmlToPdf HtmlToPdf => throw new NotImplementedException();
+
         public override void Actualizar(int id, TipoTelefono Entity)
         {
             throw new NotImplementedException();
@@ -23,7 +27,13 @@ namespace Helper
         public override void Eliminar(int id)
         {
             throw new NotImplementedException();
-        }        
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Guardar(TipoTelefono Entity)
         {
             throw new NotImplementedException();

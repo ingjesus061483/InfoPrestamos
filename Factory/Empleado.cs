@@ -21,16 +21,26 @@ namespace Factory
         [MaxLength(50)]
         [Phone]
         public string Telefono { get; set ; }        
+
+        [NotMapped]
         public override DateTime FechaNacimiento { get; set; }
+
+        [EmailAddress]
+        [Required]
         public override string Email { get ; set ; }
 
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
+
+        [Display(Name = "Sector")]
         public int? AreaId { get; set; }
         public Area Area { get; set; }
+
         [Display(Name = "Tipo identificacion")]
         public int? TipoIdentificacionId { get; set; }
-        public  TipoIdentificacion TipoIdentificacion { get; set; }
+        public  TipoIdentificacion TipoIdentificacion { get; set; }         
+        public int EmpresaId { get; set; }
+        public Empresa Empresa { get; set; }
         public override List<Prestamo> Prestamos { get ; set ; }
         public List<Pago> Pagos { get; set; }
     }

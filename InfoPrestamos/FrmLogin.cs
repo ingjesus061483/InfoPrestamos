@@ -1,15 +1,9 @@
 ﻿using Factory;
 using Helper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Transporte;
 namespace InfoPrestamos
 {
     public partial class FrmLogin : Form
@@ -30,7 +24,7 @@ namespace InfoPrestamos
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            string pwd = Utilities.Encriptar(txtPassword.Text);
+            string pwd = Helper.Utilities.Encriptar(txtPassword.Text);
             var usuario= UsuarioHelp.TEntity.Where(x => x.Nombre == txtUsuario.Text && x.Password == pwd). AsEnumerable(). Select ( x=> new Usuario
             {
                 Id = x.Id,
@@ -39,11 +33,11 @@ namespace InfoPrestamos
                 RoleId = x.RoleId,
                 Role = x.Role,
                 Sesion =x.Sesion,
-                Empleados = x.Empleados
+   //             Empleados = x.Empleados
             }). FirstOrDefault ();
             if (usuario ==null  )
             {
-                Utilities.GetMessage("El usuario no se encuentra disponible", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Helper.Utilities.GetMessage("El usuario no se encuentra disponible", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsuario.Focus();
                 return;
             }
@@ -56,7 +50,7 @@ namespace InfoPrestamos
                 RoleId = x.RoleId,
                 Role = x.Role,
                 Sesion = x.Sesion,
-                Empleados = x.Empleados
+               // Empleados = x.Empleados
             }).FirstOrDefault(); 
             this.Close();
         }

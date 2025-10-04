@@ -1,0 +1,183 @@
+﻿@model IEnumerable<DTO.EmpresaDTO>
+@{
+    ViewBag.Title = "Index";
+    List<Factory.TipoRegimen> tipoRegimens = ViewBag.tipoRegimen;
+    List<Factory.TipoIdentificacion> tipoIdentificacions = ViewBag.tipoIdentificacions;
+}
+<h2>Listado de empresas</h2>
+
+<p>
+    <button id="editarEmpresa" title="Editar empresa" class="btn btn-primary"><i class="fa-solid fa-building"></i> </button>
+
+</p>
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoIdentificacion.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistroMercantil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CamaraComercio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InteresCartera)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoRegimen.Nombre)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoIdentificacion.Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistroMercantil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CamaraComercio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InteresCartera)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoRegimen.Nombre)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div title="Editar empresa" id="Dialogcompany">
+    <form id="Company" action="@Url.Action("Create","Company")" method="post" autocomplete="off">
+        <input type="hidden" name="Id" value="0" id="Id" />
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Identificacion
+            </label>
+            <input type="text" name="Identificacion" value="" class="form-control" id="Identificacion">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Nombre
+            </label>
+            <input type="text" name="Nombre" value="" class="form-control" id="Nombre">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Direccion
+            </label>
+            <input type="text" name="Direccion" value="" class="form-control" id="Direccion">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Registro Mercantil
+            </label>
+            <input type="text" name="RegistroMercantil" value="" class="form-control" id="RegistroMercantil">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Telefono
+            </label>
+            <input type="text" name="Telefono" value="" class="form-control" id="Telefono">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Interes cartera
+            </label>
+            <input type="text" name="InteresCartera" value="" class="form-control" id="InteresCartera">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Camara de comercio
+            </label>
+            <input type="text" name="CamaraComercio" value="" class="form-control" id="CamaraComercio">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Email
+            </label>
+            <input type="text" name="Email" value="" class="form-control" id="Email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Slogan
+            </label>
+            <textarea name="Slogan" class="form-control" id="Slogan"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Contacto
+            </label>
+            <input type="text" name="Contacto" value="" class="form-control" id="Contacto">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Tipo identificacion
+            </label>
+            <select name="TipoIdentificacionId" class="form-select" id="TipoIdentificacion">
+                <option value="">Seleccione un tipo de identificacion</option>
+                @foreach (var item in tipoIdentificacions)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Tipo regimen
+            </label>
+            <select name="TipoRegimenId" class="form-select" id="TipoRegimen">
+                <option value="">Seleccione un tipo de regimen</option>
+                @foreach (var item in tipoRegimens)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </form>
+</div>

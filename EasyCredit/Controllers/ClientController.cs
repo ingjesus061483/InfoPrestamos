@@ -12,6 +12,7 @@ namespace EasyCredit.Controllers
 {
     public class ClientController : Controller
     {
+        UsuarioDTO usuario;
         TipoIdentificacionHelp tipoIdentificacionHelp;
         ClienteHelp clienteHelp;
         AreaHelp areaHelp;
@@ -35,8 +36,15 @@ namespace EasyCredit.Controllers
         }
         // GET: Client
         [HttpGet]
-        public ActionResult Index()        
+        public ActionResult Index()
         {
+            usuario = (UsuarioDTO)Session["Usuario"];
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Login", "Employee");
+            }
+            ViewBag.usuario = usuario;
             ViewBag.TipoIdentificaciones = tipoIdentificacionHelp.TEntity.ToList();
             ViewBag.Areas = areaHelp.TEntity.ToList();
             List <ClienteDTO> clientes = clienteHelp .TEntity.ToList();
@@ -47,6 +55,14 @@ namespace EasyCredit.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
+            usuario = (UsuarioDTO)Session["Usuario"];
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Login", "Employee");
+            }
+            ViewBag.usuario = usuario;
+
             ViewBag.TipoIdentificaciones = tipoIdentificacionHelp.TEntity.ToList();
             ViewBag.tipoTelefonos = tipoTelefonoHelp.TEntity.ToList();
             ClienteDTO cliente = clienteHelp.TEntity.Where(x => x.Id == id).FirstOrDefault();

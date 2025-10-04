@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoPrestamos", "InfoPrestamos\InfoPrestamos.csproj", "{AF26E1E1-D3E3-4D06-8FFC-FDAD54EA73B9}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoPrestamosWeb", "InfoPrestamosWeb\InfoPrestamosWeb.csproj", "{02986FCA-651D-4B07-987F-68F645090E69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transporte", "DTO\Transporte.csproj", "{C846494A-D4BB-445F-A06B-8D2079F53F8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{C846494A-D4BB-445F-A06B-8D2079F53F8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCredit", "EasyCredit\EasyCredit.csproj", "{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}"
 EndProject

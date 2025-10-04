@@ -1,22 +1,17 @@
-﻿using System;
+﻿using InfoPrestamos.Utilities;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Transporte;
 namespace InfoPrestamos
 {
     public partial class FrmBusqueda : Form
     {
         public int Id { get; set; }
-        public Transporte.View .PersonaView Persona  { get; set; }
+        public Persona Persona  { get; set; }
         public object Lst { get; set; }
-        List<Transporte.View . PersonaView>personaViews;
+        List< Persona>personas;
         public FrmBusqueda()
         {
             InitializeComponent();
@@ -28,9 +23,10 @@ namespace InfoPrestamos
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Utilities.Cmb(cmbProperty, properties);
-            personaViews = (List<Transporte.View .PersonaView>)Lst;
-            dgBusqueda.DataSource = personaViews ;
+
+           Helper. Utilities.Cmb(cmbProperty, properties);
+            personas = (List<Persona>)Lst;
+            dgBusqueda.DataSource = personas ;
         }
         private void dgBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -55,7 +51,7 @@ namespace InfoPrestamos
             {
                 return;
             }
-            dgBusqueda.DataSource =Utilities .  GetPersonas(personaViews,cmbProperty .Text , txtSearch.Text);
+            //dgBusqueda.DataSource =Helper. Utilities .  GetPersonas(personaViews,cmbProperty .Text , txtSearch.Text);
         
         }
         private void cmbProperty_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿@{
-    List<string> errors = (List<string>)TempData["Error"];
-    
+    List<EasyCredit.Models.Message> errors = (List<EasyCredit.Models.Message>)TempData["Error"];
+   var app= System.Configuration.ConfigurationManager.AppSettings["NombreAplicacion"].ToString();
 }
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand ps-3" })
+        @Html.ActionLink(app, "Index", "Home", new { area = "" }, new { @class = "navbar-brand ps-3" })
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -60,7 +60,7 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="@Url.Action("index","client")">Clientes</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                <a class="nav-link" href="@Url.Action("index","loan")">Prestamos</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -114,13 +114,13 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    @if (errors != null && errors.Any())
+                    @if (errors != null && errors.Any(z => z.IsSuccess == false))
                     {
                         <div id="errors" class="alert alert-danger">
                             <ul>
-                                @foreach (string error in errors)
+                                @foreach (var error in errors)
                                 {
-                                    <li>@error</li>
+                                    <li>@error.Text</li>
                                 }
                             </ul>
                         </div>
@@ -142,68 +142,171 @@
             </footer>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 <script>
-    function validar(mensaje) {
-        if (confirm(mensaje)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    function addReference()
-    {
-        dialogreference.dialog("open")
-    }
-    function editarReference(id)
-    {
-        $.ajax({
-            url: "@Url.Action("SearchReference", "References")/" + id,
-            type: "GET",
-            dataType: "json",
-            success: function (result) {
-                var referencia = result.data;
-                console.log(referencia);
-                document.getElementById('Id').value = referencia.Id;
-                document.getElementById('Nombre').value = referencia.Nombre;
-                document.getElementById('Telefono').value = referencia.Telefono;
-                document.getElementById('Parentesco').value = referencia.ParentescoId;
-                dialogreference.dialog("open")
+        var cuotas = [];
+        function validar(mensaje)
+        {
+            if (confirm(mensaje)) {
+                return true;
             }
-        });
-    }   
-    function addPhone()
-    {
-        dialogphone.dialog("open")
-    }
-
-    function editarPhone(id)
-    {
-        $.ajax({
-            url: "@Url.Action("SearchPhone", "Phones")/" + id,
-            type: "GET",
-            dataType: "json",
-            success: function (result) {
-                var telefono = result.data;
-                console.log(telefono);
-                document.getElementById('Id').value = telefono.Id;
-                document.getElementById('TipoTelefono').value = telefono.TipoTelefonoId;
-                document.getElementById('NumeroTelefonico').value = telefono.NumeroTelefonico;
-                dialogphone.dialog("open")
-
+            else {
+                return false;
             }
+        }
+        function addReference()
+        {
+            dialogreference.dialog("open")
+        }
+        function editarReference(id)
+        {
+            $.ajax({
+                url: "@Url.Action("SearchReference", "References")/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var referencia = result.data;
+                    console.log(referencia);
+                    document.getElementById('Id').value = referencia.Id;
+                    document.getElementById('Nombre').value = referencia.Nombre;
+                    document.getElementById('Telefono').value = referencia.Telefono;
+                    document.getElementById('Parentesco').value = referencia.ParentescoId;
+                    dialogreference.dialog("open")
+                }
+            });
+        }
+        function Pagar(id)
+        {
+            var url = "@Url.Action("GetfeeById", "fee")/" + id;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var cuota = result.data;
+                    console.log(cuota);
+                    alert(id);
+                    document.getElementById('CuotaId').value = cuota.Id;
+                    document.getElementById('pagominimo').value = cuota.Capital;
+                    dialogPay.dialog("open")
+
+                },
+                error: function (ajaxContext) {
+                    alert(ajaxContext.responseText)
+                }
+            });
+
+
+        }
+        function CrearPrestamo()
+        {
+            dialogloan.dialog("open");
+        }
+        function GuardarPrestamo()
+        {
+            var codigo = document.getElementById('codigo').value;
+            var clienteid = document.getElementById('clienteId').value;
+            var empleadoid = document.getElementById('empleadoId').value
+            var fiadorid = document.getElementById('fiador').value;
+            var monto = document.getElementById('monto').value;
+            var fecha = document.getElementById('fecha').value;
+            var tipocobro = document.getElementById('tipocobro').value;
+            var porcentaje = document.getElementById('porcentaje').value;
+            var tiempo = document.getElementById('tiempo').value;
+            if (monto == "")
+            {
+                alert()
+                return;
+            }
+            else if (fecha == "")
+            {
+                alert()
+                return;
+            }
+            else if (tipocobro == "")
+            {
+                alert()
+                return;
+            }
+            else if (porcentaje == "")
+            {
+                alert()
+                return;
+            }
+            else if (tiempo == "")
+            {
+                alert()
+                return;
+            }
+            else if (cuotas.length == 0)
+            {
+                alert()
+                return;
+            }
+            datos =
+            {
+                Codigo: codigo,
+                Fecha: fecha,
+                TipoCobroId: tipocobro,
+                Monto: monto,
+                Interes: porcentaje,
+                Tiempo: tiempo,
+                EmpleadoId: empleadoid,
+                ClienteId: clienteid,
+                FiadorId: fiadorid,
+                Cuotas: cuotas,
+                EstadoId: 2
+            }
+            console.log(JSON.stringify(datos));
+            var url = "@Url.Action("Create","loan")";
+            $.ajax({
+                url: url,
+                data: JSON.stringify(datos),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result)
+                {
+                    alert(result.data)
+                    var url = "@Url.Action("index","loan")";
+                    location.href = url;
+                },
+                error: function (ajaxContext)
+                {
+                    alert(ajaxContext.responseText);
+                    var url = "@Url.Action("index","loan")";
+                    location.href = url;
+                }
+            });
+        }
+        function addPhone()
+        {
+            dialogphone.dialog("open")
+        }
+        function editarPhone(id)
+        {
+            $.ajax({
+                url: "@Url.Action("SearchPhone", "Phones")/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var telefono = result.data;
+                    console.log(telefono);
+                    document.getElementById('Id').value = telefono.Id;
+                    document.getElementById('TipoTelefono').value = telefono.TipoTelefonoId;
+                    document.getElementById('NumeroTelefonico').value = telefono.NumeroTelefonico;
+                    dialogphone.dialog("open")
+                }
+            });
+        }
+        $("#createClient").click(function () {
+            dialog.dialog("open")
         });
-
-    }
-    $("#createClient").click(function () {
-        dialog.dialog("open")
-    })
-
-    function editarCliente(id)
+        function editarCliente(id)
     {
             //alert(id);
             $.ajax({
@@ -231,9 +334,131 @@
                 }
             });
         }
-        $(function () {
+    $(function () {
 
+        dialogPay= $("#Pays").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#payAdd").submit();
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogPay.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#payAdd")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
             const myTimeout = setTimeout(myGreeting, 5000);
+            $("#cuotas").click(function () {
+                var monto = document.getElementById('monto').value;
+                var fecha = document.getElementById('fecha').value;
+                var tipocobro = document.getElementById('tipocobro').value;
+                var porcentaje = document.getElementById('porcentaje').value;
+                var tiempo = document.getElementById('tiempo').value;
+                if (monto == "") {
+                    alert()
+                    return;
+                }
+                else if (fecha == "") {
+                    alert()
+                    return;
+                }
+                else if (tipocobro == "") {
+                    alert()
+                    return;
+                }
+                else if (porcentaje == "") {
+                    alert()
+                    return;
+                }
+                else if (tiempo == "") {
+                    alert()
+                    return;
+                }
+                var url="@Url.Action("Getfee","fee")";
+                $.ajax({
+                    url: url,
+                    data: "fechaIni=" + fecha
+                        + "&tipocobro=" + tipocobro
+                        + "&monto=" + monto
+                        + "&porcentajeInteres=" + porcentaje
+                        +"&tiempo=" + tiempo,
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        cuotas = result.data;
+                        console.log(cuotas);
+                        $("#datatablesSimple3 tbody").empty()
+                        $.each(cuotas, function (key, item) {
+                            var html = '';
+                            html += '<tr>';
+                            html += '<td>' + item.Codigo + '</td>';
+                            html += '<td>' + item.Fecha + '</td>';
+                            html += '<td>' + item.Valor + '</td>';
+                            html += '<td>' + item.Capital + '</td>';
+                            html += '<td>' + item.Interes + '</td>';
+                            html += '<td>' + item.Saldo + '</td>';
+                           /* html += '<td>' + dateTimeFormat(item.LastModified) + '</td>';
+                            html += '<td><a href="#" onclick="return getbyID(' + item.ArtID + ')">Edit</a> | <a href="#" onclick="Delele(' + item.ArtID + ')">Delete</a></td>';*/
+                            html += '</tr>';
+                            $("#datatablesSimple3 tbody").append(html);
+                        });
+                    },
+                    error: function (ajaxContext) {
+                        alert(ajaxContext.responseText)
+                    }
+                });
+            });
+
+            dialogloan = $("#loans").dialog({
+                autoOpen: false,
+                height: 600,
+                width: 700,
+                modal: true,
+                buttons: [
+                    {
+                        text: 'Guardar',
+                        "class": 'btn btn-success',
+                        click: function () {
+                            GuardarPrestamo();
+                        }
+                    },
+                    {
+                        text: "Salir",
+                        "class": 'btn btn-danger',
+                        click: function () {
+                            dialogloan.dialog("close");
+                        }
+                    }
+                ],
+                close: function () {
+                   document.getElementById('monto').value="";
+                    document.getElementById('fecha').value="";
+                    document.getElementById('tipocobro').value="";
+                    document.getElementById('porcentaje').value="";
+                    document.getElementById('tiempo').value = "";
+                    $("#tblcuotas tbody").empty()
+
+                    //form[0].reset();
+                    //allFields.removeClass("ui-state-error");
+                }
+            });
             dialogreference = $("#references").dialog({
                 autoOpen: false,
                 height: 500,
@@ -261,9 +486,6 @@
                     //allFields.removeClass("ui-state-error");
                 }
             });
-
-
-
             dialogphone = $("#phones").dialog({
                 autoOpen: false,
                 height: 350,

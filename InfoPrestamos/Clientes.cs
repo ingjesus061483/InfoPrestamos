@@ -6,8 +6,6 @@ using System.Windows.Forms;
 using Helper;
 using Factory;
 using System.Data.Entity.Validation;
-using Transporte;
-using Transporte.View;
 using DTO;
 
 namespace InfoPrestamos
@@ -16,34 +14,28 @@ namespace InfoPrestamos
     {
         ClienteDTO clienteDTO;
         ClienteHelp clienteHelp ;
-        ClienteTransporte clienteTransporte;        
         TipoIdentificacionHelp TipoIdentificacionHelp;
         TelefonoHelp telefonoHelp;
         TipoTelefonoHelp tipoTelefonoHelp;
-        List<TelefonoView> telefonos;
-        TelefonoTransporte telefonoTransporte;
+        List<TelefonoDTO> telefonos;
         int id;
         public Clientes(ClienteHelp _clienteHelp ,
-            TipoIdentificacionHelp _tipoIdentificacionHelp,
-            ClienteTransporte _clienteTransporte,
+            TipoIdentificacionHelp _tipoIdentificacionHelp,            
             TelefonoHelp _telefonoHelp,
-            TipoTelefonoHelp _tipoTelefonoHelp  ,
-            TelefonoTransporte _telefonoTransporte )
+            TipoTelefonoHelp _tipoTelefonoHelp)
         {
             InitializeComponent();            
             //clienteTransporte = new ClienteTransporte(_clienteHelp);
-            clienteHelp = _clienteHelp;
-            clienteTransporte = _clienteTransporte;
+            clienteHelp = _clienteHelp;            
             telefonoHelp = _telefonoHelp;
             TipoIdentificacionHelp = _tipoIdentificacionHelp;
-            tipoTelefonoHelp = _tipoTelefonoHelp;
-            telefonoTransporte = _telefonoTransporte;
+            tipoTelefonoHelp = _tipoTelefonoHelp;            
         }
 
         private void Clientes_Load(object sender, EventArgs e)
         {
             List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TEntity .ToList();
-            Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
+            Helper.Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
             Nuevo();
         }
 
@@ -75,7 +67,7 @@ namespace InfoPrestamos
             }
             catch (DbEntityValidationException ex)
             {
-                string message = Utilities.GetMessageError(ex);
+                string message = Helper.Utilities.GetMessageError(ex);
                 MessageBox.Show(message , "",MessageBoxButtons.OK , MessageBoxIcon.Error );
             }
 
@@ -93,13 +85,12 @@ namespace InfoPrestamos
             txtIdentificacion.Focus();
             btnGuardar.Enabled = true;
             btnCancelar.Enabled = false;
-            dgClientes.DataSource =clienteTransporte .List ;
             id = 0;
         }
         private void dtpFechanacimiento_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dateTimePicker = (DateTimePicker)sender;
-            txtEdad.Text = Utilities.CalcularEdad(dateTimePicker.Value).ToString(); 
+            txtEdad.Text = Helper.Utilities.CalcularEdad(dateTimePicker.Value).ToString(); 
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -136,12 +127,12 @@ namespace InfoPrestamos
 
         private void btnListaTelefonos_Click(object sender, EventArgs e)
         {
-            var cliente = clienteTransporte.List.Where(x => x.Id == id).FirstOrDefault();
+
             
-            frmTelefono frmTelefono = new frmTelefono(tipoTelefonoHelp ,telefonoHelp,telefonoTransporte )
+            frmTelefono frmTelefono = new frmTelefono(tipoTelefonoHelp ,telefonoHelp )
             {
                 Telefonos=telefonos,
-                Cliente = cliente ,
+                
             };
             frmTelefono.ShowDialog();
             telefonos = frmTelefono.Telefonos;

@@ -1,7 +1,9 @@
 ﻿using Datos;
-using DTO;
 using Factory;
+using DTO;
+using SelectPdf;
 using System.Linq;
+using System.Web.Mvc;
 namespace Helper
 {
     public class FiadorHelp:Help<FiadorDTO>
@@ -25,6 +27,7 @@ namespace Helper
             TipoIdentificacionId = x.TipoIdentificacionId
         });
 
+        protected override HtmlToPdf HtmlToPdf => throw new System.NotImplementedException();
 
         public override void Actualizar(int id, FiadorDTO Entity)
         {
@@ -47,7 +50,12 @@ namespace Helper
             context.Fiadors.Remove(Fiador);
             context.SaveChanges();
         }
-        
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void Guardar(FiadorDTO Entity)
         {
 

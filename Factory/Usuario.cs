@@ -23,8 +23,8 @@ namespace Factory
         }
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Campo nombre es requerido")]
-        [MaxLength(50, ErrorMessage = "Campo nombre no puede tener mas de 50 caracteres")]
+        [Required]
+        [MaxLength(50)]
         [Index(IsUnique = true)]
         public string Nombre { get; set; }       
 

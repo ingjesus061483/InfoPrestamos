@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Transporte;
 namespace InfoPrestamos
 {
     public partial class MainForm : Form
@@ -18,7 +17,7 @@ namespace InfoPrestamos
         public MainForm(UsuarioHelp _usuarioHelp,
                         ClienteHelp _clienteHelp,
                         EmpleadoHelp _empleadoHelp,
-                        CuotaHelp _cuotaHelp,
+                        AmortizacionHelp _cuotaHelp,
                         FiadorHelp _fiadorHelp,
                         FormaPagoHelp _formaPagoHelp,
                         PagoHelp _pagoHelp,
@@ -26,14 +25,9 @@ namespace InfoPrestamos
                         RoleHelp _roleHelp,
                         TipoCobroHelp _tipoCobroHelp,
                         TipoIdentificacionHelp _tipoIdentificacionHelp,
-                        FiadorTransporte _fiadorTransporte,
-                        PrestamoTransporte _prestamoTransporte,
-                        ClienteTransporte _clienteTransporte,
-                        EmpleadoTransporte _empleadoTransporte,
-                        CuotaTransporte _cuotaTransporte,
+               
                         TelefonoHelp _telefonoHelp  ,
-                        TipoTelefonoHelp _tipoTelefonoHelp,
-                        TelefonoTransporte _telefonoTransporte)
+                        TipoTelefonoHelp _tipoTelefonoHelp               )
         {
             InitializeComponent();
             telefonoHelp = _telefonoHelp;
@@ -48,28 +42,23 @@ namespace InfoPrestamos
             roleHelp = _roleHelp;
             tipoCobroHelp = _tipoCobroHelp;
             tipoIdentificacionHelp = _tipoIdentificacionHelp;
-            fiadorTransporte = _fiadorTransporte;
-            prestamoTransporte = _prestamoTransporte;
-            clienteTransporte = _clienteTransporte;
-            empleadoTransporte= _empleadoTransporte;
-            cuotaTransporte = _cuotaTransporte;
             tipoTelefonoHelp = _tipoTelefonoHelp;
-            TelefonoTransporte = _telefonoTransporte;
+           
         }
    
         private void btnEstudiante_Click(object sender, EventArgs e)
         { 
-            Clientes cliente = new Clientes(clienteHelp ,tipoIdentificacionHelp ,clienteTransporte ,telefonoHelp ,tipoTelefonoHelp,TelefonoTransporte );
-            Utilities.MostrarControl(pnlPrincipal, cliente);
+            Clientes cliente = new Clientes(clienteHelp ,tipoIdentificacionHelp  ,telefonoHelp ,tipoTelefonoHelp );
+  Helper.          Utilities.MostrarControl(pnlPrincipal, cliente);
         }
         private void btnCursos_Click(object sender, EventArgs e)
         {
             Prestamos prestamos = new Prestamos(fiadorHelp ,clienteHelp ,
                 tipoCobroHelp ,prestamoHelp ,cuotaHelp)
             { 
-                Usuario = Usuario 
+              //  Usuario = Usuario 
             };
-            Utilities.MostrarControl(pnlPrincipal, prestamos);
+        Helper.    Utilities.MostrarControl(pnlPrincipal, prestamos);
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -80,7 +69,7 @@ namespace InfoPrestamos
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             Empleados empleados  = new Empleados(empleadoHelp ,roleHelp ,tipoIdentificacionHelp ,usuarioHelp );
-            Utilities.MostrarControl(pnlPrincipal, empleados );
+          Helper.  Utilities.MostrarControl(pnlPrincipal, empleados );
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -91,12 +80,12 @@ namespace InfoPrestamos
         private void btnFiador_Click(object sender, EventArgs e)
         {
             Fiadores fiadores = new Fiadores(tipoIdentificacionHelp , fiadorHelp );
-            Utilities.MostrarControl(pnlPrincipal, fiadores);
+            Helper.Utilities.MostrarControl(pnlPrincipal, fiadores);
         }
         private void btnCuentasCobrar_Click(object sender, EventArgs e)
         {
             Cobros cobros = new Cobros(clienteHelp ,cuotaHelp ,pagoHelp ,formaPagoHelp,prestamoHelp  );
-            Utilities.MostrarControl(pnlPrincipal, cobros);
+            Helper.Utilities.MostrarControl(pnlPrincipal, cobros);
         }        
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -110,7 +99,7 @@ namespace InfoPrestamos
         {
 
             HistorialPago historialPago = new HistorialPago();
-            Utilities.MostrarControl(pnlPrincipal, historialPago);
+            Helper.Utilities.MostrarControl(pnlPrincipal, historialPago);
         }
     }
 }

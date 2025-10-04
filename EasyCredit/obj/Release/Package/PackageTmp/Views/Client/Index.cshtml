@@ -15,108 +15,117 @@
 
 </p>
 <table id="datatablesSimple" class="table ui-widget ui-widget-content">
-    <tr class="ui-widget-header">
-        <th>
-            @Html.DisplayNameFor(model => model.Codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Identificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreCompleto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmperesaDondeLabora)
-        </th>
+    <thead>
+        <tr class="ui-widget-header">
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmperesaDondeLabora)
+            </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaExpedicion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoIdentificacionId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AreaId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ListaTelefono)
-        </th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Identificacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCompleto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmperesaDondeLabora)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaExpedicion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoIdentificacion.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Area.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ListaTelefono)
-            </td>
-            <td>
-                <button title="Editar cliente" class="btn btn-warning" onclick="editarCliente(@item.Id);">
-                    <i class="fa-solid fa-file-pen"></i>
-                </button>
-            </td>
-            <td>
-                <a title="Detalle de cliente" href="@Url.Action("Details","client",new { id = item.Id })"class="btn btn-success">
-                    <i class="fa-solid fa-eye"></i>
-                </a>
-            </td>
-            <td>
-                <form title="Eliminar" action="@Url.Action("delete","client")" onsubmit="return validar('Desea eliminar el cliente?')" method="post">
-                    <input type="hidden" value="@item.Id" name="id" />
-                    <button type="submit" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </form>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaExpedicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoIdentificacionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaTelefono)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmperesaDondeLabora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaExpedicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoIdentificacion.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListaTelefono)
+                </td>
+                <td>
+                    <button title="Editar cliente" class="btn btn-warning" onclick="editarCliente(@item.Id);">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </button>
+                </td>
+                <td>
+                    <a title="Detalle de cliente" href="@Url.Action("Details","client",new { id = item.Id })" class="btn btn-success">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </td>
+                <td>
+                    <form title="Eliminar" action="@Url.Action("delete","client")" onsubmit="return validar('Desea eliminar el cliente?')" method="post">
+                        <input type="hidden" value="@item.Id" name="id" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <a title="Prestamos" href="@Url.Action("index","loan", new { identificacion = item.Identificacion })" class="btn btn-info">
+                        <i class="fa-solid fa-landmark"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
 <div id="clientes" title="Agregar o Editar clientes">
@@ -138,7 +147,7 @@
             <label class="form-label" for="codigo">
                 Emperesa donde labora
             </label>
-            <input type="date" name="EmperesaDondeLabora" value="" class="form-control" id="EmperesaDondeLabora">
+            <input type="text" name="EmperesaDondeLabora" value="" class="form-control" id="EmperesaDondeLabora">
             
         </div>
         <div class="mb-3">

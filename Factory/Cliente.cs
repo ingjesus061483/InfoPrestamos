@@ -43,8 +43,6 @@ namespace Factory
         public TipoIdentificacion TipoIdentificacion { get ; set ; }      
         public override List<Prestamo> Prestamos { get ; set ; }
 
-        [MaxLength(255)]
-        public string Observacion { get; set; }
 
     }
 }

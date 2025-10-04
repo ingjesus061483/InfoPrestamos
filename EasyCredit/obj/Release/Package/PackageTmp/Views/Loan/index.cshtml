@@ -1,93 +1,226 @@
 ﻿@model IEnumerable<DTO.PrestamoDTO>
 
 @{
+
     ViewBag.Title = "index";
+    DTO.ClienteDTO clienteDTO = (DTO.ClienteDTO)ViewBag.Cliente;
+    int empleadoId = (int)ViewBag.EmpleadoId;
+    List<Factory.TipoCobro> tipoCobros = ViewBag.Tipocobro;
+    int clienteId = 0;
+    string codigo = DateTime.Now .ToOADate().ToString();
+    if (clienteDTO != null)
+    {
+        clienteId = clienteDTO.Id;
+        codigo = codigo + clienteDTO.Identificacion;
+
+    }
 }
 
-<h2>index</h2>
+<h2>Listado de prestamos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.Identificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empleado.Identificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fiador.Identificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoCobro.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Monto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tiempo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Interes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EsCancelado)
-        </th>
-        <th></th>
-    </tr>
+@if (clienteDTO != null)
+{
+    @Html.Partial("_SearchCliente", clienteDTO)
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Identificacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleado.Identificacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fiador.Identificacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoCobro.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tiempo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Interes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EsCancelado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+
 }
+else
+{
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fa-solid fa-user"></i>
+            Busqueda de Cliente
+        </div>
+        <div class="card-body">
+            <form autocomplete="off" action="@Url.Action("index","Loan")" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">                    
+                    <input id="identificacion" name="identificacion" class="form-control" type="text" placeholder="Identificación del Cliente" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>            
+        </div>
+    </div>
+
+}
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Empleado
+            </th>
+            <th>
+                Fiador
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plazo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmortizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacion)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiador.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @item.Monto.ToString("C")
+                </td>
+                <td>
+                    @item.Fecha.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plazo)
+                </td>
+                <th>
+                    @item.TotalAmortizado.ToString("C")
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Interes)
+                </td>
+                <td>                    
+                    @Html.DisplayFor(modelItem => item.Estado.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacion)
+                </td>
+
+                <td>
+                    <a title="Ver detalles" class="btn btn-info" href="@Url.Action("Details", "loan", new { id = item.Id })">
+                        <i class="fa-solid fa-comment-dollar"></i>
+                    </a>                    
+                </td>
+                <td>
+                    <form onsubmit="return validar('Desea eliminar el Prestamo?')" action="@Url.Action("delete","loan")" method="post">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button title="Eliminar prestamo" class="btn btn-danger" type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+<p>
+    <button class="btn btn-primary" title="Crear prestamo" onclick="CrearPrestamo(); "><i class="fa-solid fa-landmark"></i></button>    
+</p>
+<div id="loans">
+    <input type="hidden" name="codigo" id="codigo" value="@codigo" />
+    <input type="hidden" name="clienteId" id="clienteId" value="@clienteId" />
+    <input type="hidden" name="empleadoId" id="empleadoId" value="@empleadoId" />
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Fiador
+                </label>
+                <input type="text" class=" form-control" name="fiador" value="" id="fiador" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Fecha
+                </label>
+                <input type="date" class=" form-control" name="fecha" value="" id="fecha" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Monto
+                </label>
+                <input type="number" class=" form-control" name="monto" value="" id="monto" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Porcentaje
+                </label>
+                <input type="number" class=" form-control" name="porcentaje" value="" id="porcentaje" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Tiempo
+                </label>
+                <input type="number" class=" form-control" name="tiempo" value="" id="tiempo" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Tipo cobro
+                </label>
+                <select class="form-select" id="tipocobro" name="tipocobro">
+                    <option value=""> seleccione una opcion</option>
+                    @foreach (var item in tipoCobros)
+                    {
+                        <option value="@item.Id">@item.Nombre  </option>
+                    }
+                </select>
+            </div>
+            <button class="btn btn-success" id="cuotas">Generar cuotas</button>
+        </div>
+        <div class="col-6">
+            <table class="table" id="datatablesSimple3">
+            <thead>
+                <tr>
+                    <th>
+                        Codigo
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Cuota
+                    </th>
+                    <th>
+                        Capital
+                    </th>
+
+                    <th>
+                        Interes
+                    </th>
+                    <th>
+                        Saldo
+                    </th>
+                </tr>
+            </thead>
+            <tbody style="overflow-y:scroll; height:100px">
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+</div>

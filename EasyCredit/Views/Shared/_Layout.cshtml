@@ -1,6 +1,8 @@
 ﻿@{
     List<EasyCredit.Models.Message> errors = (List<EasyCredit.Models.Message>)TempData["Error"];
-   var app= System.Configuration.ConfigurationManager.AppSettings["NombreAplicacion"].ToString();
+    DTO.UsuarioDTO usuario = ViewBag.usuario;
+    string NombreAplicacion = System.Configuration.ConfigurationManager.AppSettings["NombreAplicacion"].ToString();
+    var app = usuario.Empleados[0].EmpresaDTO.Nombre;
 }
 
 <!DOCTYPE html>
@@ -9,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - @NombreAplicacion</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -31,7 +33,7 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@usuario.Nombre <i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -47,62 +49,83 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-warehouse"></i></div>
+                            Inventario
                         </a>
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-shop"></i></div>
+                            Compras
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                            Facturacion
+                        </a>
+                        <a class="nav-link" href="@Url.Action("index","loan")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>
+                            Cartera
+                        </a>
+
                         <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                            Configuracion
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="@Url.Action("index","Category")">Categorias</a>
+                                <a class="nav-link" href="@Url.Action("index","Company")">Empresas</a>
+                                <a class="nav-link" href="@Url.Action("index","Product")">Productos</a>
                                 <a class="nav-link" href="@Url.Action("index","client")">Clientes</a>
-                                <a class="nav-link" href="@Url.Action("index","loan")">Prestamos</a>
+                                <a class="nav-link" href="@Url.Action("index","Employee")">Empleado</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+
+                        <a class="nav-link" href="@Url.Action("Contact","Home")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-address-book"></i></div>
+                            Contacto
                         </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+                        <!--   <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+           <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+           Pages
+           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+       </a>
+       <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+           <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+               <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                   Authentication
+                   <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+               </a>
+               <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                   <nav class="sb-sidenav-menu-nested nav">
+                       <a class="nav-link" href="login.html">Login</a>
+                       <a class="nav-link" href="register.html">Register</a>
+                       <a class="nav-link" href="password.html">Forgot Password</a>
+                   </nav>
+               </div>
+               <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                   Error
+                   <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+               </a>
+               <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                   <nav class="sb-sidenav-menu-nested nav">
+                       <a class="nav-link" href="401.html">401 Page</a>
+                       <a class="nav-link" href="404.html">404 Page</a>
+                       <a class="nav-link" href="500.html">500 Page</a>
+                   </nav>
+               </div>
+           </nav>
+       </div>
+       <div class="sb-sidenav-menu-heading">Addons</div>
+       <a class="nav-link" href="charts.html">
+           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+           Charts
+       </a>
+       <a class="nav-link" href="tables.html">
+           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+           Tables
+       </a>-->
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -131,7 +154,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div class="text-muted">Copyright &copy; Your Website @DateTime.Now.Year</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
@@ -142,26 +165,32 @@
             </footer>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>
-        var cuotas = [];
-        function validar(mensaje)
-        {
-            if (confirm(mensaje)) {
-                return true;
-            }
-            else {
-                return false;
-            }
+<script>
+    var Amortizacions = [];
+    function validar(mensaje) {
+        if (confirm(mensaje)) {
+            return true;
         }
-        function addReference()
+        else {
+            return false;
+        }
+    }
+
+    //Empleados
+    function addEmployee() {
+        dialogEmpleado.dialog("open");
+    }
+    //Referencias
+    function addReference()
         {
             dialogreference.dialog("open")
         }
-        function editarReference(id)
+    function editarReference(id)
         {
             $.ajax({
                 url: "@Url.Action("SearchReference", "References")/" + id,
@@ -175,14 +204,41 @@
                     document.getElementById('Telefono').value = referencia.Telefono;
                     document.getElementById('Parentesco').value = referencia.ParentescoId;
                     dialogreference.dialog("open")
+                },
+                error: function (ajaxContext) {
+                    alert(ajaxContext.responseText)
                 }
             });
-        }
-        function CrearPrestamo()
+    }
+        //Pagos
+    function Pagar(id)
+        {
+            var url = "@Url.Action("GetfeeById", "fee")/" + id;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var cuota = result.data;
+                    console.log(cuota);
+                    document.getElementById('AmortizacionId').value = cuota.Id;
+                    document.getElementById('pagoMaximo').value = cuota.PagoMaximo;
+                    dialogPay.dialog("open")
+
+                },
+                error: function (ajaxContext) {
+                    alert(ajaxContext.responseText)
+                }
+            });
+
+
+    }
+        //Prestamos
+    function CrearPrestamo()
         {
             dialogloan.dialog("open");
         }
-        function GuardarPrestamo()
+    function GuardarPrestamo()
         {
             var codigo = document.getElementById('codigo').value;
             var clienteid = document.getElementById('clienteId').value;
@@ -193,6 +249,16 @@
             var tipocobro = document.getElementById('tipocobro').value;
             var porcentaje = document.getElementById('porcentaje').value;
             var tiempo = document.getElementById('tiempo').value;
+            if (empleadoid == 0)
+            {
+                alert()
+                return;
+            }
+            if (clienteid == 0)
+            {
+                alert()
+                return;
+            }
             if (monto == "")
             {
                 alert()
@@ -218,14 +284,14 @@
                 alert()
                 return;
             }
-            else if (cuotas.length == 0)
+            else if (Amortizacions.length == 0)
             {
                 alert()
                 return;
             }
             datos =
             {
-                Codigo: codigo,
+                Referencia: codigo,
                 Fecha: fecha,
                 TipoCobroId: tipocobro,
                 Monto: monto,
@@ -234,7 +300,7 @@
                 EmpleadoId: empleadoid,
                 ClienteId: clienteid,
                 FiadorId: fiadorid,
-                Cuotas: cuotas,
+                Amortizacions: Amortizacions,
                 EstadoId: 2
             }
             console.log(JSON.stringify(datos));
@@ -259,11 +325,12 @@
                 }
             });
         }
-        function addPhone()
+        //Telefonos
+    function addPhone()
         {
             dialogphone.dialog("open")
         }
-        function editarPhone(id)
+    function editarPhone(id)
         {
             $.ajax({
                 url: "@Url.Action("SearchPhone", "Phones")/" + id,
@@ -278,11 +345,38 @@
                     dialogphone.dialog("open")
                 }
             });
+    }
+
+    //Categorias
+    $("#btn-categoria").click(function () {
+        DialogCategoria.dialog("open");
+    });
+    function editarCategoria(id) {
+    $.ajax({
+        url: "@Url.Action("Search", "Category")/" + id,
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            console.log(result.data);
+            var categoria = result.data;
+            console.log(document.getElementById("idcat"))
+            document.getElementById("Nombre").value = categoria.Nombre;
+            document.getElementById("Descripcion").value = categoria.Descripcion;
+            document.getElementById("idcat").value = id// categoria.Id;
+
+            DialogCategoria.dialog("open");
+        },
+        error: function (ajaxContext) {
+            alert(ajaxContext.responseText)
         }
-        $("#createClient").click(function () {
+        })
+    }
+
+    //Clientes
+    $("#createClient").click(function () {
             dialog.dialog("open")
-        });
-        function editarCliente(id)
+    });
+    function editarCliente(id)
     {
             //alert(id);
             $.ajax({
@@ -301,7 +395,6 @@
                     document.getElementById("FechaNacimiento").value = cliente.FechaNacimiento;
                     document.getElementById("Identificacion").value = cliente.Identificacion;
                     document.getElementById("Nombre").value = cliente.Nombre;
-                    document.getElementById("Observacion").value = cliente.Observacion;
                     document.getElementById("TipoIdentificacion").value = cliente.TipoIdentificacionId;
                     document.getElementById("Area").value = cliente.AreaId;
                     document.getElementById("Id").value = cliente.Id;
@@ -309,193 +402,555 @@
                     //window.location.href="{{url('/')}}//"+result.materiaprima.id;
                 }
             });
-        }
-        $(function () {
+    }
 
-            const myTimeout = setTimeout(myGreeting, 5000);
-            $("#cuotas").click(function () {
-                var monto = document.getElementById('monto').value;
-                var fecha = document.getElementById('fecha').value;
-                var tipocobro = document.getElementById('tipocobro').value;
-                var porcentaje = document.getElementById('porcentaje').value;
-                var tiempo = document.getElementById('tiempo').value;
-                if (monto == "") {
-                    alert()
-                    return;
-                }
-                else if (fecha == "") {
-                    alert()
-                    return;
-                }
-                else if (tipocobro == "") {
-                    alert()
-                    return;
-                }
-                else if (porcentaje == "") {
-                    alert()
-                    return;
-                }
-                else if (tiempo == "") {
-                    alert()
-                    return;
-                }
-                var url="@Url.Action("Getfee","fee")";
-                $.ajax({
-                    url: url,
-                    data: "fechaIni=" + fecha
-                        + "&tipocobro=" + tipocobro
-                        + "&monto=" + monto
-                        + "&porcentajeInteres=" + porcentaje
-                        +"&tiempo=" + tiempo,
-                    type: "GET",
-                    contentType: "application/json;charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-                        cuotas = result.data;
-                        console.log(cuotas);
-                        $("#tblcuotas tbody").empty()
-                        $.each(cuotas, function (key, item) {
-                            var html = '';
-                            html += '<tr>';
-                            html += '<td>' + item.Codigo + '</td>';
-                            html += '<td>' + item.Fecha + '</td>';
-                            html += '<td>' + item.Valor + '</td>';
-                            html += '<td>' + item.Capital + '</td>';
-                            html += '<td>' + item.Interes + '</td>';
-                            html += '<td>' + item.Saldo + '</td>';
-                           /* html += '<td>' + dateTimeFormat(item.LastModified) + '</td>';
-                            html += '<td><a href="#" onclick="return getbyID(' + item.ArtID + ')">Edit</a> | <a href="#" onclick="Delele(' + item.ArtID + ')">Delete</a></td>';*/
-                            html += '</tr>';
-                            $("#tblcuotas tbody").append(html);
-                        });
-                    },
-                    error: function (ajaxContext) {
-                        alert(ajaxContext.responseText)
-                    }
-                });
-            });
-
-            dialogloan = $("#loans").dialog({
-                autoOpen: false,
-                height: 500,
-                width: 400,
-                modal: true,
-                buttons: [
-                    {
-                        text: 'Guardar',
-                        "class": 'btn btn-success',
-                        click: function () {
-                            GuardarPrestamo();
-                        }
-                    },
-                    {
-                        text: "Salir",
-                        "class": 'btn btn-danger',
-                        click: function () {
-                            dialogloan.dialog("close");
-                        }
-                    }
-                ],
-                close: function () {
-                   document.getElementById('monto').value="";
-                    document.getElementById('fecha').value="";
-                    document.getElementById('tipocobro').value="";
-                    document.getElementById('porcentaje').value="";
-                    document.getElementById('tiempo').value = "";
-                    $("#tblcuotas tbody").empty()
-
-                    //form[0].reset();
-                    //allFields.removeClass("ui-state-error");
-                }
-            });
-            dialogreference = $("#references").dialog({
-                autoOpen: false,
-                height: 500,
-                width: 400,
-                modal: true,
-                buttons: [
-                    {
-                       text:'Guardar',
-                        "class": 'btn btn-success',
-                        click: function () {
-                            $("#referenceAdd").submit();
-                        }
-                    },
-                    {
-                        text: "Salir",
-                        "class": 'btn btn-danger',
-                        click: function () {
-                            dialogreference.dialog("close");
-                        }
-                    }
-                ],
-                close: function () {
-                    $("#referenceAdd")[0].reset();
-                    //form[0].reset();
-                    //allFields.removeClass("ui-state-error");
-                }
-            });
-            dialogphone = $("#phones").dialog({
-                autoOpen: false,
-                height: 350,
-                width: 400,
-                modal: true,
-                buttons: [
-                    {
-                        text: "Guardar",
-                        "class": 'btn btn-success',
-                        click: function () {
-                            $("#PhoneAdd").submit();
-                        }
-                    },
-                    {
-                        text: "Salir",
-                        "class": 'btn btn-danger',
-                        click: function () {
-                            dialogphone.dialog("close");
-                        }
-                    }
-                ],
-                close: function () {
-                    $("#PhoneAdd")[0].reset();
-                    //form[0].reset();
-                    //allFields.removeClass("ui-state-error");
-                }
-            });
-            dialog = $("#clientes").dialog({
-                autoOpen: false,
-                height: 500,
-                width: 400,
-                modal: true,
-                buttons: [
-                    {
-                        text: "Guardar",
-                        "class": 'btn btn-success',
-                        click: function () {
-                            $("#clientAdd").submit();
-
-
-                        }
-                    },
-                    {
-                        text: "Salir",
-                        "class": 'btn btn-danger',
-                        click: function () {
-                            dialog.dialog("close");
-                        }
-                    }
-                ],
-                close: function () {
-                    $("#clientAdd")[0].reset();
-                    //form[0].reset();
-                    //allFields.removeClass("ui-state-error");
-                }
-            });
-            function myGreeting() {
-                $("#errors").fadeOut();
+    //Empleado
+    function editarEmpleado(id)
+    {
+        var url = "@Url.Action("Search", "Employee")/" + id;
+        $.ajax({
+            url: url,            
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result)
+            {
+                console.log(result.data);
+               var empleado = result.data;
+                document.getElementById("Id").value = empleado.Id;
+                document.getElementById("EmpresaId").value = empleado.EmpresaId;
+                document.getElementById("Identificacion").value = empleado.Identificacion;
+                document.getElementById("Nombre").value = empleado.Nombre;
+                document.getElementById("Apellido").value = empleado.Apellido;
+                document.getElementById("Direccion").value = empleado.Direccion;
+                document.getElementById("Email").value = empleado.Email;
+                document.getElementById("Telefono").value = empleado.Telefono;
+                document.getElementById("TipoIdentificacion").value = empleado.TipoIdentificacionId;
+                document.getElementById("Area").value = empleado.AreaId;
+                document.getElementById("Usuario").value = empleado.Usuario.Nombre;
+                document.getElementById("Password").value = empleado.Usuario.Password;
+                document.getElementById("RoleId").value = empleado.Usuario.RoleId;
+                dialogEmpleado.dialog("open");
+            },
+            error: function (ajaxContext)
+            {
+                alert(ajaxContext.responseText);
+                var url = "@Url.Action("index","Employee")";
+                location.href = url;
             }
-            //$("#dialog").dialog();
         });
+
+    }
+    function guardarEmpleado()
+    {
+        Empleado =
+        {
+            Id: document.getElementById("Id").value,
+            EmpresaId: document.getElementById("EmpresaId").value,
+            Identificacion: document.getElementById("Identificacion").value,
+            Nombre: document.getElementById("Nombre").value,
+            Apellido: document.getElementById("Apellido").value,
+            Direccion: document.getElementById("Direccion").value,
+            Email: document.getElementById("Email").value,
+            Telefono: document.getElementById("Telefono").value,
+            TipoIdentificacionId: document.getElementById("TipoIdentificacion").value,
+            AreaId: document.getElementById("Area").value,
+            Usuario: {
+                Nombre: document.getElementById("Usuario").value,
+                Password: document.getElementById("Password").value,
+                Sesion: false,
+                RoleId: document.getElementById("RoleId").value,
+
+            }
+
+        }
+
+        console.log(JSON.stringify(Empleado));
+             var url = "@Url.Action("Create","Employee")";
+     $.ajax({
+         url: url,
+         data: JSON.stringify(Empleado),
+         type: "POST",
+         contentType: "application/json;charset=utf-8",
+         dataType: "json",
+         success: function (result)
+         {
+             alert(result.data)
+             var url = "@Url.Action("index","Employee")";
+             location.href = url;
+         },
+         error: function (ajaxContext)
+         {
+             alert(ajaxContext.responseText);
+             var url = "@Url.Action("index","Employee")";
+             location.href = url;
+         }
+     });
+
+
+
+    }
+
+    //empresa
+    $("#editarEmpresa").click(function () {
+     var url = "@Url.Action("Search", "Company")";
+     $.ajax({
+         url: url,
+         type: "GET",
+         contentType: "application/json;charset=utf-8",
+         dataType: "json",
+         success: function (result) {
+             console.log(result);
+             var empresa = result.data;
+             document.getElementById("Id").value = empresa.Id;
+             document.getElementById("Nombre").value = empresa.Nombre;
+             document.getElementById("Identificacion").value = empresa.Identificacion;
+             document.getElementById("TipoIdentificacion").value = empresa.TipoIdentificacionId;
+             document.getElementById("TipoRegimen").value = empresa.TipoRegimenId;
+             document.getElementById("Direccion").value = empresa.Direccion;
+             document.getElementById("Email").value = empresa.Email;
+             document.getElementById("InteresCartera").value = empresa.InteresCartera;
+             document.getElementById("Telefono").value = empresa.Telefono;
+             document.getElementById("CamaraComercio").value = empresa.CamaraComercio;
+             document.getElementById("Slogan").value = empresa.Slogan;
+             document.getElementById("Contacto").value = empresa.Contacto;
+             document.getElementById("RegistroMercantil").value = empresa.RegistroMercantil;
+             dialogCompany.dialog("open");
+         },
+         error: function (ajaxContext) {
+             alert(ajaxContext.responseText)
+         }
+     });
+    });
+
+    //Productos
+    $("#btn-product").click(function () {
+        dialogProduct.dialog("open");
+    });
+    function EditarProdiucto(id) {
+        var url = "@Url.Action("Search","Product")/" + id;
+        $.ajax({
+            url: url,            
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result.data);
+            },
+            error: function (ajaxContext)
+            {
+                alert(ajaxContext.responseText);
+                var url = "@Url.Action("index","Product")";
+                location.href = url;
+            }
+
+        });
+    }
+    function guardarProducto() {
+        var Producto = {
+            Codigo: document.getElementById("Codigo").value,
+            Nombre: document.getElementById("Nombre").value,
+            Referencia: document.getElementById("Referencia").value,
+            Costo: document.getElementById("Costo").value,
+            Precio: document.getElementById("Precio").value,
+            Descripcion: document.getElementById("Descripcion").value,
+            CategoriaId: document.getElementById("Categoria").value,
+            UnidadMedidaId: document.getElementById("UnidadMedida").value,
+            Existencias: [{
+                Cantidad: document.getElementById("Existencia").value,
+                Concepto: "Entrada de mercancia",
+                Entrada: true,
+                Fecha:"@DateTime.Now.ToString("yyyy-MM-dd")"// new Date()
+            }]
+        }
+        console.log(JSON.stringify(Producto));
+        var url = "@Url.Action("Create","Product")";
+        $.ajax({
+           url: url,
+           data: JSON.stringify(Producto),
+           type: "POST",
+           contentType: "application/json;charset=utf-8",
+           dataType: "json",
+           success: function (result)
+           {
+               alert(result.message)
+               var url = "@Url.Action("Details", "Product")/" + result.data.Id;
+               location.href = url;
+           },
+           error: function (ajaxContext)
+           {
+               alert(ajaxContext.responseText);
+               var url = "@Url.Action("index","Product")";
+               location.href = url;
+            }
+        });
+    }
+
+    //cuotas
+    $("#cuotas").click(function () {
+         var monto = document.getElementById('monto').value;
+         var fecha = document.getElementById('fecha').value;
+         var tipocobro = document.getElementById('tipocobro').value;
+         var porcentaje = document.getElementById('porcentaje').value;
+         var tiempo = document.getElementById('tiempo').value;
+         if (monto == "") {
+             alert()
+             return;
+         }
+         else if (fecha == "") {
+             alert()
+             return;
+         }
+         else if (tipocobro == "") {
+             alert()
+             return;
+         }
+         else if (porcentaje == "") {
+             alert()
+             return;
+         }
+         else if (tiempo == "") {
+             alert()
+             return;
+         }
+         var url="@Url.Action("Getfee","fee")";
+         $.ajax({
+             url: url,
+             data: "fechaIni=" + fecha
+                 + "&tipocobro=" + tipocobro
+                 + "&monto=" + monto
+                 + "&porcentajeInteres=" + porcentaje
+                 +"&tiempo=" + tiempo,
+             type: "GET",
+             contentType: "application/json;charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+                 document.getElementById('cuota').value = result.cuota;
+                 document.getElementById('Total').value = result.Total;
+                 Amortizacions = result.Amortizacion;
+                 console.log(Amortizacions);
+                 console.log(result.AmortizacionCapitals)
+                 $("#tblCuota tbody").empty()
+                 $.each(Amortizacions, function (key, item) {
+                     var html = '';
+                     html += '<tr>';
+                     html += '<td>' + item.Periodo + '</td>';
+                     html += '<td>' + item.Referencia + '</td>';
+                     html += '<td>' + item.Fecha + '</td>';
+                     html += '<td>' + item.Valor + '</td>';
+                    /* html += '<td>' + dateTimeFormat(item.LastModified) + '</td>';
+                     html += '<td><a href="#" onclick="return getbyID(' + item.ArtID + ')">Edit</a> | <a href="#" onclick="Delele(' + item.ArtID + ')">Delete</a></td>';*/
+                     html += '</tr>';
+                     $("#tblCuota tbody").append(html);
+                 });
+             },
+             error: function (ajaxContext) {
+                 alert(ajaxContext.responseText)
+             }
+         });
+    });
+
+    //stock
+    $("#btnStock").click(function () {
+        StockDialog.dialog("open");
+    })
+    $(function () {
+        StockDialog = $("#StockDialog").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#frmStock")[0].submit();
+
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogProduct.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#frmStock")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogProduct = $("#dialogProduct").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        guardarProducto();
+
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogProduct.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#frmProduct")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        })
+
+        DialogCategoria = $("#DialogCategoria").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#frmCategoria")[0].submit();
+
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        DialogCategoria.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#frmCategoria")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogEmpleado = $("#DialogEmpleado").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        guardarEmpleado()
+
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogEmpleado.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#frmEmpleado")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogCompany = $("#Dialogcompany").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#Company").submit();
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogCompany.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#Company")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogloan = $("#loans").dialog({
+            autoOpen: false,
+            height: 600,
+            width: 700,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        GuardarPrestamo();
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogloan.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                document.getElementById('monto').value = "";
+                document.getElementById('fecha').value = "";
+                document.getElementById('tipocobro').value = "";
+                document.getElementById('porcentaje').value = "";
+                document.getElementById('tiempo').value = "";
+                $("#tblCuota tbody").empty()
+
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogreference = $("#references").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#referenceAdd").submit();
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogreference.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#referenceAdd")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogphone = $("#phones").dialog({
+            autoOpen: false,
+            height: 350,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: "Guardar",
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#PhoneAdd").submit();
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogphone.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#PhoneAdd")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialog = $("#clientes").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: "Guardar",
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#clientAdd").submit();
+
+
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialog.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#clientAdd")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        dialogPay = $("#Pays").dialog({
+            autoOpen: false,
+            height: 500,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: 'Guardar',
+                    "class": 'btn btn-success',
+                    click: function () {
+                        $("#payAdd").submit();
+                    }
+                },
+                {
+                    text: "Salir",
+                    "class": 'btn btn-danger',
+                    click: function () {
+                        dialogPay.dialog("close");
+                    }
+                }
+            ],
+            close: function () {
+                $("#payAdd")[0].reset();
+                //form[0].reset();
+                //allFields.removeClass("ui-state-error");
+            }
+        });
+
+        const myTimeout = setTimeout(function () {
+            $("#errors").fadeOut();
+        }, 5000);
+    });
 </script>
 </body>
 </html>

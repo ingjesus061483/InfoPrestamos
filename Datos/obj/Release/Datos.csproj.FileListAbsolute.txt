@@ -15,3 +15,7 @@ C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Dat
 C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.csproj.Up2Date
 C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.dll
 C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.Migrations.EstadoPrestamos.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.Migrations.feeTable.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.Migrations.ModifyTablePagos.resources
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Datos\obj\Release\Datos.Migrations.EmployeeModifyColumn.resources

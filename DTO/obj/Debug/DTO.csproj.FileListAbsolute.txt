@@ -10,3 +10,33 @@ D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\DTO.csproj.C
 D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\DTO.csproj.CopyComplete
 D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\DTO.dll
 D:\Documents\herramientas de desarrollo\InfoPrestamos\DTO\obj\Debug\DTO.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Transporte.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Transporte.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Transporte.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Factory.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Factory.pdb
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\Factory.dll.config
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\DTO.csproj.Up2Date
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.dll
+C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\DTO\obj\Debug\Transporte.pdb
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\Transporte.dll.config
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\Transporte.dll
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\Transporte.pdb
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\EntityFramework.dll
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\EntityFramework.SqlServer.dll
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\Factory.dll
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\Factory.pdb
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\Factory.dll.config
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\EntityFramework.xml
+F:\Documents\GitHub\InfoPrestamos\DTO\bin\Debug\EntityFramework.SqlServer.xml
+F:\Documents\GitHub\InfoPrestamos\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+F:\Documents\GitHub\InfoPrestamos\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+F:\Documents\GitHub\InfoPrestamos\DTO\obj\Debug\DTO.csproj.Up2Date
+F:\Documents\GitHub\InfoPrestamos\DTO\obj\Debug\Transporte.dll
+F:\Documents\GitHub\InfoPrestamos\DTO\obj\Debug\Transporte.pdb

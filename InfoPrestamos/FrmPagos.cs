@@ -9,43 +9,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Transporte;
 namespace InfoPrestamos
 {
     public partial class FrmPagos : Form
     {
         Dictionary<string, object> collection;
         public  Usuario Usuario { get; set; }
-        public List  <Cuota> Cuotas  { get; set; }
+        public List  <Amortizacion> Cuotas  { get; set; }
         FormaPagoHelp formaPagoHelp;
-        CuotaTransporte cuotaTransporte;
         int tipoPagoId;
-        CuotaHelp cuotaHelp;
+        AmortizacionHelp cuotaHelp;
         PagoHelp PagoHelp;
-        BindingList<Transporte .View . CuotaView > bingCuotas;
+     //   BindingList<Transporte .View . CuotaView > bingCuotas;
         decimal sumCuotas = 0;
         decimal sumCapital = 0;
         decimal sumInteres = 0;
-        public FrmPagos(CuotaHelp _cuotaHelp,PagoHelp _pagoHelp,FormaPagoHelp _formaPagoHelp  )
+        public FrmPagos(AmortizacionHelp _cuotaHelp,PagoHelp _pagoHelp,FormaPagoHelp _formaPagoHelp  )
         {
             InitializeComponent();
             cuotaHelp = _cuotaHelp;
             PagoHelp = _pagoHelp;
-            cuotaTransporte = new CuotaTransporte(  cuotaHelp  );
-            bingCuotas = new BindingList<Transporte.View . CuotaView  >();
+       //     cuotaTransporte = new CuotaTransporte(  cuotaHelp  );
+         //   bingCuotas = new BindingList<Transporte.View . CuotaView  >();
             formaPagoHelp = _formaPagoHelp;
-            bingCuotas .ListChanged += bingCuotas_ListChanged;
+           // bingCuotas .ListChanged += bingCuotas_ListChanged;
         }
         private void bingCuotas_ListChanged(object sender, ListChangedEventArgs e)
         {           
-            dgCuotas.DataSource = bingCuotas;
+          //  dgCuotas.DataSource = bingCuotas;
         }
         private void FrmPagos_Load(object sender, EventArgs e)
         {
             txtReferencia.Text = DateTime.Now.ToOADate().ToString();
-            List <Transporte.View .CuotaView > cuotaViews =(List < Transporte.View.CuotaView >) cuotaTransporte.GetList(Cuotas);
-            Utilities.Cmb(cmbFormaPago, formaPagoHelp.TEntity.ToList());
-            foreach(Transporte.View .CuotaView cuotaView in cuotaViews)
+            //List <CuotaView > cuotaViews =(List < Transporte.View.CuotaView >) cuotaTransporte.GetList(Cuotas);
+           Helper.  Utilities.Cmb(cmbFormaPago, formaPagoHelp.TEntity.ToList());
+           /* foreach(Transporte.View .CuotaView cuotaView in cuotaViews)
             {
                 var cuota = cuotaHelp.TEntity.Where(x => x.Id == cuotaView.Id).FirstOrDefault();
                 sumCuotas += cuota.Couta;
@@ -53,7 +51,7 @@ namespace InfoPrestamos
                 sumInteres += cuota.Interes;
 
                 bingCuotas.Add(cuotaView);
-            }
+            }*/
             txtValorMinCancelar.Text = sumCuotas.ToString();
         }
         private void dgCuotas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -63,17 +61,15 @@ namespace InfoPrestamos
             if (col == 0)
             {
                 int id = int.Parse(dataGridView.Rows[e.RowIndex].Cells["ColIdCuota"].Value.ToString());
-                var cuotaview =bingCuotas .Where(x => x.Id == id).FirstOrDefault();
-                bingCuotas.Remove(cuotaview );
+               // var cuotaview =bingCuotas .Where(x => x.Id == id).FirstOrDefault();
+               // bingCuotas.Remove(cuotaview );
                 var cuota = cuotaHelp.TEntity.Where(x => x.Id == id).FirstOrDefault();
-                sumCuotas -= cuota.Couta;
-                sumCapital -= cuota.Capital;
-                sumInteres -= cuota.Interes;
+              
             }  
-            if(bingCuotas .Count ==0)
+           /* if(bingCuotas .Count ==0)
             {
                 Close();
-            }
+            }*/
         }        
         private void rbtPagoCuota_CheckedChanged(object sender, EventArgs e)
         {

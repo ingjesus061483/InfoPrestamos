@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using Factory;
 using Helper;
 using System.Data.Entity.Validation;
-using Transporte;
 using DTO;
 namespace InfoPrestamos
 {
@@ -14,7 +13,6 @@ namespace InfoPrestamos
     {
         int id;
        FiadorDTO fiadorDTO;
-        FiadorTransporte FiadorTransporte;
         TipoIdentificacionHelp TipoIdentificacionHelp;
         FiadorHelp FiadorHelp;
         public Fiadores(TipoIdentificacionHelp _tipoIdentificacionHelp,FiadorHelp _fiadorHelp  )
@@ -22,12 +20,11 @@ namespace InfoPrestamos
             InitializeComponent();
             TipoIdentificacionHelp = _tipoIdentificacionHelp;
             FiadorHelp  = _fiadorHelp ;
-            FiadorTransporte = new FiadorTransporte( FiadorHelp );
         }
         private void Fiadores_Load(object sender, EventArgs e)
         {
             List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TEntity.ToList();
-            Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
+Helper.            Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
             Nuevo();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -48,7 +45,7 @@ namespace InfoPrestamos
             txtIdentificacion.Focus();
             btnGuardar.Enabled = true;
             btnCancelar.Enabled = false;
-            dgFiador.DataSource = FiadorTransporte.List;
+        //    dgFiador.DataSource = FiadorTransporte.List;
             id = 0;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -82,7 +79,7 @@ namespace InfoPrestamos
             }
             catch (DbEntityValidationException ex)
             {
-                string message = Utilities.GetMessageError(ex);
+                string message = Helper.Utilities.GetMessageError(ex);
                 MessageBox.Show(message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -118,7 +115,7 @@ namespace InfoPrestamos
         private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dateTimePicker = (DateTimePicker)sender;
-            txtEdad.Text = Utilities.CalcularEdad(dateTimePicker.Value).ToString();
+            txtEdad.Text = Helper.Utilities.CalcularEdad(dateTimePicker.Value).ToString();
         }
     }
 }

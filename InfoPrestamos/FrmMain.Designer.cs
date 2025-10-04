@@ -1,6 +1,4 @@
 ﻿using Helper;
-using Transporte;
-
 namespace InfoPrestamos
 {
     partial class MainForm
@@ -241,7 +239,7 @@ namespace InfoPrestamos
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.ToolStripButton btnFiador;
         UsuarioHelp usuarioHelp;
-        CuotaHelp cuotaHelp;
+        AmortizacionHelp cuotaHelp;
         EmpleadoHelp empleadoHelp;
         FiadorHelp fiadorHelp;
         FormaPagoHelp formaPagoHelp;
@@ -250,15 +248,9 @@ namespace InfoPrestamos
         RoleHelp roleHelp;
         TipoCobroHelp tipoCobroHelp;
         TipoIdentificacionHelp tipoIdentificacionHelp;
-        ClienteHelp clienteHelp;
-        ClienteTransporte clienteTransporte;
-        PrestamoTransporte prestamoTransporte;
-        FiadorTransporte fiadorTransporte;
-        CuotaTransporte cuotaTransporte;
-        EmpleadoTransporte empleadoTransporte;
+        ClienteHelp clienteHelp;     
         TelefonoHelp telefonoHelp;
-        TipoTelefonoHelp tipoTelefonoHelp;
-        TelefonoTransporte TelefonoTransporte;
+        TipoTelefonoHelp tipoTelefonoHelp;        
         internal System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

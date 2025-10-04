@@ -1,6 +1,7 @@
 ﻿using Datos;
-using DTO;
 using Factory;
+using DTO;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,12 @@ namespace Helper
 {
     public class UsuarioHelp : Help<UsuarioDTO>
     {
-        
+        public string Encriptar(string password)
+        {
+            byte[] encryted = Encoding.Unicode.GetBytes(password);
+            string result = Convert.ToBase64String(encryted);
+            return result;
+        }
         public UsuarioHelp(PrestamoDbContext dbContext)
         {
             context = dbContext;
@@ -21,6 +27,8 @@ namespace Helper
         public override IQueryable<UsuarioDTO> TEntity => context.Usuarios.
             Include("Empleados")
             .Include("Roles").
+           Include("TipoIdentificaciones").
+            Include("Empresas").
             Select(x => new UsuarioDTO
             {
                 Id = x.Id,
@@ -29,8 +37,41 @@ namespace Helper
                 RoleId = x.RoleId,
                 Role = x.Role,
                 Sesion = x.Sesion,
-                Empleados = x.Empleados
+                Empleados = x.Empleados.Select(z=>new EmpleadoDTO
+                {
+                    Id = z.Id,
+                    Apellido = z.Apellido,
+                    AreaId = z.AreaId,
+                    Direccion = z.Direccion,
+                    Email = z.Email,
+                    EmpresaId = z.EmpresaId,
+                    Identificacion = z.Identificacion,
+                    Nombre=z.Nombre,
+                    Telefono = z.Telefono,
+                    TipoIdentificacionId=z.TipoIdentificacionId,
+                    UsuarioId=z.UsuarioId,
+                    EmpresaDTO=new EmpresaDTO
+                    {
+                        Id=z.Empresa.Id,
+                        Nombre=z.Empresa .Nombre,
+                        Identificacion=z.Empresa.Identificacion ,
+                        Direccion=z.Empresa.Direccion ,
+                        Email=z.Empresa. Email,
+                        CamaraComercio=z.Empresa.CamaraComercio,
+                        RegistroMercantil=z.Empresa.RegistroMercantil,
+                        Contacto=z.Empresa.Contacto ,
+                        InteresCartera=z.Empresa.InteresCartera,
+                        Logo=z.Empresa.Logo,
+                        Slogan=z.Empresa.Slogan,
+                        Telefono=z.Empresa.Telefono,
+                        TipoIdentificacionId=z.Empresa.TipoIdentificacionId ,
+                        TipoIdentificacion=z .Empresa .TipoIdentificacion ,
+                        TipoRegimenId=z.Empresa.TipoRegimenId                        
+                    },
+                }).ToList()
             });
+
+        protected override HtmlToPdf HtmlToPdf => throw new NotImplementedException();
 
         public override void Eliminar(int id)
         {
@@ -59,6 +100,11 @@ namespace Helper
             Usuario.Password = Usuario.Encriptar(Entity.Password);
             Usuario.RoleId =Entity.RoleId ;
             context.SaveChanges();
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            throw new NotImplementedException();
         }
     }
 }

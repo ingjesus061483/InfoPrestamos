@@ -7,25 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Factory;
 using Helper;
-using Transporte;
 using DTO;
+using InfoPrestamos.Utilities;
 namespace InfoPrestamos
 {
     public partial class Prestamos : UserControl
     {
-        public Usuario Usuario { get; set; }
+        public UsuarioDTO Usuario { get; set; }
         ClienteHelp ClienteHelp;
-        FiadorTransporte FiadorTransporte;
-        ClienteTransporte ClienteTransporte;
-        PrestamoTransporte PrestamoTransporte;
-      PrestamoDTO prestamoDTO;
-        CuotaHelp CuotaHelp;
+        PrestamoDTO prestamoDTO;
+        AmortizacionHelp CuotaHelp;
         TipoCobroHelp TipoCobroHelp;
         FiadorHelp FiadorHelp;
         PrestamoHelp PrestamoHelp; 
-        List<Cuota> cuotas;
+        List<AmortizacionDTO> cuotas;
         FrmBusqueda frmBusqueda;
         double monto;
         double PorcentajeInteres;
@@ -37,25 +33,22 @@ namespace InfoPrestamos
                          ClienteHelp _clienteHelp,
                          TipoCobroHelp _tipoCobroHelp,
                          PrestamoHelp _prestamoHelp,
-                         CuotaHelp _cuotaHelp )
+                         AmortizacionHelp _cuotaHelp )
         {
             InitializeComponent();
-            FiadorTransporte = new FiadorTransporte(_fiadorHelp);
             FiadorHelp = _fiadorHelp ;
             ClienteHelp = _clienteHelp;
             TipoCobroHelp = _tipoCobroHelp;
             PrestamoHelp = _prestamoHelp;
             CuotaHelp = _cuotaHelp;
-            PrestamoTransporte = new PrestamoTransporte(_prestamoHelp);
-            ClienteTransporte = new ClienteTransporte(_clienteHelp  );
         }
         private void Prestamos_Load(object sender, EventArgs e)
         {
-            List<TipoCobro> tipoCobros = TipoCobroHelp.TEntity.ToList();
-            Utilities.Cmb(cmbTipoCobro, tipoCobros);
+            List<Factory . TipoCobro> tipoCobros = TipoCobroHelp.TEntity.ToList();
+          Helper.  Utilities.Cmb(cmbTipoCobro, tipoCobros);
             frmBusqueda = new FrmBusqueda
             {
-                Persona = new Transporte.View .PersonaView(),
+                Persona = new Persona(),
             };
             Nuevo();
         }
@@ -64,32 +57,30 @@ namespace InfoPrestamos
             int.TryParse(txtTiempo.Text, out int tiempo);
             if(tiempo==0)
             {
-                Utilities.GetMessage("El campo tiempo esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              Helper .  Utilities.GetMessage("El campo tiempo esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTiempo.Focus();
                 return;
             }
             if(string .IsNullOrEmpty ( cmbTipoCobro.Text ))
             {
-                Utilities.GetMessage("El campo Tipo cobro esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Helper.Utilities.GetMessage("El campo Tipo cobro esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbTipoCobro .Focus();
                 return;
             }
             frmCuotas frmCuotas = new frmCuotas(CuotaHelp )
             {
-                Tiempo = tiempo,
-                Cuotas = cuotas ,
+                Tiempo = tiempo,                
                 Monto =monto,
                 PorcentajeInteres=PorcentajeInteres ,
                 TipoCobro = cmbTipoCobro.Text,            
             };
             frmCuotas.ShowDialog();
-            monto = frmCuotas.Monto;
-            cuotas = frmCuotas.Cuotas;
+            monto = frmCuotas.Monto;           
             PorcentajeInteres = frmCuotas.PorcentajeInteres;
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            frmBusqueda.Lst = FiadorTransporte.List;            
+            //frmBusqueda.Lst = FiadorTransporte.List;            
             frmBusqueda.ShowDialog();
             idFiador  = frmBusqueda.Id;
             var fiador = FiadorHelp .TEntity.Where(x => x.Id == idFiador ).FirstOrDefault();
@@ -101,7 +92,7 @@ namespace InfoPrestamos
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            frmBusqueda.Lst = ClienteTransporte.List; 
+           // frmBusqueda.Lst = ClienteTransporte.List; 
             frmBusqueda.ShowDialog();
             idCliente = frmBusqueda.Id;
             var cliente = ClienteHelp.TEntity.Where(x => x.Id == idCliente).FirstOrDefault();
@@ -118,7 +109,7 @@ namespace InfoPrestamos
         }
         void  Nuevo()
         {
-            dgPrestamo.DataSource = PrestamoTransporte .List;
+          //  dgPrestamo.DataSource = PrestamoTransporte .List;
             txtCodigo.Text = DateTime.Now.ToOADate().ToString();
             txtTiempo.Clear();
             txtObservaciones.Clear();                     
@@ -131,7 +122,7 @@ namespace InfoPrestamos
             id = 0;
             btnGuardar.Enabled = true;
             btnCancelar.Enabled = false;
-            cuotas = new List<Cuota>();
+           // cuotas = new List<Amortizacion>();
             cmbTipoCobro.SelectedIndex = -1;
             txtTiempo.Focus();
 
@@ -140,18 +131,17 @@ namespace InfoPrestamos
         { 
             prestamoDTO = new PrestamoDTO 
             {
-                Codigo = txtCodigo.Text,
+            Referencia= txtCodigo.Text,
                 Monto =(decimal) monto,
                 Tiempo = int.Parse(txtTiempo.Text),
                 Interes =(decimal ) PorcentajeInteres,
                 Fecha = DateTime.Now,
-                Observacion = txtObservaciones.Text,
-                EsCancelado = false,
+                Observacion = txtObservaciones.Text,             
                 ClienteId = idCliente,
                 TipoCobroId = (int)cmbTipoCobro.SelectedValue,
                 FiadorId = idFiador == 0 ? (int?)null : idFiador,
                 EmpleadoId = Usuario.Empleados[0].Id,
-                Cuotas = cuotas
+               
             };            
             if (id == 0)
             {
@@ -165,7 +155,7 @@ namespace InfoPrestamos
             DataGridView dataGridView = (DataGridView)sender;
             id = int.Parse(dataGridView.Rows[e.RowIndex].Cells["ColId"].Value.ToString());
             var prestamo = PrestamoHelp.TEntity .Where(x => x.Id == id).FirstOrDefault();
-            txtCodigo.Text = prestamo.Codigo;
+            txtCodigo.Text = prestamo.Referencia;
             txtTiempo.Text = prestamo.Tiempo.ToString();
             txtObservaciones.Text = prestamo.Observacion;
             txtcliente.Text = prestamo.Cliente.Identificacion + " - " + prestamo.Cliente.NombreCompleto;
@@ -175,16 +165,12 @@ namespace InfoPrestamos
             cmbTipoCobro.SelectedValue = prestamo .TipoCobroId  ;
             monto =double .Parse ( prestamo .Monto.ToString () );
             PorcentajeInteres =double .Parse ( prestamo .Interes.ToString ()) ;
-            cuotas = CuotaHelp.TEntity.Where (x=>x.PrestamoId== id).ToList(). Select(x => new Cuota
+            cuotas = CuotaHelp.TEntity.Where (x=>x.PrestamoId== id).ToList(). Select(x => new AmortizacionDTO
             {
                 Id = x.Id,
-                Codigo = x.Codigo,
+                Referencia  = x.Referencia ,
                 Fecha = x.Fecha,
-                Valor  = x.Valor,
-                Interes = x.Interes,
-                Capital = x.Capital,
-                Saldo = x.Saldo,
-                Observaciones = x.Observaciones,
+                Valor  = x.Valor,               
                 PagoCompleto = x.PagoCompleto,
                 PrestamoId = x.PrestamoId,
                 Prestamo = x.Prestamo

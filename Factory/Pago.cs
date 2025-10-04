@@ -20,13 +20,11 @@ namespace Factory
 
         [Required]
         public DateTime Fecha { get; set; }
-
-        [Required]
-        public decimal PagoMinimo { get; set; }
-
+                
         [Required]
         public decimal ValorPagar { get; set; }
 
+        [MaxLength(255)]
         public string Observaciones { get; set; }
 
         [Required]
@@ -41,8 +39,8 @@ namespace Factory
         public Empleado Empleado { get; set; }
 
         [Required]
-        public int CuotaId {  get; set; }
-        public Cuota Cuota{ get; set; }
+        public int AmortizacionId {  get; set; }
+        public Amortizacion Amortizacion{ get; set; }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Datos;
-using DTO;
 using Factory;
+using DTO;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,12 @@ namespace Helper
         {
             context = dbContext;
         }
-        public override IQueryable<PrestamoDTO> TEntity => context.Prestamos
-            .Include("Clientes").
-            Include("Fiadores").
+        public override IQueryable<PrestamoDTO> TEntity => context.Prestamos.
+            Include("Clientes").
+            Include("Telefonos").
+            Include("Areas").
+            Include("TipoTelefonos").
+            Include("Fiadores").    
             Include("Empleados").
             Include("TipoCobros").
             Include("Cuotas").
@@ -26,33 +30,37 @@ namespace Helper
             .Select(x => new PrestamoDTO
             {
                 Id = x.Id,
-                Codigo = x.Codigo,
+                Referencia = x.Referencia,
                 Fecha = x.Fecha,
                 Monto = x.Monto,
                 TipoCobro = x.TipoCobro,
                 TipoCobroId = x.TipoCobroId,
                 Tiempo = x.Tiempo,
                 Interes = x.Interes,
-                Cliente =context.Clientes
-                .Where(z=>z.Id== x.ClienteId)
-                .Select(y=>new ClienteDTO
+                Cliente =new ClienteDTO
                 { 
-                    Id = y.Id,
-                    Nombre = y.Nombre,
-                    Apellido = y.Apellido,
-                    Codigo = y.Codigo,
-                    Direccion = y.Direccion,
-                    Email = y.Email,
-                    EmperesaDondeLabora = y.EmperesaDondeLabora,
-                    FechaExpedicion = y.FechaExpedicion,
-                    FechaNacimiento = y.FechaNacimiento,
-                    Identificacion = y.Identificacion,
-                    TipoIdentificacionId = y.TipoIdentificacionId,                    
-                    AreaId = y.AreaId,
-                    Observacion = y.Observacion,
-
-
-                }).FirstOrDefault(),
+                    Id = x.Cliente.Id,
+                    Nombre = x.Cliente.Nombre,
+                    Apellido =x.Cliente.Apellido,
+                    Codigo = x.Cliente.Codigo,
+                    Direccion = x.Cliente.Direccion,
+                    Email = x.Cliente.Email,
+                    EmperesaDondeLabora = x.Cliente.EmperesaDondeLabora,
+                    FechaExpedicion = x.Cliente.FechaExpedicion,
+                    FechaNacimiento = x.Cliente.FechaNacimiento,
+                    Identificacion = x.Cliente.Identificacion,
+                    TipoIdentificacionId = x.Cliente.TipoIdentificacionId,                    
+                    AreaId = x.Cliente.AreaId,
+                    Area=x.Cliente.Area,
+                    Telefonos=x.Cliente.Telefonos.Select(y=>new TelefonoDTO 
+                    {
+                        Id=y.Id,
+                        ClienteId=y.ClienteId,
+                        NumeroTelefonico=y.NumeroTelefonico,
+                        TipoTelefonoId=y.TipoTelefonoId,
+                        TipoTelefono=y.TipoTelefono,
+                    }).ToList(),
+                },
                 ClienteId = x.ClienteId,
                 Empleado = context.Empleados.Where(z=>z.Id == x.EmpleadoId).Select (y=>new EmpleadoDTO 
                 {
@@ -63,7 +71,6 @@ namespace Helper
                     Direccion = y.Direccion,
                     Email   = y.Email,
                     Identificacion = y.Identificacion,
-                    FechaNacimiento = y.FechaNacimiento,
                     TipoIdentificacionId = y.TipoIdentificacionId,
                     UsuarioId = y.UsuarioId,
                 }).FirstOrDefault (),
@@ -85,20 +92,31 @@ namespace Helper
                 EstadoId=x.EstadoId,
                 Estado = x.Estado,
                 Observacion = x.Observacion,
-                Cuotas = x.Cuotas.Select(y => new CuotaDTO
+                Amortizacions = x.Amortizacions.Select(y => new AmortizacionDTO
                 {
-                    Id= y.Id,
-                    Codigo  = y.Codigo,
-                    Capital = y.Capital,
-                    Interes = y.Interes,
+                    Id = y.Id,
+                Periodo = y.Periodo,
+                Referencia=y.Referencia,
                     Fecha = y.Fecha,
                     Valor = y.Valor,
                     PrestamoId = y.PrestamoId,
                     PagoCompleto = y.PagoCompleto,
-                    Saldo = y.Saldo,
-                    Observaciones = y.Observaciones,
-                }).ToList()
+                    Pagos = y.Pagos.Select(z => new PagoDTO
+                    {
+                        Id = z.Id,
+                        AmortizacionId = z.AmortizacionId,
+                        Fecha = z.Fecha,
+                        FormaPagoId = z.FormaPagoId,
+                        TipoPagoId = z.TipoPagoId,
+                        ValorPagar = z.ValorPagar,
+                        Referencia = z.Referencia,
+                        Observaciones = z.Observaciones,
+                        EmpleadoId = z.EmpleadoId,
+                    }).ToList()
+                }).ToList(),
             });
+
+        protected override HtmlToPdf HtmlToPdf => new HtmlToPdf ();
 
         public override void Actualizar(int id, PrestamoDTO Entity)
         {
@@ -110,12 +128,25 @@ namespace Helper
             Prestamo prestamo = context.Prestamos.Find(id);
             context.Prestamos.Remove(prestamo);
             context.SaveChanges();
-        }       
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            HtmlToPdf.Options.PdfPageSize = pageSize;
+            HtmlToPdf.Options.PdfPageOrientation = pdfOrientation;
+            HtmlToPdf.Options.WebPageWidth = webPageWidth;
+            var html=RenderRazorViewToString(controller, viewName, model);
+            PdfDocument pdfDocument = HtmlToPdf.ConvertHtmlString(html);
+            byte[] bytes = pdfDocument.Save();
+            pdfDocument.Close();
+            return bytes;
+        }
+
         public override void Guardar(PrestamoDTO Entity)
         {            
             Prestamo prestamo = new Prestamo
             {
-                Codigo = Entity.Codigo,
+                Referencia = Entity.Referencia,
                 Monto = Entity.Monto,
                 Tiempo =Entity. Tiempo,
                 Interes =Entity.Interes,
@@ -126,15 +157,12 @@ namespace Helper
                 TipoCobroId = Entity.TipoCobroId,
                 FiadorId = Entity.FiadorId ==0 ? null : Entity.FiadorId,
                 EmpleadoId =Entity .EmpleadoId ,
-                Cuotas = Entity.Cuotas.Select(x=>new Cuota
+                Amortizacions = Entity.Amortizacions.Select(x=>new Amortizacion
                 {
-                    Codigo = x.Codigo,
+                    Referencia = x.Referencia,
+                    Periodo = x.Periodo,
                     Fecha = x.Fecha,
                    Valor= x.Valor,
-                   Capital= x.Capital,
-                 Interes=   x.Interes,
-                   Saldo= x.Saldo
-
                 }).ToList()
 
             };

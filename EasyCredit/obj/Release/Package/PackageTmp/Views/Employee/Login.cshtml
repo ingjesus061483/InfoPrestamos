@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<form action="@Url.Action("Login","Employee")"method="post" autocomplete="off">
+    <div class="form-floating mb-3">
+        <input class="form-control" id="inputEmail" type="text" name="Nombre" placeholder="name@example.com" />
+        <label for="inputEmail">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="inputPassword" type="password" name="Password" placeholder="Password" />
+        <label for="inputPassword">Password</label>
+    </div>
+    <div class="form-check mb-3">
+        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+        <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+    </div>
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+        <a class="small" href="password.html">Forgot Password?</a>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+</form>
+

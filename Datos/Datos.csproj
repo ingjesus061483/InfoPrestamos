@@ -52,21 +52,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202509142046214_initial.cs" />
-    <Compile Include="Migrations\202509142046214_initial.Designer.cs">
-      <DependentUpon>202509142046214_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202509251313406_Initial.cs" />
+    <Compile Include="Migrations\202509251313406_Initial.Designer.cs">
+      <DependentUpon>202509251313406_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202509151900074_EstadoPrestamos.cs" />
-    <Compile Include="Migrations\202509151900074_EstadoPrestamos.Designer.cs">
-      <DependentUpon>202509151900074_EstadoPrestamos.cs</DependentUpon>
+    <Compile Include="Migrations\202509252146210_Altertable.cs" />
+    <Compile Include="Migrations\202509252146210_Altertable.Designer.cs">
+      <DependentUpon>202509252146210_Altertable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202509181308486_feeTable.cs" />
-    <Compile Include="Migrations\202509181308486_feeTable.Designer.cs">
-      <DependentUpon>202509181308486_feeTable.cs</DependentUpon>
+    <Compile Include="Migrations\202509261604105_addTableCompany.cs" />
+    <Compile Include="Migrations\202509261604105_addTableCompany.Designer.cs">
+      <DependentUpon>202509261604105_addTableCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509291528297_addTableInventory.cs" />
+    <Compile Include="Migrations\202509291528297_addTableInventory.Designer.cs">
+      <DependentUpon>202509291528297_addTableInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510011714224_AlterTableExistencia.cs" />
+    <Compile Include="Migrations\202510011714224_AlterTableExistencia.Designer.cs">
+      <DependentUpon>202510011714224_AlterTableExistencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510011906343_AlterTAbleProduct.cs" />
+    <Compile Include="Migrations\202510011906343_AlterTAbleProduct.Designer.cs">
+      <DependentUpon>202510011906343_AlterTAbleProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrestamoDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seeder\UnidadMedidaSeeder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -79,14 +92,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202509142046214_initial.resx">
-      <DependentUpon>202509142046214_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202509251313406_Initial.resx">
+      <DependentUpon>202509251313406_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202509151900074_EstadoPrestamos.resx">
-      <DependentUpon>202509151900074_EstadoPrestamos.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202509252146210_Altertable.resx">
+      <DependentUpon>202509252146210_Altertable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202509181308486_feeTable.resx">
-      <DependentUpon>202509181308486_feeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202509261604105_addTableCompany.resx">
+      <DependentUpon>202509261604105_addTableCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509291528297_addTableInventory.resx">
+      <DependentUpon>202509291528297_addTableInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510011714224_AlterTableExistencia.resx">
+      <DependentUpon>202510011714224_AlterTableExistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510011906343_AlterTAbleProduct.resx">
+      <DependentUpon>202510011906343_AlterTAbleProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

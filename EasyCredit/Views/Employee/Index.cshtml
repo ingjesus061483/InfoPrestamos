@@ -1,0 +1,207 @@
+﻿@model IEnumerable<DTO.EmpleadoDTO>
+@{
+    ViewBag.Title = "Index";
+   DTO.EmpresaDTO empresa = ViewBag.empresa;
+
+    List<Factory.TipoIdentificacion> tipoIdentificacions = ViewBag.tipoidentificacion;
+    List<Factory.Area> areas = ViewBag.areas;
+    List<Factory.Role> roles = ViewBag.roles;
+}
+<h2>Listado de Empleados</h2>
+
+<p>
+    <button title="Agregar empleados" onclick="addEmployee();" class="btn btn-primary" id="Empleado">
+        <i class="fa-solid fa-address-card"></i>
+    </button>
+    
+</p>
+<table id="datatablesSimple" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Area.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoIdentificacion.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpresaDTO.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Role.Nombre)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoIdentificacion.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpresaDTO.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Role.Nombre)
+                </td>
+
+                <td>
+                    <button onclick="editarEmpleado(@item.Id)" class="btn btn-warning">
+                        <i class="fa-solid fa-pencil"></i>
+
+                    </button>
+                </td>
+                <td>
+                    <form onsubmit="return validar('Desea eliminar el cliente?')" action="@Url.Action("Delete", "Employee")" method="post">
+                        <input type="hidden" name="id" id="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="DialogEmpleado" title="Agregar o editar empleado">
+    <form id="frmEmpleado" autocomplete="off" method="post" action="@Url.Action("create","employee")">
+        <input type="hidden" name="Id" value="0" id="Id" />
+        <input type="hidden" name="EmpresaId" value="@empresa.Id" id="EmpresaId" />
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Identificacion
+            </label>
+            <input type="text" name="Identificacion" value="" class="form-control" id="Identificacion">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="nombre">
+                Nombre
+            </label>
+            <input type="text" name="Nombre" value="" class="form-control" id="Nombre">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="nombre">
+                Apellido
+            </label>
+            <input type="text" name="Apellido" value="" class="form-control" id="Apellido">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="nombre">
+                Direccion
+            </label>
+            <input type="text" name="Direccion" value="" class="form-control" id="Direccion">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="nombre">
+                Email
+            </label>
+            <input type="text" name="Email" value="" class="form-control" id="Email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Telefono
+            </label>
+            <input type="text" name="Telefono" value="" class="form-control" id="Telefono">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Usuario
+            </label>
+            <input type="text" name="Usuario" value="" class="form-control" id="Usuario">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Password
+            </label>
+            <input type="password" name="Password" value="" class="form-control" id="Password">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Role
+            </label>
+            <select name="RoleId" class="form-select" id="RoleId">
+                <option value="">Seleccione un rol</option>
+                @foreach (var item in roles)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Tipo identificacion
+            </label>
+            <select name="TipoIdentificacionId" class="form-select" id="TipoIdentificacion">
+                <option value="">Seleccione un tipo de identificacion</option>
+                @foreach (var item in tipoIdentificacions)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Sector
+            </label>
+            <select name="AreaId" class="form-select" id="Area">
+                <option value="">Seleccione un sector</option>
+                @foreach (var item in areas)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </form>
+</div>

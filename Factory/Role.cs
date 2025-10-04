@@ -12,6 +12,8 @@ namespace Factory
   public class Role : Tipo
     {
         public override int Id { get ; set; }
+
+        [Display(Name ="Role")]
         public override string Nombre { get ; set ; }
         public override string Descripcion { get ; set ; }
 

@@ -1,12 +1,13 @@
 ﻿using Datos;
-using DTO;
 using Factory;
-using Helper.DTO;
+using DTO;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Helper
 {
@@ -48,6 +49,8 @@ namespace Helper
                 }).FirstOrDefault()
             });
 
+        protected override HtmlToPdf HtmlToPdf => throw new NotImplementedException();
+
         public override void Actualizar(int id, ReferenciaDTO Entity)
         {
             var referencia = context.Referencias.Find(id);
@@ -69,6 +72,11 @@ namespace Helper
             context.Referencias.Remove(referencia);
             context.SaveChanges();
 
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            throw new NotImplementedException();
         }
 
         public override void Guardar(ReferenciaDTO Entity)

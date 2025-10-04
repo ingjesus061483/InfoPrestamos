@@ -1,5 +1,6 @@
 ﻿namespace Datos.Migrations
 {
+    using Datos.Seeder;
     using Factory;
     using System;
     using System.Data.Entity;
@@ -20,6 +21,7 @@
             //  This method will be called after migrating to the latest version.
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            UnidadMedidaSeeder.Run(context);
             Area[] areas =
             {
                 new Area{Nombre="Chinita"},
@@ -29,10 +31,8 @@
             };
             TipoPago[] tipoPagos =
             {
-                new TipoPago{Nombre="Pago Cuota"},
-                new TipoPago{Nombre="Abono a Capital"},
-                new TipoPago{Nombre="Abono a Interes"},
-
+                new TipoPago{Nombre="Pago completo"},
+                new TipoPago{Nombre="Abono"},
             };
             FormaPago[] formaPagos =
             {
@@ -56,13 +56,14 @@
             Estado[] estados =
             {
                 new Estado {Nombre="Cancelado"},
-                new Estado {Nombre="En mora"},
+                new Estado {Nombre="Activo" }
+                
             };
             TipoCobro[] tipoCobros =
             {
-                new TipoCobro {Nombre="Mensual"},
-                new TipoCobro {Nombre="Quincenal"},
-                new TipoCobro {Nombre="Diario"},
+                new TipoCobro {Nombre="Mensual" ,Valor=1},
+                new TipoCobro {Nombre="Quincenal",Valor = 15},
+                new TipoCobro {Nombre="Diario",Valor = 30},
 
             };
 
@@ -71,6 +72,13 @@
                 new Role {Nombre="Administrador"},
                 new Role {Nombre="Cobrador"},
             };
+            TipoRegimen[] regimens =
+            {
+                new TipoRegimen{Nombre="Comun"}, 
+                new TipoRegimen{Nombre="Simplificado" },
+
+            };
+            context.TipoRegimens.AddOrUpdate(a=>a.Nombre,regimens);
             context.Estados.AddOrUpdate (e=>e.Nombre , estados);
             context.TipoTelefonos.AddOrUpdate(t=>t.Nombre, tipoTelefonos);
             context.Roles.AddOrUpdate(r=>r.Nombre, roles);
@@ -85,22 +93,40 @@
             };
             context.Usuarios.AddOrUpdate(us=>us.Nombre, usuarios);
             context.SaveChanges();
+            Empresa[] empresas={
+                new Empresa
+                {
+                    TipoIdentificacionId = 1,
+                    Identificacion="1111",
+                    Nombre="Empresa de ejemplo",
+                    Direccion="calle con carrera",
+                    InteresCartera=20,
+                    Email="alguien@ejemplo.com",
+                    CamaraComercio="aaaaa",
+                    Telefono="3015106510",
+                    TipoRegimenId=1                    
+                }
+            };
+            context.Empresas.AddOrUpdate(e=>e.Identificacion, empresas);
+            context.SaveChanges();
             Empleado[] empleados =
             {
-                new Empleado { Apellido="administrador",
-                Nombre="administrador",
-                FechaNacimiento=DateTime .Now ,
-                Identificacion="11111",
-                TipoIdentificacionId=1,
-                UsuarioId=1,
-                Telefono ="333333",
-                Email ="admin@example.com",
-                Direccion="barranquilla",
+                new Empleado 
+                {
+                    Apellido="administrador",
+                    Nombre="administrador",
+                    FechaNacimiento=DateTime .Now ,
+                    Identificacion="11111",
+                    TipoIdentificacionId=1,
+                    UsuarioId=context.Usuarios.Where(x=>x.Nombre=="admin").FirstOrDefault().Id ,
+                    Telefono ="333333",
+                    Email ="admin@example.com",
+                    Direccion="barranquilla",
+                    EmpresaId=1,                    
                 },
             };
             context.Empleados.AddOrUpdate (em =>em.Identificacion , empleados);
             context.SaveChanges();
-
         }
     }
 }

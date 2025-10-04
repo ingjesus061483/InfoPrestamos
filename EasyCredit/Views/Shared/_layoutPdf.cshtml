@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+    DTO.EmpresaDTO empresa = ViewBag.Empresa;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+</head>
+<body>
+    <article style="padding:50px">
+        <header>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h1>@empresa.Nombre</h1>
+                </div>
+                <div class="col-4"></div>                
+            </div>
+            <div class="row">
+                <div class="col-4">                    </div>
+                <div class="col-4">
+                    <p><center> <h6><strong> @empresa.TipoIdentificacion.Nombre:</strong>&nbsp;@empresa.Identificacion</h6></center></p>
+                    <p><center> <h6><strong> Telefono:</strong>&nbsp;@empresa.Telefono</h6></center></p>
+                </div>
+                <div class="col-4">                    </div>
+
+
+            </div>
+
+</header>
+        @RenderBody()
+    </article>
+
+</body>
+</html>

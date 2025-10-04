@@ -1,8 +1,9 @@
 ﻿using Datos;
-using DTO;
 using Factory;
-using Helper.DTO;
+using DTO;
+using SelectPdf;
 using System.Linq;
+using System.Web.Mvc;
 namespace Helper
 {
     public class TelefonoHelp : Help<TelefonoDTO>
@@ -27,13 +28,14 @@ namespace Helper
                 FechaExpedicion=y.FechaExpedicion,
                 FechaNacimiento=y.FechaNacimiento,
                 Identificacion=y.Identificacion,
-                Observacion=y.Observacion,
                 TipoIdentificacionId=y.TipoIdentificacionId,
             }).FirstOrDefault(),
             TipoTelefono = x.TipoTelefono,
             TipoTelefonoId = x.TipoTelefonoId
 
         });
+
+        protected override HtmlToPdf HtmlToPdf => throw new System.NotImplementedException();
 
         public TelefonoHelp(PrestamoDbContext _context )
         {
@@ -63,6 +65,11 @@ namespace Helper
             telefono.NumeroTelefonico =Entity.NumeroTelefonico;
             telefono.TipoTelefonoId =Entity .TipoTelefonoId ;
             context.SaveChanges();
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

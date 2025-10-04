@@ -1,6 +1,6 @@
 ﻿using Factory;
 using Helper;
-using Helper.DTO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,52 +10,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Transporte;
-using Transporte.View;
 
 namespace InfoPrestamos
 {
     public partial class frmTelefono : Form
     {
-        public  List<TelefonoView> Telefonos { get; set; }
-        public PersonaView  Cliente { get; set; }
+        public  List<TelefonoDTO> Telefonos { get; set; }
+       public ClienteDTO  Cliente { get; set; }
         int id;
         TelefonoDTO telefonoDTO;
        
         TelefonoHelp TelefonoHelp;
-        TelefonoTransporte TelefonoTransporte;
+       // TelefonoTransporte TelefonoTransporte;
         TipoTelefonoHelp tipoTelefonoHelp;
-        public frmTelefono(TipoTelefonoHelp _tipoTelefonoHelp,TelefonoHelp _telefonoHelp,TelefonoTransporte _telefonoTransporte   )        
+        public frmTelefono(TipoTelefonoHelp _tipoTelefonoHelp,TelefonoHelp _telefonoHelp  )        
         {
             TelefonoHelp = _telefonoHelp;          
             tipoTelefonoHelp = _tipoTelefonoHelp;
-            TelefonoTransporte = _telefonoTransporte;
+           // TelefonoTransporte = _telefonoTransporte;
             InitializeComponent();           
-           TelefonoTransporte .bindindList .ListChanged += BindTelefonos_ListChanged;      
+          // TelefonoTransporte .bindindList .ListChanged += BindTelefonos_ListChanged;      
         }
 
         private void BindTelefonos_ListChanged(object sender, ListChangedEventArgs e)
         {
-            dgTelefono.DataSource = TelefonoTransporte .bindindList ;
+            //dgTelefono.DataSource = TelefonoTransporte .bindindList ;
         }
         void Nuevo()
         {
             id = 0;
             txtNumeroTelefonico.Clear();
             cmbTipoTelefono.SelectedIndex = -1;
-            TelefonoTransporte.CargarDatos(Telefonos);
+           // TelefonoTransporte.CargarDatos(Telefonos);
             txtNumeroTelefonico.Focus();            
         }
         private void button1_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(txtNumeroTelefonico.Text ))
             {
-                Utilities.GetMessage("", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+             Helper.   Utilities.GetMessage("", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             if(cmbTipoTelefono.SelectedIndex==-1)
             {
-                Utilities.GetMessage("", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+             Helper.   Utilities.GetMessage("", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             telefonoDTO = new TelefonoDTO
@@ -75,35 +73,35 @@ namespace InfoPrestamos
                 {
                     TelefonoHelp.Actualizar(id, telefonoDTO );
                 }
-                Telefonos = TelefonoTransporte.GetList(Cliente.Id);
+                //Telefonos = TelefonoTransporte.GetList(Cliente.Id);
                 Nuevo();
                 return;
             }
             if (id == 0)
             {
-                id = Telefonos.Count == 0 ? 1 : Telefonos.Last().Id + 1;
+               // id = Telefonos.Count == 0 ? 1 : Telefonos.Last().Id + 1;
             }
-            TelefonoView telefono = Telefonos.Where(x => x.Id ==id).FirstOrDefault();
+       //     TelefonoView telefono = Telefonos.Where(x => x.Id ==id).FirstOrDefault();
               
-            if (telefono == null)
+            if (telefonoDTO == null)
             {
-                telefono = new TelefonoView
+                telefonoDTO = new TelefonoDTO
                 {
                     Id =id,
                     ClienteId = Cliente != null ? Cliente.Id : 0,
                     NumeroTelefonico = txtNumeroTelefonico.Text,
-                    TipoTelefono = cmbTipoTelefono.Text,
+                    //TipoTelefono = cmbTipoTelefono.Text,
                     TipoTelefonoId = int.Parse(cmbTipoTelefono.SelectedValue.ToString())
                 };
                 id++;
-                Telefonos.Add(telefono);
+                Telefonos.Add(telefonoDTO);
             }
             else
             {
-                telefono.ClienteId = Cliente != null ? Cliente.Id : 0;
-                telefono.NumeroTelefonico = txtNumeroTelefonico.Text;
-                telefono.TipoTelefono = cmbTipoTelefono.Text;
-                telefono.TipoTelefonoId = int.Parse(cmbTipoTelefono.SelectedValue.ToString());                
+                telefonoDTO.ClienteId = Cliente != null ? Cliente.Id : 0;
+                telefonoDTO.NumeroTelefonico = txtNumeroTelefonico.Text;
+                //telefono    .TipoTelefono = cmbTipoTelefono.Text;
+                telefonoDTO.TipoTelefonoId = int.Parse(cmbTipoTelefono.SelectedValue.ToString());                
             }
             Nuevo();        
         }
@@ -127,14 +125,14 @@ namespace InfoPrestamos
                         Telefonos.Clear();
                     }
                 }
-                Telefonos = new List<TelefonoView>();
+                Telefonos = new List<TelefonoDTO>();
             }
             else 
             {                
-                Telefonos = TelefonoTransporte.GetList(Cliente .Id  );
+          //      Telefonos = TelefonoTransporte.GetList(Cliente .Id  );
             }
             Nuevo();
-            Utilities.Cmb(cmbTipoTelefono, tipoTelefonoHelp.TEntity.ToList());
+        Helper.    Utilities.Cmb(cmbTipoTelefono, tipoTelefonoHelp.TEntity.ToList());
 
         }
 

@@ -16,7 +16,7 @@ namespace Factory
         [Required]
         [MaxLength(50)]
         [Index(IsUnique = true)]
-        public string Codigo { get; set; }
+        public string Referencia { get; set; }
 
         [Required]
         public decimal Monto { get; set; }
@@ -52,7 +52,8 @@ namespace Factory
         public int EstadoId { get; set; }
         public Estado Estado { get; set; }
         public List<PrestamoGarantia>  PrestamoGarantias  { get; set; }
-        public List<Cuota> Cuotas { get; set; }
+        public List<Amortizacion> Amortizacions { get; set; }
+        public List<AmortizacionCapital> AmortizacionCapitals { get; set; }
 
     }
 }

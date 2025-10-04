@@ -1,8 +1,9 @@
 ﻿using Datos;
-using DTO;
 using Factory;
-using Helper.DTO;
+using DTO;
+using SelectPdf;
 using System.Linq;
+using System.Web.Mvc;
 using System.Web.WebPages;
 namespace Helper
 {
@@ -25,7 +26,6 @@ namespace Helper
                 Codigo = x.Codigo,
                 Identificacion = x.Identificacion,
                 Nombre = x.Nombre,
-                Observacion = x.Observacion,
                 EmperesaDondeLabora = x.EmperesaDondeLabora,
                 FechaExpedicion = x.FechaExpedicion,
                 Apellido = x.Apellido,
@@ -55,24 +55,21 @@ namespace Helper
                     Tiempo= a.Tiempo ,
                     EstadoId= a.EstadoId,
                     Estado = a.Estado,
-                    Codigo = a.Codigo,
+                    Referencia = a.Referencia,
                     Observacion = a.Observacion,
                     TipoCobroId = a.TipoCobroId,
                     TipoCobro = a.TipoCobro,                    
                     FiadorId = a.FiadorId,
                     Fiador = context.Fiadors.Where(y => y.Id == a.FiadorId).Select(y => new FiadorDTO { }).FirstOrDefault(),
                     EmpleadoId = a.EmpleadoId,
-                    Cuotas=a . Cuotas.Select(c=>new CuotaDTO
+                    Amortizacions =a . Amortizacions.Select(c=>new AmortizacionDTO
                     {
-                        Codigo = c.Codigo,
-                        Capital = c.Capital,
+                        Referencia = c.Referencia,
+                        Periodo = c.Periodo,                        
                         Valor = c.Valor,
                         Fecha=c.Fecha,
-                        Id = c.Id,
-                        Saldo = c.Saldo,
+                        Id = c.Id,                       
                         PagoCompleto = c.PagoCompleto,
-                        Interes=c.Interes,
-                        Observaciones   =c.Observaciones,
                         PrestamoId = c.PrestamoId,       
                     }).ToList(),
                 }).ToList(),
@@ -91,6 +88,9 @@ namespace Helper
                 Area = x.Area,
                 AreaId = x.AreaId
             });
+
+        protected override HtmlToPdf HtmlToPdf => throw new System.NotImplementedException();
+
         public ClienteHelp(PrestamoDbContext dbContext)
         {
             context =dbContext;
@@ -117,7 +117,6 @@ namespace Helper
                 FechaNacimiento =clienteDTO . FechaNacimiento,
                 TipoIdentificacionId =int.Parse( clienteDTO.TipoIdentificacionId.ToString()),
                 AreaId = clienteDTO.AreaId,
-                Observacion = clienteDTO.Observacion
 
 
             };
@@ -138,9 +137,13 @@ namespace Helper
             cliente.FechaNacimiento = clienteDTO.FechaNacimiento;
             cliente.TipoIdentificacionId = int.Parse(clienteDTO.TipoIdentificacionId.ToString());
             cliente.AreaId = clienteDTO.AreaId;
-            cliente.Observacion = clienteDTO.Observacion;
             cliente.Codigo = clienteDTO.Codigo;
             context.SaveChanges();
-        }    
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

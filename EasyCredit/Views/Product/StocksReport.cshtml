@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DTO.ProductoDTO>
+@{
+    ViewBag.Title = "StocksReport";
+    Layout = "~/Views/Shared/_layoutPdf.cshtml";
+}
+
+<h2>Inventario de productos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadMedida.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Referencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalExistencia)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnidadMedida.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Referencia)
+                </td>
+                <td>
+                    @item.Costo.ToString("C0")
+                </td>
+                <td>
+                    @item.Precio.ToString("C0")
+                </td>
+                <td>
+                    @item.TotalEntrada.ToString("N0")
+                </td>
+                <td>
+                    @item.TotalSalida.ToString("N0")
+                </td>
+                <td>
+                    @item.TotalExistencia.ToString("N0")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

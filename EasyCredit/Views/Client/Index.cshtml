@@ -49,9 +49,6 @@
                 @Html.DisplayNameFor(model => model.AreaId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Observacion)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ListaTelefono)
             </th>
             <th></th>
@@ -95,9 +92,6 @@
                     @Html.DisplayFor(modelItem => item.Area.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Observacion)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.ListaTelefono)
                 </td>
                 <td>
@@ -129,27 +123,8 @@
 
 </table>
 <div id="clientes" title="Agregar o Editar clientes">
-    <form id="clientAdd" method="post"  autocomplete="off" action="@Url.Action("create","client")">
+    <form id="clientAdd" method="post" autocomplete="off" action="@Url.Action("create","client")">
         <input type="hidden" name="Id" value="0" id="Id" />
-        <div class="mb-3">
-            <label class="form-label" for="codigo">
-                Tipo identificacion
-            </label>
-            <select name="TipoIdentificacionId" class="form-select" id="TipoIdentificacion">
-                <option value="">Seleccione un tipo de identificacion</option>
-                @foreach (var item in ListaTipoIdentificacion)
-                {
-                    <option value="@item.Id">@item.Nombre</option>
-                }
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="codigo">
-                Emperesa donde labora
-            </label>
-            <input type="text" name="EmperesaDondeLabora" value="" class="form-control" id="EmperesaDondeLabora">
-            
-        </div>
         <div class="mb-3">
             <label class="form-label" for="codigo">
                 Identificacion
@@ -200,13 +175,25 @@
             <input type="text" name="Email" value="" class="form-control" id="Email">
         </div>
         <div class="mb-3">
-            <label class="form-label" for="descripcion">
-                Observacion
+            <label class="form-label" for="codigo">
+                Emperesa donde labora
             </label>
-            <textarea name="Observacion" id="Observacion" class="form-control"
-                      cols="30" rows="10">              
-            </textarea>
+            <input type="text" name="EmperesaDondeLabora" value="" class="form-control" id="EmperesaDondeLabora">
+
         </div>
+        <div class="mb-3">
+            <label class="form-label" for="codigo">
+                Tipo identificacion
+            </label>
+            <select name="TipoIdentificacionId" class="form-select" id="TipoIdentificacion">
+                <option value="">Seleccione un tipo de identificacion</option>
+                @foreach (var item in ListaTipoIdentificacion)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+
         <div class="mb-3">
             <label class="form-label" for="codigo">
                 Sector

@@ -1,0 +1,248 @@
+﻿@model DTO.PrestamoDTO
+
+@{
+    Layout = "~/Views/Shared/_layoutPdf.cshtml";
+    ViewBag.Title = "Historial de pagos";
+
+}
+
+<h2>Detalles</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fa-solid fa-circle-info"></i>
+                Informacion de Cliente
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Codigo
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Cliente.Codigo)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-3">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Nombre Completo
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Cliente.NombreCompleto)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-3">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Direccion
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Cliente.Direccion)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-3">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Telefonos
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Cliente.ListaTelefono)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fa-solid fa-circle-info"></i>
+                Informacion General
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-4">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Referencia)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Referencia)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-4">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Fecha)
+                            </dt>
+                            <dd>
+                                @Model.Fecha.ToString("yyyy-MM-dd")
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-4">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Estado.Nombre)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Estado.Nombre)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Monto)
+                            </dt>
+
+                            <dd>
+                                @Model.Monto.ToString("C0")
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-4">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Tiempo)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Tiempo)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-4">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Modo)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Modo)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Interes)
+                            </dt>
+
+                            <dd>
+                                @Model.Interes.ToString("#'%'")
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Observacion)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Observacion)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table ui-widget ui-widget-content">
+            <thead>
+                <tr class="ui-widget-header">
+                    <th>Id</th>
+                    <th>Periodo</th>
+                    <th>Referencia</th>
+                    <th>Fecha</th>
+                    <th>Valor</th>
+                    <th>Saldo</th>
+                    <th>Abonos</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Amortizacions)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Periodo</td>
+                        <td>@item.Referencia</td>
+                        <td>@item.Fecha.ToString("yyyy/MM/dd")</td>
+                        <td>@String.Format("{0:C}", item.Valor)</td>
+                        <td>@String.Format("{0:C}", item.Valor - item.Abono)</td>
+                        <td>@String.Format("{0:C}", item.Abono) </td>
+                        <td>
+                            @if (item.PagoCompleto)
+                            {
+                                <p>Si</p>
+                            }
+                            else
+                            {
+                                <p>No</p>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
+
+            <dd>
+                @Model.Total.ToString("C0")
+            </dd>
+        </dl>
+    </div>
+    <div class="col-4">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalAmortizado)
+            </dt>
+
+            <dd>
+                @Model.TotalAmortizado.ToString("C0")
+            </dd>
+        </dl>
+    </div>
+    <div class="col-4">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Saldo)
+            </dt>
+
+            <dd>
+                @Model.Saldo.ToString("C0")
+            </dd>
+        </dl>
+    </div>
+</div>
+

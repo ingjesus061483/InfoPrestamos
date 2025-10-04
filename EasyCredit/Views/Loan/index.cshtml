@@ -21,8 +21,6 @@
 @if (clienteDTO != null)
 {
     @Html.Partial("_SearchCliente", clienteDTO)
-
-
 }
 else
 {
@@ -32,61 +30,63 @@ else
             Busqueda de Cliente
         </div>
         <div class="card-body">
-            <form autocomplete="off" action="@Url.Action("index","Loan")" method="get">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-3">
-                            <label class="form-label" for="identificacion">Identificación del Cliente</label>
-                            <input type="text" class="form-control" id="identificacion" name="identificacion" />
-                        </div>
-                        <div class="col-3">
-                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
+            <form autocomplete="off" action="@Url.Action("index","Loan")" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">                    
+                    <input id="identificacion" name="identificacion" class="form-control" type="text" placeholder="Identificación del Cliente" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button type="submit" class="btn btn-primary" id="btnNavbarSearch"><i class="fas fa-search"></i></button>
                 </div>
-            </form>
+            </form>            
         </div>
     </div>
 
 }
-
-
 <table id="datatablesSimple" class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cliente.Identificacion)
+                Cliente
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Empleado.Identificacion)
+                Empleado
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fiador.Identificacion)
+                Fiador
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoCobro.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Codigo)
+                @Html.DisplayNameFor(model => model.Referencia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Monto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tiempo)
+                @Html.DisplayNameFor(model => model.Interes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Interes)
+                @Html.DisplayNameFor(model => model.Tiempo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Observacion)
+                @Html.DisplayNameFor(model => model.Cuota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmortizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Saldo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
-            </th>
+            </th>           
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -95,34 +95,41 @@ else
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Cliente.Identificacion)
+                    @Html.DisplayFor(modelItem => item.Cliente.NombreCompleto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Empleado.Identificacion)
+                    @Html.DisplayFor(modelItem => item.Empleado.NombreCompleto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Fiador.Identificacion)
+                    @Html.DisplayFor(modelItem => item.Fiador.NombreCompleto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TipoCobro.Nombre)
+                    @Html.DisplayFor(modelItem => item.Referencia)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Codigo)
+                    @item.Monto.ToString("C0")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Monto)
+                   @item.Interes.ToString("#'%'")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Tiempo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Interes)
+                    @item.Fecha.ToString("yyyy/MM/dd")
+                </td>
+                <td>@item.Cuota.ToString("C0")</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
+                    @item.Total.ToString("C0")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Observacion)
+                    @item.TotalAmortizado.ToString("C0")
+                </td>
+                <td>
+                    @item.Saldo.ToString("C0")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Estado.Nombre)
@@ -131,9 +138,12 @@ else
                     <a title="Ver detalles" class="btn btn-info" href="@Url.Action("Details", "loan", new { id = item.Id })">
                         <i class="fa-solid fa-comment-dollar"></i>
                     </a>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+                <td>
+                    <form onsubmit="return validar('Desea eliminar el Prestamo?')" action="@Url.Action("delete","loan")" method="post">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button title="Eliminar prestamo" class="btn btn-danger" type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
                 </td>
             </tr>
         }
@@ -141,88 +151,91 @@ else
 
 </table>
 <p>
-    <button class="btn btn-primary" title="Crear prestamo" onclick="CrearPrestamo(); "><i class="fa-solid fa-user-plus"></i></button>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-primary" title="Crear prestamo" onclick="CrearPrestamo(); "><i class="fa-solid fa-landmark"></i></button>
+    <a target="_blank" class="btn btn-danger" href="@Url.Action("LoanHistorial","Loan")"><i class="fa-solid fa-file-pdf"></i></a>
+
 </p>
 <div id="loans">
-    <!--  <form id="loanAdd" action="@Url.Action("create", "loan")" method="post" autocomplete="off">-->
     <input type="hidden" name="codigo" id="codigo" value="@codigo" />
     <input type="hidden" name="clienteId" id="clienteId" value="@clienteId" />
     <input type="hidden" name="empleadoId" id="empleadoId" value="@empleadoId" />
-    <div class="mb-3">
-        <label class="form-label" for="monto">
-            Fiador
-        </label>
-        <input type="text" class=" form-control" name="fiador" value="" id="fiador" />
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Fiador
+                </label>
+                <input type="text" class=" form-control" name="fiador" value="" id="fiador" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Fecha
+                </label>
+                <input type="date" class=" form-control" name="fecha" value="" id="fecha" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Monto
+                </label>
+                <input type="number" class=" form-control" name="monto" value="" id="monto" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Porcentaje
+                </label>
+                <input type="number" class=" form-control" name="porcentaje" value="" id="porcentaje" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Tiempo
+                </label>
+                <input type="number" class=" form-control" name="tiempo" value="" id="tiempo" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Tipo cobro
+                </label>
+                <select class="form-select" id="tipocobro" name="tipocobro">
+                    <option value=""> seleccione una opcion</option>
+                    @foreach (var item in tipoCobros)
+                    {
+                        <option value="@item.Id">@item.Nombre  </option>
+                    }
+                </select>
+            </div>
+            <button class="btn btn-success" id="cuotas">Generar cuotas</button>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Cuota
+                </label>
+                <input type="text" class=" form-control" name="cuota" value="" id="cuota" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="monto">
+                    Total                    
+                </label>
+                <input type="text" class=" form-control" name="Total" value="" id="Total" />   
+            </div>
+
+            <table class="table" id="tblCuota">
+                <thead>
+                    <tr>
+                        <th>Periodo</th>
+                        <th>Referencia</th>
+                        <th>Fecha</th>
+                        <th>Valor</th>
+
+                    </tr>
+                </thead>
+                <tbody style="overflow-y:scroll; height:100px">
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label" for="monto">
-            fecha
-        </label>
-        <input type="date" class=" form-control" name="fecha" value="" id="fecha" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="monto">
-            Monto
-        </label>
-        <input type="number" class=" form-control" name="monto" value="" id="monto" />
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label" for="monto">
-            Porcentaje
-        </label>
-        <input type="number" class=" form-control" name="porcentaje" value="" id="porcentaje" />
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label" for="monto">
-            Tiempo
-        </label>
-        <input type="number" class=" form-control" name="tiempo" value="" id="tiempo" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="monto">
-            Tipo cobro
-        </label>
-        <select class="form-select" id="tipocobro" name="tipocobro">
-            <option value=""> seleccione una opcion</option>
-            @foreach (var item in tipoCobros)
-            {
-                <option value="@item.Id">@item.Nombre  </option>
-            }
-        </select>
-    </div>
-    <button class="btn btn-success" id="cuotas">Generar cuotas</button>
-    <div class="mb-5" style="height:100px; overflow-y:scroll">
-        <table class="table" id="tblcuotas">
-            <thead>
-                <tr>
-                    <td>
-                        Codigo
-                    </td>
-                    <td>
-                        Fecha
-                    </td>
-                    <td>
-                        Cuota
-                    </td>
-                    <td>
-                        Capital
-                    </td>
-
-                    <td>
-                        Interes
-                    </td>
-                    <td>
-                        Saldo
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-    <!--  </form>-->
 </div>

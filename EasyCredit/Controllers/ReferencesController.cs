@@ -1,5 +1,5 @@
 ﻿using Helper;
-using Helper.DTO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,13 +102,12 @@ namespace EasyCredit.Controllers
             }
             catch (Exception ex)
             {
-                {
-                    errors = new List<string> {
+                errors = new List<string> {
                     ex.Message
                 };
-                    TempData["Error"] = errors;
-                    return Redirect(url);
-                }
+                TempData["Error"] = errors;
+                return Redirect(url);
+                
             }
         }
     }

@@ -22,3 +22,15 @@ C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Fac
 C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.csproj.Up2Date
 C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.dll
 C:\Users\USUARIO\source\repos\ingjesus061483\InfoPrestamos\Factory\obj\Debug\Factory.pdb
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\Factory.dll.config
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\Factory.dll
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\Factory.pdb
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\EntityFramework.dll
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\EntityFramework.SqlServer.dll
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\EntityFramework.xml
+F:\Documents\GitHub\InfoPrestamos\Factory\bin\Debug\EntityFramework.SqlServer.xml
+F:\Documents\GitHub\InfoPrestamos\Factory\obj\Debug\Factory.csproj.AssemblyReference.cache
+F:\Documents\GitHub\InfoPrestamos\Factory\obj\Debug\Factory.csproj.CoreCompileInputs.cache
+F:\Documents\GitHub\InfoPrestamos\Factory\obj\Debug\Factory.csproj.Up2Date
+F:\Documents\GitHub\InfoPrestamos\Factory\obj\Debug\Factory.dll
+F:\Documents\GitHub\InfoPrestamos\Factory\obj\Debug\Factory.pdb

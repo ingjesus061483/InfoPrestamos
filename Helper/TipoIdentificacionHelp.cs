@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Factory;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,9 @@ namespace Helper
             }
         }
         public override IQueryable<TipoIdentificacion> TEntity => context.TipoIdentificacions.AsQueryable();
+
+        protected override HtmlToPdf HtmlToPdf => throw new NotImplementedException();
+
         public TipoIdentificacionHelp(PrestamoDbContext dbContext)
         {
             context = dbContext;
@@ -47,6 +51,11 @@ namespace Helper
             throw new NotImplementedException();
         }
         public override void Actualizar(int id, TipoIdentificacion Entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override byte[] ExportarPdf(Controller controller, string viewName, object model, PdfPageSize pageSize, PdfPageOrientation pdfOrientation, int webPageWidth)
         {
             throw new NotImplementedException();
         }

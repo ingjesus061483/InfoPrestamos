@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using Factory;
 using Helper;
 using System.Data.Entity.Validation;
-using Transporte;
 using DTO;
 namespace InfoPrestamos
 {
@@ -21,7 +20,6 @@ namespace InfoPrestamos
         UsuarioHelp usuarioHelp;
         EmpleadoDTO EmpleadoDTO;
         EmpleadoHelp EmpleadoHelp;
-        EmpleadoTransporte EmpleadoTranporte;
         TipoIdentificacionHelp TipoIdentificacionHelp;
         RoleHelp RoleHelp;
         public Empleados(
@@ -32,7 +30,6 @@ namespace InfoPrestamos
         {
             EmpleadoHelp = _empleadoHelp;
             InitializeComponent();
-            EmpleadoTranporte = new EmpleadoTransporte(_empleadoHelp,_roleHelp);
             RoleHelp = _roleHelp;
             TipoIdentificacionHelp = _tipoIdentificacionHelp;
             usuarioHelp = _usuarioHelp;
@@ -40,8 +37,8 @@ namespace InfoPrestamos
         private void Usuarios_Load(object sender, EventArgs e)
         {
             List<TipoIdentificacion> tipoIdentificacions = TipoIdentificacionHelp.TEntity.ToList();
-            Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
-            Utilities.Cmb(cmbRole,RoleHelp .TEntity.ToList () );
+            Helper.Utilities.Cmb(cmbTipoIdentificacion, tipoIdentificacions);
+            Helper.Utilities.Cmb(cmbRole,RoleHelp .TEntity.ToList () );
             Nuevo();
         }
         void Nuevo()
@@ -62,7 +59,7 @@ namespace InfoPrestamos
             txtIdentificacion.Focus();
             btnGuardar.Enabled = true;
             btnCancelar.Enabled = false;
-            dgEmpleado.DataSource = EmpleadoTranporte .List;
+//            dgEmpleado.DataSource = EmpleadoTranporte .List;
             id = 0;
         }
         private void dgEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -76,7 +73,6 @@ namespace InfoPrestamos
                 cmbTipoIdentificacion.SelectedValue = cliente.TipoIdentificacionId;
                 txtNombre.Text = cliente.Nombre;
                 txtApellido.Text = cliente.Apellido;
-                dtpFechaNacimiento.Value = cliente.FechaNacimiento;
                 txtDireccion.Text = cliente.Direccion;
                 txtTelefono.Text = cliente.Telefono;
                 txtEmail.Text = cliente.Email;
@@ -100,7 +96,6 @@ namespace InfoPrestamos
                     Identificacion = txtIdentificacion.Text,
                     Nombre = txtNombre.Text,
                     Apellido = txtApellido.Text,
-                    FechaNacimiento = dtpFechaNacimiento.Value,
                     Direccion = txtDireccion.Text,
                     Telefono = txtTelefono.Text,
                     Email = txtEmail.Text,
@@ -113,7 +108,7 @@ namespace InfoPrestamos
               UsuarioDTO usuarioDTO = new UsuarioDTO
                 {
                     Nombre = txtUsuario.Text,
-                    Password = Utilities.Encriptar(txtPwd.Text),
+                    Password = Helper.Utilities.Encriptar(txtPwd.Text),
                     RoleId = cmbRole.SelectedValue != null
                                             ? int.Parse(cmbRole.SelectedValue.ToString())
                                             : -1,
@@ -136,21 +131,21 @@ namespace InfoPrestamos
             }
             catch (DbEntityValidationException ex)
             {
-                string message = Utilities.GetMessageError(ex);
+                string message = Helper.Utilities.GetMessageError(ex);
                 MessageBox.Show(message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dateTimePicker = (DateTimePicker)sender;
-            txtEdad.Text = Utilities.CalcularEdad(dateTimePicker.Value).ToString();
+            txtEdad.Text = Helper.Utilities.CalcularEdad(dateTimePicker.Value).ToString();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             var user= usuarioHelp.TEntity.Where(x => x.Id == usuarioId).FirstOrDefault();
             if (user.Sesion)
             {
-                Utilities.GetMessage("La sesion de este usuario esta activa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Helper.Utilities.GetMessage("La sesion de este usuario esta activa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             DialogResult result = MessageBox.Show("Desea eliminar este registro?", "",    MessageBoxButtons.YesNo,
