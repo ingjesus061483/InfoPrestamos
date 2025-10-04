@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\views\\loan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\views\\loan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\scripts\\datatables-simple-demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\scripts\\datatables-simple-demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|c:\\users\\usuario\\source\\repos\\ingjesus061483\\infoprestamos\\easycredit\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\views\\loan\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\views\\loan\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\views\\loan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\views\\loan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\controllers\\loancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -98,10 +102,6 @@
       "RelativeMoniker": "D:0:0:{899BE77F-5EE6-4676-A43A-302F398FE90F}|Helper\\Helper.csproj|solutionrelative:helper\\empleadohelp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\scripts\\datatables-simple-demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\scripts\\datatables-simple-demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\easycredit\\views\\client\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A253A04B-F2BA-4DCB-835C-F7A3BD42904E}|EasyCredit\\EasyCredit.csproj|solutionrelative:easycredit\\views\\client\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -124,24 +124,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Prestamo.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Factory\\Prestamo.cs",
-              "RelativeDocumentMoniker": "Factory\\Prestamo.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Factory\\Prestamo.cs",
-              "RelativeToolTip": "Factory\\Prestamo.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBEAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T12:37:24.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "EasyCredit\\Views\\Shared\\_Layout.cshtml",
@@ -154,33 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CuotaDTO.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\DTO\\CuotaDTO.cs",
-              "RelativeDocumentMoniker": "Helper\\DTO\\CuotaDTO.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\DTO\\CuotaDTO.cs",
-              "RelativeToolTip": "Helper\\DTO\\CuotaDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T05:00:44.176Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoanController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Controllers\\LoanController.cs",
-              "RelativeDocumentMoniker": "EasyCredit\\Controllers\\LoanController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Controllers\\LoanController.cs",
-              "RelativeToolTip": "EasyCredit\\Controllers\\LoanController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T19:25:21.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PrestamoTransporte.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\DTO\\PrestamoTransporte.cs",
               "RelativeDocumentMoniker": "DTO\\PrestamoTransporte.cs",
@@ -193,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Prestamos.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\InfoPrestamos\\Prestamos.cs",
               "RelativeDocumentMoniker": "InfoPrestamos\\Prestamos.cs",
@@ -206,20 +167,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "datatables-simple-demo.js",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Scripts\\datatables-simple-demo.js",
+              "RelativeDocumentMoniker": "EasyCredit\\Scripts\\datatables-simple-demo.js",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Scripts\\datatables-simple-demo.js",
+              "RelativeToolTip": "EasyCredit\\Scripts\\datatables-simple-demo.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-17T02:04:18.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "index.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Views\\Loan\\index.cshtml",
               "RelativeDocumentMoniker": "EasyCredit\\Views\\Loan\\index.cshtml",
               "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Views\\Loan\\index.cshtml",
               "RelativeToolTip": "EasyCredit\\Views\\Loan\\index.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADUAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAiwIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-15T19:26:59.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "LoanController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Controllers\\LoanController.cs",
+              "RelativeDocumentMoniker": "EasyCredit\\Controllers\\LoanController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Controllers\\LoanController.cs",
+              "RelativeToolTip": "EasyCredit\\Controllers\\LoanController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T19:25:21.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CuotaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\DTO\\CuotaDTO.cs",
+              "RelativeDocumentMoniker": "Helper\\DTO\\CuotaDTO.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\DTO\\CuotaDTO.cs",
+              "RelativeToolTip": "Helper\\DTO\\CuotaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T05:00:44.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Prestamo.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Factory\\Prestamo.cs",
+              "RelativeDocumentMoniker": "Factory\\Prestamo.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Factory\\Prestamo.cs",
+              "RelativeToolTip": "Factory\\Prestamo.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T12:37:24.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Views\\Loan\\Details.cshtml",
               "RelativeDocumentMoniker": "EasyCredit\\Views\\Loan\\Details.cshtml",
@@ -232,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Referencia.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Factory\\Referencia.cs",
               "RelativeDocumentMoniker": "Factory\\Referencia.cs",
@@ -245,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ClienteTransporte.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\DTO\\ClienteTransporte.cs",
               "RelativeDocumentMoniker": "DTO\\ClienteTransporte.cs",
@@ -258,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "202509181308486_feeTable.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Datos\\Migrations\\202509181308486_feeTable.cs",
               "RelativeDocumentMoniker": "Datos\\Migrations\\202509181308486_feeTable.cs",
@@ -271,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "FrmPagos.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\InfoPrestamos\\FrmPagos.cs",
               "RelativeDocumentMoniker": "InfoPrestamos\\FrmPagos.cs",
@@ -284,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "InfoPrestamosWeb",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\InfoPrestamosWeb\\InfoPrestamosWeb.csproj",
               "RelativeDocumentMoniker": "InfoPrestamosWeb\\InfoPrestamosWeb.csproj",
@@ -296,7 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "TelefonoHelp.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\TelefonoHelp.cs",
               "RelativeDocumentMoniker": "Helper\\TelefonoHelp.cs",
@@ -308,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "EmpleadoHelp.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\EmpleadoHelp.cs",
               "RelativeDocumentMoniker": "Helper\\EmpleadoHelp.cs",
@@ -320,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Cuota.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Factory\\Cuota.cs",
               "RelativeDocumentMoniker": "Factory\\Cuota.cs",
@@ -333,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "FeeController.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Controllers\\FeeController.cs",
               "RelativeDocumentMoniker": "EasyCredit\\Controllers\\FeeController.cs",
@@ -346,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "SimpleInjectorInitializer.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\App_Start\\SimpleInjectorInitializer.cs",
               "RelativeDocumentMoniker": "EasyCredit\\App_Start\\SimpleInjectorInitializer.cs",
@@ -358,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CuotaHelp.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\CuotaHelp.cs",
               "RelativeDocumentMoniker": "Helper\\CuotaHelp.cs",
@@ -371,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "PrestamoDTO.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\DTO\\PrestamoDTO.cs",
               "RelativeDocumentMoniker": "Helper\\DTO\\PrestamoDTO.cs",
@@ -384,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ClienteHelp.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\ClienteHelp.cs",
               "RelativeDocumentMoniker": "Helper\\ClienteHelp.cs",
@@ -397,7 +410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PrestamoHelp.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Helper\\PrestamoHelp.cs",
               "RelativeDocumentMoniker": "Helper\\PrestamoHelp.cs",
@@ -410,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "PrestamoDbContext.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\Datos\\PrestamoDbContext.cs",
               "RelativeDocumentMoniker": "Datos\\PrestamoDbContext.cs",
@@ -419,18 +432,6 @@
               "ViewState": "AgIAABUAAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T19:50:02.564Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "datatables-simple-demo.js",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Scripts\\datatables-simple-demo.js",
-              "RelativeDocumentMoniker": "EasyCredit\\Scripts\\datatables-simple-demo.js",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Scripts\\datatables-simple-demo.js",
-              "RelativeToolTip": "EasyCredit\\Scripts\\datatables-simple-demo.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-09-17T02:04:18.49Z"
             },
             {
               "$type": "Document",
@@ -447,7 +448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "ClientController.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\ingjesus061483\\InfoPrestamos\\EasyCredit\\Controllers\\ClientController.cs",
               "RelativeDocumentMoniker": "EasyCredit\\Controllers\\ClientController.cs",
